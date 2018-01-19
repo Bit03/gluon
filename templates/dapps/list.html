@@ -24,7 +24,7 @@
                     <tbody>
                         {% for row in object_list %}
                             <tr>
-                                <td>{{ row.name }}</td>
+                                <td><a href="{% url 'dapps:detail' row.slug %}">{{ row.name }}</a></td>
                                 <td>{{ row.platform }}</td>
                                 <td>{{ row.symbol }}</td>
                                 <td>{{ row.description }}</td>
