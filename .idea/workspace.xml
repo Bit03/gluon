@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="739871e6-5bc5-4ded-904d-9028b7f34326" name="Default" comment="" />
+    <list default="true" id="739871e6-5bc5-4ded-904d-9028b7f34326" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/gluon/settings/production.py" afterPath="$PROJECT_DIR$/gluon/settings/production.py" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -30,17 +32,7 @@
         <entry file="file://$PROJECT_DIR$/nginx/gluon">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="194">
-              <caret line="13" column="26" lean-forward="true" selection-start-line="13" selection-start-column="26" selection-end-line="13" selection-end-column="26" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="gluon.conf" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/supervisor/gluon.conf">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" column="41" lean-forward="false" selection-start-line="5" selection-start-column="41" selection-end-line="5" selection-end-column="41" />
+              <caret line="13" column="26" lean-forward="false" selection-start-line="13" selection-start-column="26" selection-end-line="13" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -88,11 +80,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="production.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="production.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/gluon/settings/production.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="318">
-              <caret line="28" column="27" lean-forward="false" selection-start-line="28" selection-start-column="27" selection-end-line="28" selection-end-column="27" />
+            <state relative-caret-position="270">
+              <caret line="18" column="1" lean-forward="true" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -148,12 +140,12 @@
         <option value="$PROJECT_DIR$/dapps/models.py" />
         <option value="$PROJECT_DIR$/scripts/import_dapps.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/gluon/settings/production.py" />
         <option value="$PROJECT_DIR$/gluon/settings/settings.py" />
         <option value="$PROJECT_DIR$/nginx/gluon.py" />
         <option value="$PROJECT_DIR$/nginx/gluon" />
         <option value="$PROJECT_DIR$/supervisor/gunicorn" />
         <option value="$PROJECT_DIR$/supervisor/gluon.conf" />
+        <option value="$PROJECT_DIR$/gluon/settings/production.py" />
       </list>
     </option>
   </component>
@@ -223,6 +215,19 @@
               <item name="gluon" type="b2602c69:ProjectViewProjectNode" />
               <item name="gluon" type="57c3d0a0:Web2PyBaseDirNode" />
               <item name="gluon" type="9d94d652:Web2PyLibDirNode" />
+            </path>
+            <path>
+              <item name="gluon" type="b2602c69:ProjectViewProjectNode" />
+              <item name="gluon" type="57c3d0a0:Web2PyBaseDirNode" />
+              <item name="gluon" type="9d94d652:Web2PyLibDirNode" />
+              <item name="gluon" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="gluon" type="b2602c69:ProjectViewProjectNode" />
+              <item name="gluon" type="57c3d0a0:Web2PyBaseDirNode" />
+              <item name="gluon" type="9d94d652:Web2PyLibDirNode" />
+              <item name="gluon" type="462c0819:PsiDirectoryNode" />
+              <item name="settings" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="gluon" type="b2602c69:ProjectViewProjectNode" />
@@ -686,14 +691,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/gluon/settings/production.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="318">
-          <caret line="28" column="27" lean-forward="false" selection-start-line="28" selection-start-column="27" selection-end-line="28" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/gluon/settings/settings.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1107">
@@ -736,14 +733,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/nginx/gluon">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="13" column="26" lean-forward="true" selection-start-line="13" selection-start-column="26" selection-end-line="13" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/supervisor/gunicorn">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -756,6 +745,22 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="5" column="41" lean-forward="false" selection-start-line="5" selection-start-column="41" selection-end-line="5" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nginx/gluon">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="13" column="26" lean-forward="false" selection-start-line="13" selection-start-column="26" selection-end-line="13" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gluon/settings/production.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="1" lean-forward="true" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
           <folding />
         </state>
       </provider>

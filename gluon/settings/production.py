@@ -27,3 +27,8 @@ ALLOWED_HOSTS = ["*"]
 '''
 SESSION_ENGINE = 'django.contrib.sessions.backends.file'
 SESSION_FILE_PATH = '/tmp/'
+
+
+# static
+STATIC_ROOT = '/data/www/static/'
+STATIC_URL = '//static.dapprank.com/static/'
