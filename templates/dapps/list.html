@@ -22,6 +22,8 @@
                             <th>{% trans 'license' %}</th>
                             <th>{% trans 'status' %}</th>
                             <th>{% trans 'ico_status' %}</th>
+                            <th>{% trans 'submitted' %}</th>
+                            <th>{% trans 'last_update' %}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -39,6 +41,8 @@
                                 <td>{{ row.license }}</td>
                                 <td>{{ row.status }}</td>
                                 <td>{{ row.ico_status }}</td>
+                                <td>{{ row.submitted }}</td>
+                                <td>{{ row.last_update }}</td>
                             </tr>
                         {% endfor %}
                     </tbody>
