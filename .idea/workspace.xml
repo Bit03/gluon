@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="739871e6-5bc5-4ded-904d-9028b7f34326" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/nginx/gluon" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/supervisor/gluon.conf" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/supervisor/gunicorn" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="739871e6-5bc5-4ded-904d-9028b7f34326" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
