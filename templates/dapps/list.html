@@ -1,1 +1,27 @@
 {% extends 'base/base.html' %}
+{% load i18n %}
+
+
+{% block bootstrap3_content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <table class="table-responsive">
+                    <thead>
+                        <tr>
+                            <th>{% trans 'name' %}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in object_list %}
+                            <tr>
+                                <td>{{ row.name }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
