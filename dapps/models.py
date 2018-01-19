@@ -5,6 +5,7 @@ from django.db import models
 from model_utils.models import SoftDeletableModel
 from model_utils.fields import StatusField
 from model_utils import Choices
+from django_extensions.db import fields
 
 # Create your models here.
 from django.utils import timezone
@@ -17,6 +18,8 @@ class DApp(SoftDeletableModel):
     STATUS = Choices("demo", "live", "concept", "wip")
     LICENSE_CHOICES = Choices("MIT", "GPLv3", "Apache License 2.0", "proprietary", "GPL")
 
+    slug = fields.RandomCharField(length=12, unique=True,
+                                  include_alpha=False, db_index=True, editable=False)
     name = models.CharField(max_length=64, )
     platform = models.CharField(max_length=64, )
     symbol = models.CharField(max_length=64, null=True, blank=True)
@@ -47,6 +50,7 @@ class DApp(SoftDeletableModel):
 
     def __str__(self):
         return self.name
+
 
 
 class ContractAddress(models.Model):

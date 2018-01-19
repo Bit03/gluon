@@ -1,26 +1,46 @@
 {% extends 'base/base.html' %}
 {% load i18n %}
+{% load bootstrap3 %}
 
 
 {% block bootstrap3_content %}
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
-                <table class="table-responsive">
+                <table class="table table-condensed table-bordered">
                     <thead>
                         <tr>
                             <th>{% trans 'name' %}</th>
+                            <th>{% trans 'platform' %}</th>
+                            <th>{% trans 'symbol' %}</th>
+                            <th>{% trans 'description' %}</th>
+                            <th>{% trans 'country_of_origin ' %}</th>
+                            <th>{% trans 'faq' %}</th>
+                            <th>{% trans 'founder' %}</th>
+                            <th>{% trans 'vc' %}</th>
+                            <th>{% trans 'etherian' %}</th>
                         </tr>
                     </thead>
                     <tbody>
                         {% for row in object_list %}
                             <tr>
                                 <td>{{ row.name }}</td>
+                                <td>{{ row.platform }}</td>
+                                <td>{{ row.symbol }}</td>
+                                <td>{{ row.description }}</td>
+                                <td>{{ row.country_of_origin  }}</td>
+                                <td>{{ row.faq }}</td>
+                                <td>{{ row.founder }}</td>
+                                <td>{{ row.vc }}</td>
+                                <td>{{ row.etherian }}</td>
                             </tr>
                         {% endfor %}
                     </tbody>
                 </table>
+
+                {% bootstrap_pagination page_obj extra=request.GET.urlencode size="small" %}
             </div>
+
         </div>
     </div>
 
