@@ -124,3 +124,8 @@ static/js/node_modules/
 
 # sqlite
 db.sqlite3
+
+
+#pycharm
+.idea
+.idea/*
