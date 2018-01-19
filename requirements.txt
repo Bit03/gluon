@@ -2,8 +2,11 @@ beautifulsoup4==4.6.0
 certifi==2017.11.5
 chardet==3.0.4
 Django==1.11.9
+django-appconf==1.0.2
 django-bootstrap3==9.1.0
+django-compressor==2.2
 django-extensions==1.9.9
+django-htmlmin==0.10.0
 django-model-utils==3.1.1
 django-pandas==0.4.5
 django-taggit==0.22.2
@@ -27,7 +30,9 @@ Pygments==2.2.0
 PyJWT==1.5.3
 python-dateutil==2.6.1
 pytz==2017.3
+rcssmin==1.0.6
 requests==2.18.4
+rjsmin==1.0.12
 six==1.11.0
 typing==3.6.2
 Unidecode==1.0.22
