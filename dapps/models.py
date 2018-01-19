@@ -26,7 +26,7 @@ class DApp(SoftDeletableModel):
 
     faq = models.CharField(max_length=255, default='')
     founder = models.CharField(max_length=255, default='')
-    vc = models.CharField(max_length=64, default='')
+    vc = models.CharField(max_length=255, default='')
     etherian = models.CharField(max_length=255, default='')
 
     license = StatusField(choices_name='LICENSE_CHOICES')
@@ -80,7 +80,7 @@ class Site(models.Model):
     dapp = models.OneToOneField(DApp, related_name='site')
     logo = models.URLField(max_length=255, null=True, blank=True)
     url = models.URLField(max_length=255, )
-    whitepaper = models.URLField(max_length=255)
+    whitepaper = models.URLField(max_length=1024)
 
     created_at = models.DateTimeField(default=timezone.now, db_index=True)
     updated_at = models.DateTimeField(auto_now=True, db_index=True, editable=False)

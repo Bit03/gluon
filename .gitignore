@@ -121,3 +121,6 @@ venv.bak/
 # node
 static/js/node_modules/
 
+
+# sqlite
+db.sqlite3
