@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="739871e6-5bc5-4ded-904d-9028b7f34326" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/dapps/views/__init__.py" afterPath="$PROJECT_DIR$/dapps/views/__init__.py" />
-      <change beforePath="$PROJECT_DIR$/templates/dapps/detail.html" afterPath="$PROJECT_DIR$/templates/dapps/detail.html" />
-      <change beforePath="$PROJECT_DIR$/templates/dapps/list.html" afterPath="$PROJECT_DIR$/templates/dapps/list.html" />
-    </list>
+    <list default="true" id="739871e6-5bc5-4ded-904d-9028b7f34326" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
