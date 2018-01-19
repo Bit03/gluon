@@ -8,7 +8,7 @@ class DAppsListView(LoginRequiredMixin,
     model = DApp
     queryset = DApp.objects.all()
     template_name = 'dapps/list.html'
-    paginate_by = 30
+    paginate_by = 100
 
 
 class DAppsDetailView(LoginRequiredMixin,
