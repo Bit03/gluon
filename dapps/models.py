@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from django.core import urlresolvers
 from django.db import models
 from model_utils.models import SoftDeletableModel
 from model_utils.fields import StatusField
@@ -51,6 +52,8 @@ class DApp(SoftDeletableModel):
     def __str__(self):
         return self.name
 
+    def get_absolute_url(self):
+        return urlresolvers.reverse('dapps:detail', args=[self.slug, ])
 
 
 class ContractAddress(models.Model):

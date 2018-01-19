@@ -11,9 +11,9 @@ class DAppsListView(LoginRequiredMixin,
     paginate_by = 30
 
 
-class DAppsDetail(LoginRequiredMixin,
-                  generic.DetailView):
-
+class DAppsDetailView(LoginRequiredMixin,
+                      generic.DetailView):
     model = DApp
     queryset = DApp.objects.all()
     template_name = 'dapps/detail.html'
+    slug_field = 'slug'

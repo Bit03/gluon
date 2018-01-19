@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="739871e6-5bc5-4ded-904d-9028b7f34326" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/templates/dapps/detail.html" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/dapps/models.py" afterPath="$PROJECT_DIR$/dapps/models.py" />
+      <change beforePath="$PROJECT_DIR$/dapps/urls/__init__.py" afterPath="$PROJECT_DIR$/dapps/urls/__init__.py" />
       <change beforePath="$PROJECT_DIR$/dapps/views/__init__.py" afterPath="$PROJECT_DIR$/dapps/views/__init__.py" />
-      <change beforePath="$PROJECT_DIR$/templates/dapps/list.html" afterPath="$PROJECT_DIR$/templates/dapps/list.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -43,8 +41,8 @@
       <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dapps/views/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="18" lean-forward="false" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
+            <state relative-caret-position="120">
+              <caret line="8" column="18" lean-forward="false" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
               <folding>
                 <element signature="e#0#32#0" expanded="true" />
               </folding>
@@ -65,10 +63,22 @@
       <file leaf-file-name="models.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/dapps/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+            <state relative-caret-position="288">
+              <caret line="58" column="24" lean-forward="false" selection-start-line="58" selection-start-column="24" selection-end-line="58" selection-end-column="24" />
               <folding>
                 <element signature="e#24#63#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dapps/urls/__init__.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="6" column="39" lean-forward="false" selection-start-line="6" selection-start-column="39" selection-end-line="6" selection-end-column="39" />
+              <folding>
+                <element signature="e#0#32#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -122,6 +132,7 @@
         <option value="$PROJECT_DIR$/gluon/settings/production.py" />
         <option value="$PROJECT_DIR$/templates/dapps/list.html" />
         <option value="$PROJECT_DIR$/templates/dapps/detail.html" />
+        <option value="$PROJECT_DIR$/dapps/urls/__init__.py" />
         <option value="$PROJECT_DIR$/dapps/views/__init__.py" />
         <option value="$PROJECT_DIR$/dapps/models.py" />
       </list>
@@ -199,6 +210,13 @@
               <item name="gluon" type="57c3d0a0:Web2PyBaseDirNode" />
               <item name="gluon" type="9d94d652:Web2PyLibDirNode" />
               <item name="dapps" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="gluon" type="b2602c69:ProjectViewProjectNode" />
+              <item name="gluon" type="57c3d0a0:Web2PyBaseDirNode" />
+              <item name="gluon" type="9d94d652:Web2PyLibDirNode" />
+              <item name="dapps" type="462c0819:PsiDirectoryNode" />
+              <item name="urls" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="gluon" type="b2602c69:ProjectViewProjectNode" />
@@ -757,10 +775,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/dapps/urls/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="39" lean-forward="false" selection-start-line="6" selection-start-column="39" selection-end-line="6" selection-end-column="39" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/dapps/views/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="18" lean-forward="false" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
+        <state relative-caret-position="120">
+          <caret line="8" column="18" lean-forward="false" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
           <folding>
             <element signature="e#0#32#0" expanded="true" />
           </folding>
@@ -769,8 +797,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/dapps/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+        <state relative-caret-position="288">
+          <caret line="58" column="24" lean-forward="false" selection-start-line="58" selection-start-column="24" selection-end-line="58" selection-end-column="24" />
           <folding>
             <element signature="e#24#63#0" expanded="true" />
           </folding>
