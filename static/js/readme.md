@@ -18,5 +18,8 @@ npm install babel-plugin-transform-runtime --save-dev
 2. now some configuration
 http://jamesknelson.com/webpack-made-simple-build-es6-less-with-autorefresh-in-26-lines/
 
+3. font awsome loader
+https://medium.com/@chanonroy/webpack-2-and-font-awesome-icon-importing-59df3364f35c
+
 
 

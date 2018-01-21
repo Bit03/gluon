@@ -1,3 +1,5 @@
+import  '../css/font-awesome.min.css';
+import '../css/main.sass';
 
 
 class app{
