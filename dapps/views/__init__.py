@@ -27,6 +27,7 @@ class DAppsListView(LoginRequiredMixin,
 class DappsFakeDetailView(generic.TemplateView):
     template_name = 'web/detail.html'
 
+
 class DAppsDetailView(LoginRequiredMixin,
                       generic.DetailView):
     model = DApp
