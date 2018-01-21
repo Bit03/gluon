@@ -132,3 +132,8 @@ db.sqlite3
 
 #settings
 dev_anchen.py
+
+#vue cli
+.DS_Store
+node_modules
+test/e2e/mock-template-build
