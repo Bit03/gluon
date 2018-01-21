@@ -2,7 +2,7 @@
 const webpack = require('webpack');
 
 const config = {
-  entry: ['./app.js',],
+  entry: ['./app.js'],
   output: {
     path: __dirname+'/build',
     filename: 'app_build.js'
@@ -20,16 +20,15 @@ const config = {
              outputPath: '../fonts/',    // where the fonts will go
              publicPath: '/static/js/fonts/'       // override the default path
            }
-      },]},
+      }]},
       {test: /\.json$/, loader: 'json-loader'}
     ]
   },
-  plugins: [
+  // plugins: [
     // new webpack.optimize.UglifyJsPlugin()
     // new HtmlWebpackPlugin({template: '../../templates/articles/list.html'})
-  ],
+  // ],
+}
 
-
-};
 
 module.exports = config;
