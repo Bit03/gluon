@@ -4,7 +4,7 @@ const webpack = require('webpack');
 const config = {
   entry: './app.js',
   output: {
-    path: __dirname,
+    path: __dirname+'/build',
     filename: 'bundle.js'
   },
   module: {
