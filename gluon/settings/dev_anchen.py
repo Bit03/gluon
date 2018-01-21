@@ -1,4 +1,5 @@
 from .dev import *
+DEBUG = True
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -45,4 +46,4 @@ TEMPLATES = [
 # static
 STATIC_ROOT = '/data/www/static/'
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, '../../static'),]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, '../static'),]
