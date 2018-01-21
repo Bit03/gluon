@@ -135,5 +135,5 @@ dev_anchen.py
 
 #vue cli
 .DS_Store
-node_modules
+node_modules/
 test/e2e/mock-template-build
