@@ -127,8 +127,7 @@ db.sqlite3
 
 
 #pycharm
-.idea
-.idea/*
+.idea/
 
 #settings
 dev_anchen.py
