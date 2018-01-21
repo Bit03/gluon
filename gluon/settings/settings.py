@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django_extensions',
     'taggit',
     'bootstrap3',
+    'rest_framework',
 
     'dapps',
 ]
@@ -145,3 +146,15 @@ HTML_MINIFY = True
 
 # django-taggit
 TAGGIT_CASE_INSENSITIVE = True
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+    ),
+}
