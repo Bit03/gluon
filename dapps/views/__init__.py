@@ -5,7 +5,8 @@ from dapps.models import DApp
 
 
 
-class DAppsListView(generic.ListView):
+class DAppsListView(LoginRequiredMixin,
+                    generic.ListView):
     model = DApp
     queryset = DApp.objects.all()
     template_name = 'dapps/list.html'

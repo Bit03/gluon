@@ -23,13 +23,10 @@
     </section>
 
     <section id="content">
-
         <div class="container is-tablet">
             <div class="columns is-tablet is-multiline">
-
                 {% for row in object_list %}
                     {% include "dapps/snippets/cell.html" with dapp=row %}
-
                 {% endfor %}
             </div>
         </div>

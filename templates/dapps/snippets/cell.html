@@ -2,11 +2,11 @@
     <a href="{% url 'dapps:detail' dapp.slug %}" title="{{ dapp.name }}">
         <div class="card">
             <div class="card-content">
-                <div class="media">
+                <div class="media media_header">
                     <div class="media-left">
                         <figure class="image is-48x48">
                             <img title="{{ dapp.name }}"
-                                 src="{{ row.site.logo|default:'https://bulma.io/images/placeholders/96x96.png' }}" alt="Placeholder image">
+                                 src="{{ row.site.logo|default:'https://bulma.io/images/placeholders/96x96.png' }}" alt="Image">
                         </figure>
                     </div>
 
@@ -22,7 +22,7 @@
                     </div>
                 </div>
 
-                <div class="content description">
+                <div class="content dapps_list_description">
 {#                                        {{ dapp.platform }}#}
                                         {{ dapp.description|truncatewords_html:"10" }}
 {#                                        <a>@bulmaio</a>.#}
@@ -45,8 +45,8 @@
                                       <a href="{{ dapp.github.url }}"><i class="fa fa-github"></i></a>
                                   </span>
                                     </div>
-                                    <div class="content">
-                                        {% for tag in dapp.tags.all %}
+                                    <div class="content dapps_list_tags">
+                                        {% for tag in dapp.tags.all|slice:'5' %}
                                             <span class="tag is-light">{{ tag }}</span>
                                         {% endfor %}
                                     </div>
