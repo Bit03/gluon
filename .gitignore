@@ -124,3 +124,6 @@ static/js/node_modules/
 
 # sqlite
 db.sqlite3
+
+
+.idea/
