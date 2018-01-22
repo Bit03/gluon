@@ -1,6 +1,8 @@
 from django.views import generic
+from django_filters import views
 from django.contrib.auth.mixins import LoginRequiredMixin
 from dapps.models import DApp
+
 
 
 class DAppsListView(generic.ListView):
@@ -9,6 +11,7 @@ class DAppsListView(generic.ListView):
     template_name = 'dapps/list.html'
     # template_name = 'web/index.html'
     paginate_by = 100
+    filter_fields = ("status", "ico_status", "platform")
 
     def get_context_data(self, **kwargs):
         '''

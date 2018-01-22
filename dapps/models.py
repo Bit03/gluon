@@ -52,6 +52,10 @@ class DApp(SoftDeletableModel):
     def __str__(self):
         return self.name
 
+    @property
+    def tag_list(self):
+        return u", ".join(o.name for o in self.tags.all())
+
     def get_absolute_url(self):
         return urlresolvers.reverse('dapps:detail', args=[self.slug, ])
 
@@ -113,7 +117,7 @@ class GitHub(models.Model):
 
 
 class Social(models.Model):
-    dapp = models.OneToOneField(DApp, related_name='socail')
+    dapp = models.OneToOneField(DApp, related_name='social')
     reddit = models.URLField(max_length=255, default='')
     slack = models.URLField(max_length=255, default='')
     gitter = models.URLField(max_length=255, default='')

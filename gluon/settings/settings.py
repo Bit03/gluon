@@ -42,7 +42,6 @@ INSTALLED_APPS = [
 
     'django_extensions',
     'taggit',
-    # 'bootstrap3',
     'rest_framework',
     'django_filters',
     'bulma',

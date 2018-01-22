@@ -1,4 +1,7 @@
 {% extends 'base/base.html' %}
+{% load i18n %}
+
+{% block title %}{{ object.name }}{% endblock %}
 
 
 {% block content %}
@@ -8,10 +11,9 @@
                 <div class="container is-tablet">
                     <nav class="breadcrumb" aria-label="breadcrumbs">
                         <ul>
-                            <li><a href="#">首页</a></li>
-                            <li><a href="#">链</a></li>
-                            <li><a href="#">项目</a></li>
-                            <li class="is-active"><a href="#" aria-current="page">Dash Coin</a></li>
+                            <li><a href="#">{% trans 'home' %}</a></li>
+                            <li><a href="{% url 'dapps:list' %}">{% trans 'dapps' %}</a></li>
+                            <li class="is-active"><a href="#" aria-current="page">{{ object.name }}</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -27,34 +29,38 @@
                         <div class="card-content">
                             <article class="media project-detail">
                                 <figure class="media-left is-128x128">
-                                    <img src="https://bulma.io/images/placeholders/128x128.png">
+{#                                    <img src="https://bulma.io/images/placeholders/128x128.png">#}
+                                    <img title="{{ row.name }}" src="{{ row.site.logo|default:'https://bulma.io/images/placeholders/128x128.png' }}">
                                 </figure>
                                 <div class="media-content">
                                     <div class="content">
-                                        <div class="title">Req InterNet build</div>
-                                        <div class="subtitle link"><a href="">http://www.thereq.pro</a></div>
+                                        <div class="title">{{ object.name }}</div>
+                                        <div class="subtitle link">
+                                            <a title="{{ object.name }}" target="_blank"
+                                               href="{{ object.site.url }}">{{ object.site.url }}</a>
+                                        </div>
+
                                         <div class="subtitle social">
-                                  <span class="social-icon">
-                                      <a href="{{ project.site }}"><i class="fa fa-globe"></i></a>
-                                  </span>
+                                             <span class="social-icon">
+                                                <a href="{{ project.site }}"><i class="fa fa-globe"></i></a>
+                                              </span>
                                             <span class="social-icon">
-                                      <a href="{{ project.site }}"><i class="fa fa-twitter"></i></a>
-                                  </span>
+                                                <a href="{{ object.social.twitter }}"><i class="fa fa-twitter"></i></a>
+                                            </span>
                                             <span class="social-icon">
-                                      <a href="{{ project.site }}"><i class="fa fa-facebook"></i></a>
-                                  </span>
+                                                <a href="{{ object.social.facebook }}"><i class="fa fa-facebook"></i></a>
+                                            </span>
                                             <span class="social-icon">
-                                      <a href="{{ project.site }}"><i class="fa fa-instagram"></i></a>
-                                  </span>
+                                                <a href="{{ object.social.instagram }}"><i class="fa fa-instagram"></i></a>
+                                            </span>
                                             <span class="social-icon">
-                                      <a href="{{ project.site }}"><i class="fa fa-github"></i></a>
-                                  </span>
+                                             <a href="{{ object.github.url }}"><i class="fa fa-github"></i></a>
+                                            </span>
                                         </div>
                                         <div class="tags">
-                                            <span class="tag is-light">ETH</span>
-                                            <span class="tag is-light">POS</span>
-                                            <span class="tag is-light">Valid</span>
-                                            <span class="tag is-light">Home</span>
+                                            {% for row in object.tags.all %}
+                                                <span class="tag is-light">{{ row }}</span>
+                                            {% endfor %}
                                         </div>
                                     </div>
                                 </div>
@@ -81,11 +87,12 @@
                                <h2 class="title">
                                    项目描述
                                </h2>
-                               <h3 class="subtitle">
-                                   项目副标题
-                               </h3>
+{#                               <h3 class="subtitle">#}
+{#                                   项目副标题#}
+{#                               </h3>#}
                                <div class="content">
-                                    欧洲团队 Lightning 发起闪电比特币 Lightning Bitcoin，简称 LBTC，并于 2017 年 12 月 23 日左右在 499,999 区块发售，官网显示已得到交易所 CEX.io，BTCC，gate.io 和 Coldlar 钱包支持。据悉 LBTC 将首次采用 DPOS 共识机制。
+                                   {{ object.description }}
+{#                                    欧洲团队 Lightning 发起闪电比特币 Lightning Bitcoin，简称 LBTC，并于 2017 年 12 月 23 日左右在 499,999 区块发售，官网显示已得到交易所 CEX.io，BTCC，gate.io 和 Coldlar 钱包支持。据悉 LBTC 将首次采用 DPOS 共识机制。#}
                                </div>
                            </section>
                         </div>

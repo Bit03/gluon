@@ -1,0 +1,56 @@
+<div class="column is-one-quarter item-wrapper {{ dapp.status }}">
+    <a href="{% url 'dapps:detail' dapp.slug %}" title="{{ dapp.name }}">
+        <div class="card">
+            <div class="card-content">
+                <div class="media">
+                    <div class="media-left">
+                        <figure class="image is-48x48">
+                            <img title="{{ dapp.name }}"
+                                 src="{{ row.site.logo|default:'https://bulma.io/images/placeholders/96x96.png' }}" alt="Placeholder image">
+                        </figure>
+                    </div>
+
+                    <div class="media-content">
+                        <p class="title is-5">{{ dapp.name }}</p>
+                        <p class="subtitle is-7">
+                            <span class="name">{{ dapp.platform }}</span>
+                            <span class="name">{{ dapp.status }}</span>
+                            <span class="name">{{ dapp.ico_status }}</span>
+{#                                                <span class="name">Walker Bush</span>#}
+{#                                                <span class="name">Barack Obama</span>#}
+                        </p>
+                    </div>
+                </div>
+
+                <div class="content description">
+{#                                        {{ dapp.platform }}#}
+                                        {{ dapp.description|truncatewords_html:"10" }}
+{#                                        <a>@bulmaio</a>.#}
+{#                                        <a href="#">#css</a> <a href="#">#responsive</a>#}
+                                    </div>
+                                    <div class="content">
+                                 <span class="social-icon">
+                                      <a title="{{ dapp.name }}" target="_blank" href="{{ dapp.site.url }}"><i class="fa fa-globe"></i></a>
+                                  </span>
+                                        <span class="social-icon">
+                                      <a href="{{ dapp.socail.twitter }}"><i class="fa fa-twitter"></i></a>
+                                  </span>
+                                        <span class="social-icon">
+                                      <a href="{{ dapp.social.facebook }}"><i class="fa fa-facebook"></i></a>
+                                  </span>
+                                        <span class="social-icon">
+                                      <a href="{{ dapp.social.instagram }}"><i class="fa fa-instagram"></i></a>
+                                  </span>
+                                        <span class="social-icon">
+                                      <a href="{{ dapp.github.url }}"><i class="fa fa-github"></i></a>
+                                  </span>
+                                    </div>
+                                    <div class="content">
+                                        {% for tag in dapp.tags.all %}
+                                            <span class="tag is-light">{{ tag }}</span>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+</div>
