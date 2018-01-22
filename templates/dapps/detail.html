@@ -1,11 +1,179 @@
 {% extends 'base/base.html' %}
 
-{% block bootstrap3_title %}{{ object.name }}{% endblock %}
 
-{% block bootstrap3_content %}
-    <div class="container">
-        <div class="row">
-
+{% block content %}
+    <section id="bread" class="container">
+        <div class="columns is-centered">
+            <div class="column is-three-quarters">
+                <div class="container is-tablet">
+                    <nav class="breadcrumb" aria-label="breadcrumbs">
+                        <ul>
+                            <li><a href="#">首页</a></li>
+                            <li><a href="#">链</a></li>
+                            <li><a href="#">项目</a></li>
+                            <li class="is-active"><a href="#" aria-current="page">Dash Coin</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
+
+    <section id="content">
+        <div class="container is-tablet">
+            <div class="columns is-centered">
+                <div class="column is-three-quarters project-wrapper">
+                    <div class="card">
+                        <div class="card-content">
+                            <article class="media project-detail">
+                                <figure class="media-left is-128x128">
+                                    <img src="https://bulma.io/images/placeholders/128x128.png">
+                                </figure>
+                                <div class="media-content">
+                                    <div class="content">
+                                        <div class="title">Req InterNet build</div>
+                                        <div class="subtitle link"><a href="">http://www.thereq.pro</a></div>
+                                        <div class="subtitle social">
+                                  <span class="social-icon">
+                                      <a href="{{ project.site }}"><i class="fa fa-globe"></i></a>
+                                  </span>
+                                            <span class="social-icon">
+                                      <a href="{{ project.site }}"><i class="fa fa-twitter"></i></a>
+                                  </span>
+                                            <span class="social-icon">
+                                      <a href="{{ project.site }}"><i class="fa fa-facebook"></i></a>
+                                  </span>
+                                            <span class="social-icon">
+                                      <a href="{{ project.site }}"><i class="fa fa-instagram"></i></a>
+                                  </span>
+                                            <span class="social-icon">
+                                      <a href="{{ project.site }}"><i class="fa fa-github"></i></a>
+                                  </span>
+                                        </div>
+                                        <div class="tags">
+                                            <span class="tag is-light">ETH</span>
+                                            <span class="tag is-light">POS</span>
+                                            <span class="tag is-light">Valid</span>
+                                            <span class="tag is-light">Home</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="media-right">
+                                    <ul>
+                                        <li>
+                                            <div class="tag is-dark">关注</div>
+                                        </li>
+                                        <li>
+                                            <div class="tag is-dark">认领</div>
+                                        </li>
+                                        <li>
+                                            <div class="tag is-dark">分享</div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+
+                     <div class="card">
+                        <div class="card-content">
+                           <section class="hero">
+                               <h2 class="title">
+                                   项目描述
+                               </h2>
+                               <h3 class="subtitle">
+                                   项目副标题
+                               </h3>
+                               <div class="content">
+                                    欧洲团队 Lightning 发起闪电比特币 Lightning Bitcoin，简称 LBTC，并于 2017 年 12 月 23 日左右在 499,999 区块发售，官网显示已得到交易所 CEX.io，BTCC，gate.io 和 Coldlar 钱包支持。据悉 LBTC 将首次采用 DPOS 共识机制。
+                               </div>
+                           </section>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-content">
+                           <section class="hero">
+                               <h2 class="title">
+                                   团队
+                               </h2>
+                               <div class="content">
+                                   <div class="columns">
+                                       <div class="column">
+                                           <div class="media">
+                                               <div class="media-left">
+                                                   <figure class="is-64x64">
+                                                          <img src="https://bulma.io/images/placeholders/64x64.png">
+                                                   </figure>
+                                               </div>
+                                               <div class="media-content">
+                                                   <div class="name">Smith Hanson</div>
+                                                   <div>this is a </div>
+                                               </div>
+                                           </div>
+                                           <div class="media">
+                                               <div class="media-left">
+                                                   <figure class="is-64x64">
+                                                          <img src="https://bulma.io/images/placeholders/64x64.png">
+                                                   </figure>
+                                               </div>
+                                               <div class="media-content">
+                                                   <div class="name">Smith Hanson</div>
+                                                   <div>this is a </div>
+                                               </div>
+                                           </div>
+                                           <div class="media">
+                                               <div class="media-left">
+                                                   <figure class="is-64x64">
+                                                          <img src="https://bulma.io/images/placeholders/64x64.png">
+                                                   </figure>
+                                               </div>
+                                               <div class="media-content">
+                                                   <div class="name">Smith Hanson</div>
+                                                   <div>this is a </div>
+                                               </div>
+                                           </div>
+                                           <div class="media">
+                                               <div class="media-left">
+                                                   <figure class="is-64x64">
+                                                          <img src="https://bulma.io/images/placeholders/64x64.png">
+                                                   </figure>
+                                               </div>
+                                               <div class="media-content">
+                                                   <div class="name">Smith Hanson</div>
+                                                   <div>this is a </div>
+                                               </div>
+                                           </div>
+                                       </div>
+                                   </div>
+                               </div>
+                           </section>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-content">
+                            <section class="hero">
+                                <h2 class="title">
+                                    交易
+                                </h2>
+                                <div class="tabs">
+                                  <ul>
+                                    <li class="is-active"><a>BitFinex</a></li>
+                                    <li><a>BitThumb</a></li>
+                                    <li><a>BitBays</a></li>
+                                    <li><a>Huobi</a></li>
+                                  </ul>
+                                </div>
+                                <div class="content">
+                                    交易所报价
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
 {% endblock %}
