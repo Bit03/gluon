@@ -52,8 +52,14 @@ class DApp(SoftDeletableModel):
     def __str__(self):
         return self.name
 
+    @property
+    def tag_list(self):
+        return u", ".join(o.name for o in self.tags.all())
+
     def get_absolute_url(self):
         return urlresolvers.reverse('dapps:detail', args=[self.slug, ])
+
+
 
 
 class ContractAddress(models.Model):
