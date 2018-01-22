@@ -7,3 +7,4 @@ class DAppListAPIView(generics.ListAPIView):
 
     serializer_class = DAppSerializers
     queryset = DApp.objects.all()
+    filter_fields = ('status', 'ico_status', )
