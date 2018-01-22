@@ -21,67 +21,67 @@
             </div>
         </div>
     </section>
+
     <section id="content">
-        <div class="container is-tablet">
-             <table class="table table-condensed table-bordered">
-                    <thead>
-                        <tr>
-                            <th>{% trans 'name' %}</th>
-                            <th>{% trans 'platform' %}</th>
-                            <th>{% trans 'symbol' %}</th>
-                            <th>{% trans 'description' %}</th>
-                            <th>{% trans 'country_of_origin ' %}</th>
-                            <th>{% trans 'faq' %}</th>
-                            <th>{% trans 'founder' %}</th>
-                            <th>{% trans 'vc' %}</th>
-                            <th>{% trans 'etherian' %}</th>
-                            <th>{% trans 'license' %}</th>
-                            <th>{% trans 'status' %}</th>
-                            <th>{% trans 'ico_status' %}</th>
-                            <th>{% trans 'submitted' %}</th>
-                            <th>{% trans 'last_update' %}</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for row in object_list %}
-                            <tr>
-                                <td><a href="{% url 'dapps:detail' row.slug %}">{{ row.name }}</a></td>
-                                <td>{{ row.platform }}</td>
-                                <td>{{ row.symbol }}</td>
-                                <td>{{ row.description }}</td>
-                                <td>{{ row.country_of_origin  }}</td>
-                                <td>{{ row.faq }}</td>
-                                <td>{{ row.founder }}</td>
-                                <td>{{ row.vc }}</td>
-                                <td>{{ row.etherian }}</td>
-                                <td>{{ row.license }}</td>
-                                <td>{{ row.status }}</td>
-                                <td>{{ row.ico_status }}</td>
-                                <td>{{ row.submitted }}</td>
-                                <td>{{ row.last_update }}</td>
-                            </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-        </div>
+{#        <div class="container is-tablet">#}
+{#             <table class="table table-condensed table-bordered">#}
+{#                 <thead>#}
+{#                        <tr>#}
+{#                            <th>{% trans 'name' %}</th>#}
+{#                            <th>{% trans 'platform' %}</th>#}
+{#                            <th>{% trans 'symbol' %}</th>#}
+{#                            <th>{% trans 'description' %}</th>#}
+{#                            <th>{% trans 'country_of_origin ' %}</th>#}
+{#                            <th>{% trans 'faq' %}</th>#}
+{#                            <th>{% trans 'founder' %}</th>#}
+{#                            <th>{% trans 'vc' %}</th>#}
+{#                            <th>{% trans 'etherian' %}</th>#}
+{#                            <th>{% trans 'license' %}</th>#}
+{#                            <th>{% trans 'status' %}</th>#}
+{#                            <th>{% trans 'ico_status' %}</th>#}
+{#                            <th>{% trans 'submitted' %}</th>#}
+{#                            <th>{% trans 'last_update' %}</th>#}
+{#                        </tr>#}
+{#                 </thead>#}
+{#                    <tbody>#}
+{#                        {% for row in object_list %}#}
+{#                            <tr>#}
+{#                                <td><a href="{% url 'dapps:detail' row.slug %}">{{ row.name }}</a></td>#}
+{#                                <td>{{ row.platform }}</td>#}
+{#                                <td>{{ row.symbol }}</td>#}
+{#                                <td>{{ row.description }}</td>#}
+{#                                <td>{{ row.country_of_origin  }}</td>#}
+{#                                <td>{{ row.faq }}</td>#}
+{#                                <td>{{ row.founder }}</td>#}
+{#                                <td>{{ row.vc }}</td>#}
+{#                                <td>{{ row.etherian }}</td>#}
+{#                                <td>{{ row.license }}</td>#}
+{#                                <td>{{ row.status }}</td>#}
+{#                                <td>{{ row.ico_status }}</td>#}
+{#                                <td>{{ row.submitted }}</td>#}
+{#                                <td>{{ row.last_update }}</td>#}
+{#                            </tr>#}
+{#                        {% endfor %}#}
+{#                    </tbody>#}
+{#             </table>#}
+{#        </div>#}
 
         <div class="container is-tablet">
             <div class="columns is-tablet is-multiline">
 
-                {% for i in rg %}
+                {% for row in object_list %}
                     <div class="column is-one-quarter item-wrapper">
-                        <a href="fakedetail.htm">
+                        <a href="{% url 'dapps:detail' row.slug %}" title="{{ row.name }}">
                             <div class="card">
                                 <div class="card-content">
                                     <div class="media">
                                         <div class="media-left">
                                             <figure class="image is-48x48">
-                                                <img src="https://bulma.io/images/placeholders/96x96.png"
-                                                     alt="Placeholder image">
+                                                <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
                                             </figure>
                                         </div>
                                         <div class="media-content">
-                                            <p class="title is-5">Project Zero</p>
+                                            <p class="title is-5">{{ row.name }}</p>
                                             <p class="subtitle is-7">
                                                 <span class="name">Jonh Smith</span>
                                                 <span class="name">Walker Bush</span>
@@ -90,13 +90,14 @@
                                         </div>
                                     </div>
                                     <div class="content">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                        Phasellus nec iaculis mauris. <a>@bulmaio</a>.
-                                        <a href="#">#css</a> <a href="#">#responsive</a>
+                                        {{ row.platform }}
+{#                                        {{ row.description }}#}
+{#                                        <a>@bulmaio</a>.#}
+{#                                        <a href="#">#css</a> <a href="#">#responsive</a>#}
                                     </div>
                                     <div class="content">
                                  <span class="social-icon">
-                                      <a href="{{ project.site }}"><i class="fa fa-globe"></i></a>
+                                      <a title="{{ row.name }}" target="_blank" href="{{ row.site.url }}"><i class="fa fa-globe"></i></a>
                                   </span>
                                         <span class="social-icon">
                                       <a href="{{ project.site }}"><i class="fa fa-twitter"></i></a>
@@ -108,14 +109,17 @@
                                       <a href="{{ project.site }}"><i class="fa fa-instagram"></i></a>
                                   </span>
                                         <span class="social-icon">
-                                      <a href="{{ project.site }}"><i class="fa fa-github"></i></a>
+                                      <a href="{{ row.github.url }}"><i class="fa fa-github"></i></a>
                                   </span>
                                     </div>
                                     <div class="content">
-                                        <span class="tag is-light">ETH</span>
-                                        <span class="tag is-light">POS</span>
-                                        <span class="tag is-light">Valid</span>
-                                        <span class="tag is-light">Home</span>
+                                        {% for tag in row.tags.all %}
+                                            <span class="tag is-light">{{ tag }}</span>
+                                        {% endfor %}
+{#                                        <span class="tag is-light">ETH</span>#}
+{#                                        <span class="tag is-light">POS</span>#}
+{#                                        <span class="tag is-light">Valid</span>#}
+{#                                        <span class="tag is-light">Home</span>#}
                                     </div>
                                 </div>
                             </div>
