@@ -1,23 +1,18 @@
 {% extends 'base/base.html' %}
-{%load i18n %}
-{% block content %}
+{% load i18n %}
 
+{% block content %}
     <section id="filter-section">
         <div class="container">
             <div class="columns is-centered">
-{#                <div class="column is-three-quarters">#}
-{#                    <div class="control lined-filter">#}
-{#                      <div class="select">#}
-{#                        <select>#}
-{#                          <option>Select dropdown</option>#}
-{#                          <option>With options</option>#}
-{#                          <option>With options</option>#}
-{#                          <option>With options</option>#}
-{#                          <option>With options</option>#}
-{#                        </select>#}
-{#                      </div>#}
-{#                    </div>#}
-{#                </div>#}
+                <div class="field has-addons">
+                    <div class="control">
+                        <input class="input" type="text" placeholder="Find a repository">
+                    </div>
+                    <div class="control">
+                        <a class="button is-info">Search</a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
