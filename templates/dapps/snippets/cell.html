@@ -1,3 +1,5 @@
+{% load i18n %}
+
 <div class="column is-one-quarter item-wrapper {{ dapp.status }}">
     <a href="{% url 'dapps:detail' dapp.slug %}" title="{{ dapp.name }}">
         <div class="card">
@@ -13,9 +15,9 @@
                     <div class="media-content">
                         <p class="title is-5">{{ dapp.name }}</p>
                         <p class="subtitle is-7">
-                            <span class="name">{{ dapp.platform }}</span>
-                            <span class="name">{{ dapp.status }}</span>
-                            <span class="name">{{ dapp.ico_status }}</span>
+                            <span class="platform">{{ dapp.platform }}</span>
+{#                            <span class="name">{{ dapp.status }}</span>#}
+{#                            <span class="name">{{ dapp.ico_status }}</span>#}
                         </p>
                     </div>
                 </div>
@@ -39,6 +41,10 @@
 
                     <span class="social-icon">
                         <a href="{{ dapp.social.instagram }}"><i class="fa fa-instagram"></i></a>
+                    </span>
+
+                    <span class="social-icon">
+                        <a href="{{ dapp.social.reddit }}"><i class="fa fa-reddit"></i></a>
                     </span>
 
                     <span class="social-icon">
