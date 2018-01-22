@@ -8,4 +8,8 @@ urlpatterns = [
     url(r'^token-auth/?$', obtain_jwt_token),
 ]
 
+urlpatterns += [
+    url(r'^dapps/', include('dapps.urls.api', namespace='dapp')),
+]
+
 urlpatterns = format_suffix_patterns(urlpatterns)
