@@ -13,7 +13,7 @@
                             <li><a href="#">首页</a></li>
 {#                            <li><a href="#">链</a></li>#}
                             <li><a href="{% url 'dapps:list' %}">项目</a></li>
-                            <li class="is-active"><a href="#" aria-current="page">Dash Coin</a></li>
+                            <li class="is-active"><a href="#" aria-current="page">{{ object.name }}</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -33,8 +33,11 @@
                                 </figure>
                                 <div class="media-content">
                                     <div class="content">
-                                        <div class="title">Req InterNet build</div>
-                                        <div class="subtitle link"><a href="{{ object.site.url }}">http://www.thereq.pro</a></div>
+                                        <div class="title">{{ object.name }}</div>
+                                        <div class="subtitle link">
+                                            <a title="{{ object.name }}" target="_blank"
+                                               href="{{ object.site.url }}">{{ object.site.url }}</a>
+                                        </div>
                                         <div class="subtitle social">
                                   <span class="social-icon">
                                       <a href="{{ project.site }}"><i class="fa fa-globe"></i></a>
