@@ -1,7 +1,7 @@
 {#<!DOCTYPE html>#}
 {##}
 {#<html {% if LANGUAGE_CODE %} lang="{{ LANGUAGE_CODE }}"{% endif %}>#}
-{#<head>#}
+<head>
 {#    {% block meta %}#}
 {#    {% endblock %}#}
 {##}
@@ -37,7 +37,8 @@
 {##}
 {##}
 {##}
-{#</head>#}
+    <link rel="stylesheet" href="/static/css/main.css">
+</head>
 {##}
 {#<body class="{% block body_class %} {% endblock %}">#}
 {# header ----------- #}

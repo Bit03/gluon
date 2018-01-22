@@ -3,8 +3,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from dapps.models import DApp
 
 
-class DAppsListView(LoginRequiredMixin,
-                    generic.ListView):
+class DAppsListView(generic.ListView):
     model = DApp
     queryset = DApp.objects.all()
     template_name = 'dapps/list.html'

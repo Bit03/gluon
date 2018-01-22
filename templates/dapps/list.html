@@ -22,7 +22,7 @@
         </div>
     </section>
     <section id="content">
-        <div class="container is-tablet">
+        <div class="container is-tablet" style="overflow-x: auto;">
              <table class="table table-condensed table-bordered">
                     <thead>
                         <tr>
@@ -67,8 +67,7 @@
 
         <div class="container is-tablet">
             <div class="columns is-tablet is-multiline">
-
-                {% for i in rg %}
+                {% for dapp in object_list %}
                     <div class="column is-one-quarter item-wrapper">
                         <a href="fakedetail.htm">
                             <div class="card">
@@ -81,18 +80,18 @@
                                             </figure>
                                         </div>
                                         <div class="media-content">
-                                            <p class="title is-5">Project Zero</p>
+                                            <p class="title is-5">{{ dapp.name}}</p>
                                             <p class="subtitle is-7">
-                                                <span class="name">Jonh Smith</span>
-                                                <span class="name">Walker Bush</span>
-                                                <span class="name">Barack Obama</span>
+                                                <span class="name">{{ dapp.founder }}</span>
                                             </p>
                                         </div>
                                     </div>
-                                    <div class="content">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                        Phasellus nec iaculis mauris. <a>@bulmaio</a>.
+                                    <div class="content description">
+                                        {{ dapp.description }} <a>@bulmaio</a>.
                                         <a href="#">#css</a> <a href="#">#responsive</a>
+                                            {% for tag in dapp.tags.all %}
+                                                {{ tag }}
+                                            {% endfor %}
                                     </div>
                                     <div class="content">
                                  <span class="social-icon">
