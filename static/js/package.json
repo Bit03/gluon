@@ -1,5 +1,5 @@
 {
-  "name": "index.js",
+  "name": "index",
   "version": "1.0.0",
   "description": "gluon fontends",
   "main": "app.js",
@@ -23,6 +23,7 @@
     "webpack": "^3.10.0"
   },
   "dependencies": {
-    "file-loader": "^1.1.6"
+    "file-loader": "^1.1.6",
+    "jquery": "^3.3.1"
   }
 }
