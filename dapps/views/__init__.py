@@ -7,8 +7,25 @@ class DAppsListView(LoginRequiredMixin,
                     generic.ListView):
     model = DApp
     queryset = DApp.objects.all()
-    template_name = 'dapps/list.html'
+    # template_name = 'dapps/list.html'
+    template_name = 'web/index.html'
     paginate_by = 100
+
+
+    def get_context_data(self, **kwargs):
+        '''
+        加入30个假的项目
+        稍后替换
+        :param kwargs:
+        :return:
+        '''
+        context = super().get_context_data(**kwargs)
+        context['rg']  = range(30)
+        return context
+
+
+class DappsFakeDetailView(generic.TemplateView):
+    template_name = 'web/detail.html'
 
 
 class DAppsDetailView(LoginRequiredMixin,
