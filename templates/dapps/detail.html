@@ -11,8 +11,8 @@
                     <nav class="breadcrumb" aria-label="breadcrumbs">
                         <ul>
                             <li><a href="#">首页</a></li>
-                            <li><a href="#">链</a></li>
-                            <li><a href="#">项目</a></li>
+{#                            <li><a href="#">链</a></li>#}
+                            <li><a href="{% url 'dapps:list' %}">项目</a></li>
                             <li class="is-active"><a href="#" aria-current="page">Dash Coin</a></li>
                         </ul>
                     </nav>
@@ -34,7 +34,7 @@
                                 <div class="media-content">
                                     <div class="content">
                                         <div class="title">Req InterNet build</div>
-                                        <div class="subtitle link"><a href="">http://www.thereq.pro</a></div>
+                                        <div class="subtitle link"><a href="{{ object.site.url }}">http://www.thereq.pro</a></div>
                                         <div class="subtitle social">
                                   <span class="social-icon">
                                       <a href="{{ project.site }}"><i class="fa fa-globe"></i></a>
