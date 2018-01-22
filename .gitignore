@@ -126,6 +126,7 @@ static/js/node_modules/
 db.sqlite3
 
 
+
 #pycharm
 .idea/
 
@@ -140,3 +141,6 @@ node_modules/
 .sass-cache
 
 #js
+
+.idea/
+
