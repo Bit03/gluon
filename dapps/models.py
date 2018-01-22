@@ -48,6 +48,7 @@ class DApp(SoftDeletableModel):
     class Meta:
         verbose_name = "Decentralised Applications"
         verbose_name_plural = "Decentralised Applications"
+        ordering = ("last_update", )
 
     def __str__(self):
         return self.name
