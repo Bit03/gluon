@@ -113,7 +113,7 @@ class GitHub(models.Model):
 
 
 class Social(models.Model):
-    dapp = models.OneToOneField(DApp, related_name='socail')
+    dapp = models.OneToOneField(DApp, related_name='social')
     reddit = models.URLField(max_length=255, default='')
     slack = models.URLField(max_length=255, default='')
     gitter = models.URLField(max_length=255, default='')
