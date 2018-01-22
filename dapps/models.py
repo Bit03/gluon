@@ -60,8 +60,6 @@ class DApp(SoftDeletableModel):
         return urlresolvers.reverse('dapps:detail', args=[self.slug, ])
 
 
-
-
 class ContractAddress(models.Model):
     dapp = models.OneToOneField(DApp, related_name='contract')
     mainnet = models.CharField(max_length=128, null=True)

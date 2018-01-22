@@ -60,10 +60,6 @@
                                             {% for row in object.tags.all %}
                                                 <span class="tag is-light">{{ row }}</span>
                                             {% endfor %}
-{#                                            <span class="tag is-light">ETH</span>#}
-{#                                            <span class="tag is-light">POS</span>#}
-{#                                            <span class="tag is-light">Valid</span>#}
-{#                                            <span class="tag is-light">Home</span>#}
                                         </div>
                                     </div>
                                 </div>
@@ -90,11 +86,12 @@
                                <h2 class="title">
                                    项目描述
                                </h2>
-                               <h3 class="subtitle">
-                                   项目副标题
-                               </h3>
+{#                               <h3 class="subtitle">#}
+{#                                   项目副标题#}
+{#                               </h3>#}
                                <div class="content">
-                                    欧洲团队 Lightning 发起闪电比特币 Lightning Bitcoin，简称 LBTC，并于 2017 年 12 月 23 日左右在 499,999 区块发售，官网显示已得到交易所 CEX.io，BTCC，gate.io 和 Coldlar 钱包支持。据悉 LBTC 将首次采用 DPOS 共识机制。
+                                   {{ object.description }}
+{#                                    欧洲团队 Lightning 发起闪电比特币 Lightning Bitcoin，简称 LBTC，并于 2017 年 12 月 23 日左右在 499,999 区块发售，官网显示已得到交易所 CEX.io，BTCC，gate.io 和 Coldlar 钱包支持。据悉 LBTC 将首次采用 DPOS 共识机制。#}
                                </div>
                            </section>
                         </div>
