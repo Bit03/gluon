@@ -70,7 +70,7 @@ class DappSocialAdmin(admin.ModelAdmin):
 
 
 admin.site.register(DApp, DAppAdmin)
-admin.site.register(EmailAddress, DAppEmailAdmin)
-admin.site.register(Site, DAppSiteAdmin)
-admin.site.register(ContractAddress, DappContractAdmin)
-admin.site.register(Social, DappSocialAdmin)
+# admin.site.register(EmailAddress, DAppEmailAdmin)
+# admin.site.register(Site, DAppSiteAdmin)
+# admin.site.register(ContractAddress, DappContractAdmin)
+# admin.site.register(Social, DappSocialAdmin)
