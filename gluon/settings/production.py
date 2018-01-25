@@ -52,3 +52,12 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 20,
     'DATETIME_FORMAT': '%Y-%m-%d %H:%M:%S',
 }
+
+
+###
+# django compress
+###
+
+from .compress import *
+
+# COMPRESS_ROOT
