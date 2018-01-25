@@ -1,5 +1,6 @@
 {% extends 'base/base.html' %}
 {% load i18n %}
+{% load bulma_tags %}
 
 {% block content %}
     <section id="filter-section">
@@ -24,6 +25,8 @@
                     {% include "dapps/snippets/cell.html" with dapp=row %}
                 {% endfor %}
             </div>
+
+            {% bulma_pagination page_obj extra=request.GET.urlencode %}
         </div>
     </section>
 {% endblock %}
