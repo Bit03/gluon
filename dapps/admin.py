@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 from django.contrib import admin
-from dapps.models import DApp, GitHub, Social, EmailAddress, ContractAddress, Site
+from dapps.models import DApp, GitHub, Social, EmailAddress, ContractAddress
 
 
 # Register your models here.
@@ -12,10 +12,6 @@ class DAppEmailStackInlineAdmin(admin.StackedInline):
 
 class DappContractAddressStackInlineAdmin(admin.StackedInline):
     model = ContractAddress
-
-
-# class DAppLogoStackInlineAdmin(admin.StackedInline):
-#     model = Logo
 
 
 class DAppGitHubStackInlineAdmin(admin.StackedInline):
@@ -57,19 +53,25 @@ class DAppEmailAdmin(admin.ModelAdmin):
 
 class DAppSiteAdmin(admin.ModelAdmin):
     list_display = ("dapp", "logo", "url", "whitepaper")
-    list_display_links = ("url", )
-    search_fields = ("dapp", )
+    list_display_links = ("url",)
+    search_fields = ("dapp",)
 
 
-class DappContractAdmin(admin.ModelAdmin):
+class DAppContractAdmin(admin.ModelAdmin):
     pass
 
 
-class DappSocialAdmin(admin.ModelAdmin):
+class DAppSocialAdmin(admin.ModelAdmin):
     list_display = ("dapp", 'facebook', "medium", "twitter")
 
 
+class DAppGihubAdmin(admin.ModelAdmin):
+    list_display = ("dapp", 'url', 'updated_at')
+    ordering = ("-updated_at", )
+
+
 admin.site.register(DApp, DAppAdmin)
+admin.site.register(GitHub, DAppGihubAdmin)
 # admin.site.register(EmailAddress, DAppEmailAdmin)
 # admin.site.register(Site, DAppSiteAdmin)
 # admin.site.register(ContractAddress, DappContractAdmin)
