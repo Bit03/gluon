@@ -1,10 +1,13 @@
 {% extends 'bulma/base.html' %}
 {% load static %}
+{% load compress %}
 
 {% block title %}DAppRank | dapprank.com{% endblock title %}
 
 {% block extra_css %}
-    <link href="{% static 'css/main.css' %}" rel="stylesheet">
+    {% compress css %}
+        <link href="{% static 'css/main.css' %}" type="text/css" charset="UTF-8" rel="stylesheet">
+    {% endcompress %}
 {% endblock %}
 
 
@@ -17,5 +20,7 @@
 {% endblock %}
 
  {% block extra_javascript %}
-     <script type="text/javascript" src="{% static 'js/build/app_build.js' %}"></script>
+     {% compress js %}
+        <script type="text/javascript" src="{% static 'js/build/app_build.js' %}" charset="UTF-8"></script>
+     {% endcompress %}
  {% endblock extra_javascript %}

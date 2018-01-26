@@ -39,10 +39,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'django_extensions',
-    'taggit',
     'rest_framework',
     'django_filters',
+    'compressor',
     'bulma',
+    'taggit',
 
     'dapps',
 ]
