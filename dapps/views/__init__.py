@@ -4,6 +4,13 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from dapps.models import DApp
 
 
+class DAppSearchListView(LoginRequiredMixin,
+                         generic.ListView):
+    model = DApp
+    queryset = DApp.objects.all()
+    template_name = 'dapps/list.html'
+
+
 class DAppsListView(LoginRequiredMixin,
                     views.FilterView):
     model = DApp
@@ -23,10 +30,6 @@ class DAppsListView(LoginRequiredMixin,
         context = super().get_context_data(**kwargs)
         context['rg'] = range(30)
         return context
-
-
-# class DappsFakeDetailView(generic.TemplateView):
-#     template_name = 'web/detail.html'
 
 
 class DAppsDetailView(LoginRequiredMixin,
