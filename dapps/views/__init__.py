@@ -1,6 +1,7 @@
 from django.views import generic
 from django_filters import views
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.db.models import Q
 from dapps.models import DApp
 
 
@@ -9,6 +10,15 @@ class DAppSearchListView(LoginRequiredMixin,
     model = DApp
     queryset = DApp.objects.all()
     template_name = 'dapps/list.html'
+    paginate_by = 100
+
+    def get_queryset(self):
+        qs = super().get_queryset()
+        return qs.filter(Q(name__icontains=self.query))
+
+    def get(self, request, *args, **kwargs):
+        self.query = request.GET.get('q', None)
+        return super().get(request, *args, **kwargs)
 
 
 class DAppsListView(LoginRequiredMixin,
