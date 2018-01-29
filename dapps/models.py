@@ -1,15 +1,15 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from urllib.parse import urlparse
+
 from django.core import urlresolvers
 from django.db import models
+from django.utils import timezone
+from django_extensions.db import fields
 from model_utils.models import SoftDeletableModel
 from model_utils.fields import StatusField
 from model_utils import Choices
-from django_extensions.db import fields
-
-# Create your models here.
-from django.utils import timezone
 from taggit.managers import TaggableManager
 
 
@@ -115,6 +115,14 @@ class GitHub(models.Model):
 
     def __str__(self):
         return self.url
+
+    @property
+    def author_url(self):
+        o = urlparse(self.url)
+        path_group = o.path.split("/")
+        author = path_group[1]
+        return "{scheme}://{host}/{author}".format(scheme=o.scheme,
+                                          host=o.netloc, author=author)
 
 
 class Social(models.Model):
