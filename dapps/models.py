@@ -43,7 +43,7 @@ class DApp(SoftDeletableModel):
     created_at = models.DateTimeField(default=timezone.now, db_index=True)
     updated_at = models.DateTimeField(auto_now=True, db_index=True, editable=False)
 
-    tags = TaggableManager()
+    tags = TaggableManager(blank=True)
 
     class Meta:
         verbose_name = "Decentralised Applications"
@@ -108,7 +108,7 @@ class Site(models.Model):
 class GitHub(models.Model):
     dapp = models.OneToOneField(DApp, related_name='github')
     url = models.URLField(max_length=255)
-    readme = models.TextField()
+    readme = models.TextField(blank=True, default='')
 
     created_at = models.DateTimeField(default=timezone.now, db_index=True)
     updated_at = models.DateTimeField(auto_now=True, db_index=True, editable=False)
