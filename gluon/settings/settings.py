@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'taggit',
 
     'dapps',
+    'github',
 ]
 
 MIDDLEWARE = [
