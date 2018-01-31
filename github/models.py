@@ -1,5 +1,7 @@
 from django.utils import timezone
 from django.db import models
+from django_extensions.db import fields
+
 from dapps.models import DApp
 
 
@@ -7,11 +9,17 @@ from dapps.models import DApp
 
 
 class Author(models.Model):
+    slug = fields.RandomCharField(length=12, unique=True,
+                                  include_alpha=False, db_index=True, editable=False)
+
     dapp = models.ForeignKey(DApp, related_name='dapp')
     url = models.URLField(max_length=256, default='')
     is_organization = models.BooleanField(default=False)
     created_at = models.DateTimeField(default=timezone.now, editable=False, db_index=True)
     updated_at = models.DateTimeField(auto_now=True, editable=False, db_index=True)
+
+    def __str__(self):
+        return self.url
 
 
 class AuthorProfile(models.Model):
