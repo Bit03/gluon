@@ -10,6 +10,7 @@ urlpatterns = [
 
 urlpatterns += [
     url(r'^dapps/', include('dapps.urls.api', namespace='dapp')),
+    url(r'^github/', include('github.urls.api', namespace='github')),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
