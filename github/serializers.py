@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from github.models import Author
+from github.models import Author, AuthorProfile
 # from dapps.models import DApp
 
 
@@ -8,8 +8,15 @@ from github.models import Author
 #         model = DApp
 #         exclude = ("updated_at", "created_at", "is_removed", )
 
+class AuthorProfileSerializers(serializers.ModelSerializer):
+    class Meta:
+        model = AuthorProfile
+        exclude = ("author", )
+
 
 class AuthorSerializers(serializers.ModelSerializer):
+    profile = AuthorProfileSerializers()
+
     class Meta:
         model = Author
-        exclude = ("created_at", "updated_at", )
+        exclude = ("id", "created_at", "updated_at", )
