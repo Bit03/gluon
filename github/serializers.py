@@ -15,7 +15,7 @@ class AuthorProfileSerializers(serializers.ModelSerializer):
 
 
 class AuthorSerializers(serializers.ModelSerializer):
-    profile = AuthorProfileSerializers()
+    profile = AuthorProfileSerializers(read_only=True)
 
     class Meta:
         model = Author
