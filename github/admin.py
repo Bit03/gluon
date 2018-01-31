@@ -9,8 +9,10 @@ class AuthorProfileStackInlineAdmin(admin.StackedInline):
 
 
 class AuthorAdmin(admin.ModelAdmin):
+    list_display = ('dapp', 'url', 'is_organization', 'updated_at')
+    list_filter = ("is_organization",)
 
-    inlines = (AuthorProfileStackInlineAdmin, )
+    inlines = (AuthorProfileStackInlineAdmin,)
 
 
 admin.site.register(Author, AuthorAdmin)
