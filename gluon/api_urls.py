@@ -16,7 +16,7 @@ urlpatterns += [
     url(r'^dapps/', include('dapps.urls.api', namespace='dapp')),
     url(r'^github/', include('github.urls.api', namespace='github')),
 
-    url(r'^schema/$', schema_view),
+    url(r'^schema/$', schema_view, name='schema'),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
