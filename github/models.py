@@ -15,7 +15,7 @@ class Author(models.Model):
 
 
 class AuthorProfile(models.Model):
-    author = models.ForeignKey(Author, related_name='profile')
+    author = models.OneToOneField(Author, related_name='profile')
     name = models.CharField(max_length=64, default='', blank=True)
     bio = models.CharField(max_length=255, default='', blank=True)
     location = models.CharField(max_length=255, default='', blank=True)
