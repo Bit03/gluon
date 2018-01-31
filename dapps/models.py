@@ -118,11 +118,13 @@ class GitHub(models.Model):
 
     @property
     def author_url(self):
-        o = urlparse(self.url)
-        path_group = o.path.split("/")
-        author = path_group[1]
-        return "{scheme}://{host}/{author}".format(scheme=o.scheme,
+        if "https://github.com" in self.url:
+            o = urlparse(self.url)
+            path_group = o.path.split("/")
+            author = path_group[1]
+            return "{scheme}://{host}/{author}".format(scheme=o.scheme,
                                           host=o.netloc, author=author)
+        return None
 
 
 class Social(models.Model):
