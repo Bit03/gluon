@@ -29,5 +29,5 @@ urlpatterns += [
 
 # API
 urlpatterns += [
-    url(r'^api/', include('gluon.api_urls', namespace="api")),
+    url(r'^api/', include('gluon.urls.api', namespace="api")),
 ]
