@@ -1,4 +1,5 @@
 from rest_framework import generics
+from rest_framework.filters import OrderingFilter
 from rest_framework.pagination import PageNumberPagination
 
 from github.models import (Organization, People, Repository)
@@ -30,7 +31,7 @@ class PeopleListAPIView(generics.ListCreateAPIView):
     queryset = People.objects.all()
     serializer_class = PeopleSerializer
     pagination_class = StandardResultsSetPagination
-    filter_backends = (OrderingFilter, DjangoFilterBackend,)
+    filter_backends = (OrderingFilter,)
     ordering_fields = ('created_at',)
 
 
@@ -39,5 +40,5 @@ class RepositoryListAPIView(generics.ListCreateAPIView):
     queryset = Repository.objects.all()
     serializer_class = RepositorySerializer
     pagination_class = StandardResultsSetPagination
-    filter_backends = (OrderingFilter, DjangoFilterBackend,)
+    filter_backends = (OrderingFilter,)
     ordering_fields = ('created_at',)
