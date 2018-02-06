@@ -8,7 +8,8 @@ coreschema==0.0.4
 Django==1.11.9
 django-appconf==1.0.2
 django-bootstrap3==9.1.0
--e git+https://github.com/edison7500/django-bulma@4bf91dc4d7360ca0d08b27b72d00eaa6f0d1cd2c#egg=django_bulma
+-e git+https://github.com/edison7500/django-bulma@39045e5bdf95f9f61947d6ea621cd262f2fa81ad#egg=django_bulma
+django-cache-machine==1.0.0
 django-compressor==2.2
 django-extensions==1.9.9
 django-filter==1.1.0
