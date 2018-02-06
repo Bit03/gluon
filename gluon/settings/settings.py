@@ -165,3 +165,9 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 20,
     'DATETIME_FORMAT': '%Y-%m-%d %H:%M:%S',
 }
+
+
+###
+# import logging
+###
+from gluon.settings.gluon_logging import *
