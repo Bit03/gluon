@@ -5,6 +5,7 @@ from django_extensions.db import fields
 from django.utils.translation import ugettext_lazy as _
 # from dapps.models import DApp
 from caching.base import CachingManager, CachingMixin
+from django_pandas.managers import DataFrameManager
 
 
 class Organization(CachingMixin, models.Model):
@@ -81,3 +82,23 @@ class Repository(models.Model):
         if self.identified_code is None:
             self.identified_code = md5(self.url.encode('utf-8')).hexdigest()
         super(Repository, self).save(*args, **kwargs)
+
+
+class RepositoryState(CachingMixin, models.Model):
+    repos = models.ForeignKey(Repository, related_name='state')
+    watch = models.PositiveIntegerField(default=0)
+    star = models.PositiveIntegerField(default=0)
+    fork = models.PositiveIntegerField(default=0)
+    # datetime = models.DateTimeField(default=timezone.now, db_index=True, editable=False)
+    date = models.DateField(default=timezone.now(), db_index=True, editable=False)
+
+    objects = DataFrameManager()
+    class Meta:
+        ordering = ('-date',)
+
+    def __str__(self):
+        return "Watch {watch} / Star {star} / Fork {fork}".format(
+            watch=self.watch,
+            star=self.star,
+            fork=self.fork,
+        )
