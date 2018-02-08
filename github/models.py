@@ -90,7 +90,7 @@ class RepositoryState(CachingMixin, models.Model):
     star = models.PositiveIntegerField(default=0)
     fork = models.PositiveIntegerField(default=0)
     # datetime = models.DateTimeField(default=timezone.now, db_index=True, editable=False)
-    date = models.DateField(default=timezone.now(), db_index=True, editable=False)
+    date = models.DateField(default=timezone.now, db_index=True, editable=False)
 
     objects = DataFrameManager()
     class Meta:
