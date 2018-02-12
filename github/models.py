@@ -6,6 +6,7 @@ from django.utils.translation import ugettext_lazy as _
 # from dapps.models import DApp
 from caching.base import CachingManager, CachingMixin
 from django_pandas.managers import DataFrameManager
+from taggit.managers import TaggableManager
 
 
 class Organization(CachingMixin, models.Model):
@@ -36,7 +37,7 @@ class Organization(CachingMixin, models.Model):
 
 
 class People(CachingMixin, models.Model):
-    name = models.CharField(blank=True, null=True, max_length=128,)
+    name = models.CharField(blank=True, null=True, max_length=128, )
     nickname = models.CharField(blank=True, max_length=128)
     bio = models.CharField(max_length=255, blank=True, null=True)
     location = models.CharField(max_length=255, blank=True, null=True)
@@ -57,7 +58,7 @@ class People(CachingMixin, models.Model):
         ordering = ("-created_at",)
 
 
-class Repository(models.Model):
+class Repository(CachingMixin, models.Model):
     author = models.CharField(max_length=128, default='')
     name = models.CharField(max_length=128, default='')
     desc = models.TextField(null=True, blank=True)
@@ -67,6 +68,10 @@ class Repository(models.Model):
     identified_code = models.CharField(null=True, blank=True, max_length=32, unique=True)
 
     created_at = models.DateTimeField(default=timezone.now, editable=False, db_index=True)
+
+    objects = CachingManager()
+
+    tags = TaggableManager()
 
     class Meta:
         verbose_name = _("repository")
@@ -93,6 +98,7 @@ class RepositoryState(CachingMixin, models.Model):
     date = models.DateField(default=timezone.now, db_index=True, editable=False)
 
     objects = DataFrameManager()
+
     class Meta:
         ordering = ('-date',)
 
