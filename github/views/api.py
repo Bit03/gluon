@@ -54,3 +54,5 @@ class RepoStatsListAPIView(generics.ListCreateAPIView):
     model = RepositoryStats
     queryset = RepositoryStats.objects.all()
     serializer_class = RepositoryStatsSerializer
+
+

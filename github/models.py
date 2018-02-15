@@ -90,17 +90,17 @@ class Repository(CachingMixin, models.Model):
 
 
 class RepositoryStats(CachingMixin, models.Model):
-    repos = models.ForeignKey(Repository, related_name='state')
+    repos = models.ForeignKey(Repository, related_name='stats')
     watch = models.PositiveIntegerField(default=0)
     star = models.PositiveIntegerField(default=0)
     fork = models.PositiveIntegerField(default=0)
     # datetime = models.DateTimeField(default=timezone.now, db_index=True, editable=False)
-    date = models.DateField(default=timezone.now, db_index=True, editable=False)
+    date = models.DateField(auto_created=True, db_index=True, editable=False)
 
     objects = DataFrameManager()
 
     class Meta:
-        ordering = ('-date',)
+        ordering = ('-date', )
 
     def __str__(self):
         return "Watch {watch} / Star {star} / Fork {fork}".format(

@@ -25,6 +25,12 @@ class RepositorySerializer(serializers.ModelSerializer):
 
 
 class RepositoryStatsSerializer(serializers.ModelSerializer):
+    repos_id = serializers.IntegerField(write_only=True)
+
     class Meta:
         model = RepositoryStats
-        fields = '__all__'
+        fields = ("repos_id", "watch", "star", "fork")
+
+    def create(self, validated_data):
+        # print(validated_data)
+        return super().create(validated_data)
