@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from github.models import (Organization, People, Repository)
+from github.models import (Organization, People, Repository, RepositoryStats)
 
 
 class OrganizationSerializer(serializers.ModelSerializer):

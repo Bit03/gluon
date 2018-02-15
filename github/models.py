@@ -89,7 +89,7 @@ class Repository(CachingMixin, models.Model):
         super(Repository, self).save(*args, **kwargs)
 
 
-class RepositoryState(CachingMixin, models.Model):
+class RepositoryStats(CachingMixin, models.Model):
     repos = models.ForeignKey(Repository, related_name='state')
     watch = models.PositiveIntegerField(default=0)
     star = models.PositiveIntegerField(default=0)
