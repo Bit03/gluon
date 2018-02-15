@@ -19,11 +19,11 @@ DATABASES = {
 
 ALLOWED_HOSTS = ["*"]
 
-'''
-    session configure
-'''
-SESSION_ENGINE = 'django.contrib.sessions.backends.file'
-SESSION_FILE_PATH = '/tmp/'
+# '''
+#     session configure
+# '''
+# SESSION_ENGINE = 'django.contrib.sessions.backends.file'
+# SESSION_FILE_PATH = '/tmp/'
 
 # static
 STATIC_ROOT = '/data/www/static/'
