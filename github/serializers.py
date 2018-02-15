@@ -1,5 +1,6 @@
 from rest_framework import serializers
-from github.models import (Organization, People, Repository, RepositoryStats)
+from github.models import (Organization, People,
+                           Repository, RepositoryStats)
 
 
 class OrganizationSerializer(serializers.ModelSerializer):
@@ -19,5 +20,11 @@ class PeopleSerializer(serializers.ModelSerializer):
 class RepositorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Repository
-        exclude = ("id", )
+        exclude = ("id",)
         read_only_fields = ('created_at',)
+
+
+class RepositoryStatsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = RepositoryStats
+        fields = '__all__'
