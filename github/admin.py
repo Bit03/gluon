@@ -13,7 +13,7 @@ class PeopleAdmin(admin.ModelAdmin):
 
 
 class RepositoryAdmin(admin.ModelAdmin):
-    pass
+    list_display = ("author", "name", "created_at", "updated_at")
 
 
 admin.site.register(Organization, OrganizationAdmin)
