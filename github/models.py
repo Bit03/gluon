@@ -77,6 +77,7 @@ class Repository(CachingMixin, models.Model):
     class Meta:
         verbose_name = _("repository")
         verbose_name_plural = _("repositories")
+        ordering = ("updated_at", )
 
     def __str__(self):
         return "{author}/{name}".format(
