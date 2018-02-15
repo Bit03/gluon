@@ -94,8 +94,9 @@ class RepositoryStats(CachingMixin, models.Model):
     watch = models.PositiveIntegerField(default=0)
     star = models.PositiveIntegerField(default=0)
     fork = models.PositiveIntegerField(default=0)
+    date = models.DateField(auto_now_add=True, db_index=True, editable=False)
     # datetime = models.DateTimeField(default=timezone.now, db_index=True, editable=False)
-    date = models.DateField(auto_created=True, db_index=True, editable=False)
+    # date = models.DateField(auto_created=True, db_index=True, editable=False)
 
     objects = DataFrameManager()
 
