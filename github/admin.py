@@ -14,7 +14,7 @@ class PeopleAdmin(admin.ModelAdmin):
 
 class RepositoryAdmin(admin.ModelAdmin):
     list_display = ("name", "desc", "url", "created_at", "updated_at")
-    ordering = ("-updated_at")
+    ordering = ("-updated_at",)
 
 
 admin.site.register(Organization, OrganizationAdmin)
