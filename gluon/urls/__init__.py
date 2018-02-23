@@ -23,6 +23,7 @@ urlpatterns = [
 
 
 urlpatterns += [
+    url(r'^accounts/', include('django.contrib.auth.urls')),
     url(r'^dapps/', include('dapps.urls', namespace='dapps')),
 ]
 
