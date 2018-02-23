@@ -1,0 +1,26 @@
+{% extends 'base/base.html' %}
+{% load i18n %}
+{% load bulma_tags %}
+
+{% block title %}登录 - DAppRank{% endblock %}
+
+{% block content %}
+
+    <div class="columns is-centered ">
+        <div class="column is-6">
+            <div class="box">
+                {% if form.errors %}
+                    <p>{% trans "Your username and password didn't match. Please try again." %}</p>
+                {% endif %}
+
+                <form method="post" action="{% url 'login' %}">{% csrf_token %}
+                    {{ form|bulma }}
+                    <div class="field">
+                        <button type="submit" class="button is-primary">{% trans 'Log in' %}</button>
+                    </div>
+                    <input type="hidden" name="next" value="{{ next }}"/>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

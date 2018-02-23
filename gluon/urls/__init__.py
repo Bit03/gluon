@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from django.contrib.auth.views import (LoginView, LogoutView)
 
 
 urlpatterns = [
@@ -23,9 +24,16 @@ urlpatterns = [
 
 
 urlpatterns += [
-    url(r'^accounts/', include('django.contrib.auth.urls')),
+    # url(r'^accounts/', include('django.contrib.auth.urls')),
     url(r'^dapps/', include('dapps.urls', namespace='dapps')),
 ]
+
+urlpatterns += [
+    url(r'^login/$', LoginView.as_view(
+        template_name="accounts/login.html",
+    ), name='login'),
+]
+
 
 
 # API
