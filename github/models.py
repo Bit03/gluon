@@ -3,6 +3,7 @@ from django.utils import timezone
 from django.db import models
 from django_extensions.db import fields
 from django.utils.translation import ugettext_lazy as _
+from django.utils.functional import cached_property
 # from dapps.models import DApp
 from caching.base import CachingManager, CachingMixin
 from django_pandas.managers import DataFrameManager
@@ -77,13 +78,25 @@ class Repository(CachingMixin, models.Model):
     class Meta:
         verbose_name = _("repository")
         verbose_name_plural = _("repositories")
-        ordering = ("updated_at", )
+        ordering = ("updated_at",)
 
     def __str__(self):
         return "{author}/{name}".format(
             author=self.author,
             name=self.name,
         )
+
+    @cached_property
+    def last_stats(self):
+        return self.stats.last()
+
+    @property
+    def watch(self):
+        return self.last_stats.watch
+
+    @property
+    def star(self):
+        return self.last_stats.star
 
     def save(self, *args, **kwargs):
         if self.identified_code is None:
@@ -103,7 +116,7 @@ class RepositoryStats(CachingMixin, models.Model):
     objects = DataFrameManager()
 
     class Meta:
-        ordering = ('-date', )
+        ordering = ('-date',)
 
     def __str__(self):
         return "Watch {watch} / Star {star} / Fork {fork}".format(
