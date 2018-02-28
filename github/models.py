@@ -98,6 +98,10 @@ class Repository(CachingMixin, models.Model):
     def star(self):
         return self.last_stats.star
 
+    @property
+    def fork(self):
+        return self.last_stats.fork
+
     def save(self, *args, **kwargs):
         if self.identified_code is None:
             self.identified_code = md5(self.url.encode('utf-8')).hexdigest()

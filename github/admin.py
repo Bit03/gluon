@@ -13,7 +13,9 @@ class PeopleAdmin(admin.ModelAdmin):
 
 
 class RepositoryAdmin(admin.ModelAdmin):
-    list_display = ("name", "desc", "url", "created_at", "updated_at")
+    list_display = ("name", "desc", "url",
+                    "watch", "star", "fork",
+                    "created_at", "updated_at")
     ordering = ("-updated_at",)
 
 
