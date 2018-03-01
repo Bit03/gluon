@@ -1,4 +1,6 @@
 from hashlib import md5
+
+from datetime import datetime, timedelta
 from django.utils import timezone
 from django.db import models
 from django_extensions.db import fields
@@ -101,6 +103,11 @@ class Repository(CachingMixin, models.Model):
     @property
     def fork(self):
         return self.last_stats.fork
+
+    def stats_df(self, days=31):
+        return self.stats \
+            .filter(datetime__gte=datetime.now() - timedelta(days)).order_by('datetime') \
+            .to_dataframe(index='datetime')
 
     def save(self, *args, **kwargs):
         if self.identified_code is None:

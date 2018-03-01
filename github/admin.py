@@ -5,11 +5,11 @@ from github.models import (Organization, People, Repository)
 # Register your models here.
 
 class OrganizationAdmin(admin.ModelAdmin):
-    pass
+    list_display = ("name", "web_site", "email", "bio", "location", "url", "created_at")
 
 
 class PeopleAdmin(admin.ModelAdmin):
-    pass
+    list_display = ("name", "nickname", "bio", "web_site", "location", "url", "created_at")
 
 
 class RepositoryAdmin(admin.ModelAdmin):
