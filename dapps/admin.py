@@ -72,7 +72,3 @@ class DAppGihubAdmin(admin.ModelAdmin):
 
 admin.site.register(DApp, DAppAdmin)
 admin.site.register(GitHub, DAppGihubAdmin)
-# admin.site.register(EmailAddress, DAppEmailAdmin)
-# admin.site.register(Site, DAppSiteAdmin)
-# admin.site.register(ContractAddress, DappContractAdmin)
-# admin.site.register(Social, DappSocialAdmin)
