@@ -26,10 +26,12 @@ class RepositorySerializer(serializers.ModelSerializer):
 
 class RepositoryStatsSerializer(serializers.ModelSerializer):
     repos_id = serializers.IntegerField(write_only=True)
+    
 
     class Meta:
         model = RepositoryStats
-        fields = ("repos_id", "watch", "star", "fork")
+        fields = ("repos_id", "watch", "star", "fork", "date")
+        read_only_fields = ('date',)
 
     def create(self, validated_data):
         # print(validated_data)

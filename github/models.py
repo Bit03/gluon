@@ -106,8 +106,9 @@ class Repository(CachingMixin, models.Model):
 
     def stats_df(self, days=31):
         return self.stats \
-            .filter(datetime__gte=datetime.now() - timedelta(days)).order_by('datetime') \
-            .to_dataframe(index='datetime')
+            .filter(date__gte=datetime.now() - timedelta(days)) \
+            .order_by('date') \
+            .to_dataframe(index='date')
 
     def save(self, *args, **kwargs):
         if self.identified_code is None:
@@ -121,8 +122,6 @@ class RepositoryStats(CachingMixin, models.Model):
     star = models.PositiveIntegerField(default=0)
     fork = models.PositiveIntegerField(default=0)
     date = models.DateField(auto_now_add=True, db_index=True, editable=False)
-    # datetime = models.DateTimeField(default=timezone.now, db_index=True, editable=False)
-    # date = models.DateField(auto_created=True, db_index=True, editable=False)
 
     objects = DataFrameManager()
 
