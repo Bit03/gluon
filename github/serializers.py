@@ -18,15 +18,34 @@ class PeopleSerializer(serializers.ModelSerializer):
 
 
 class RepositorySerializer(serializers.ModelSerializer):
+
+    date = serializers.SerializerMethodField(read_only=True)
+    star = serializers.SerializerMethodField(read_only=True)
+    fork = serializers.SerializerMethodField(read_only=True)
+    watch = serializers.SerializerMethodField(read_only=True)
+
     class Meta:
         model = Repository
-        exclude = ("id",)
+        fields = ("identified_code", "author", "name", "desc",
+                  "readme", "url", "date", "star", "fork", "watch")
         read_only_fields = ('created_at',)
+
+    def get_star(self, obj):
+        return obj.stats_df().star.diff().fillna(0).tolist()
+
+    def get_fork(self, obj):
+        return obj.stats_df().fork.diff().fillna(0).tolist()
+
+    def get_watch(self, obj):
+        return obj.stats_df().watch.diff().fillna(0).tolist()
+
+    def get_date(self, obj):
+        _date = map(lambda x: x.strftime("%Y-%m-%d"), obj.stats_df().index.tolist())
+        return _date
 
 
 class RepositoryStatsSerializer(serializers.ModelSerializer):
     repos_id = serializers.IntegerField(write_only=True)
-    
 
     class Meta:
         model = RepositoryStats
@@ -34,5 +53,4 @@ class RepositoryStatsSerializer(serializers.ModelSerializer):
         read_only_fields = ('date',)
 
     def create(self, validated_data):
-        # print(validated_data)
         return super().create(validated_data)

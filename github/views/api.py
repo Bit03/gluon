@@ -50,6 +50,13 @@ class RepositoryListAPIView(generics.ListCreateAPIView):
     ordering_fields = ('created_at',)
 
 
+class RepositoryDetailAPIView(generics.RetrieveAPIView):
+    model = Repository
+    queryset = Repository.objects.all()
+    serializer_class = RepositorySerializer
+    lookup_field = 'identified_code'
+
+
 class RepoStatsListAPIView(generics.ListCreateAPIView):
     model = RepositoryStats
     queryset = RepositoryStats.objects.all()
