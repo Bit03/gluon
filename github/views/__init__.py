@@ -60,15 +60,12 @@ class ReposDetailView(generic.DetailView):
         return _context
 
     def get_chart(self):
-        # df = stats.to_dataframe(index='datetime')
         df = self.object.stats_df()
-
         line_chat = pygal.Line(x_label_rotation=90,
                                width=600, height=300,
                                pretty_print=True,
                                interpolate='cubic', style=DarkSolarizedStyle)
         line_chat.human_readable = True
-        # line_chat.x_labels = map(lambda x: x.date.strftime("%Y-%m-%d"), )
         line_chat.x_labels =  map(lambda x: x.strftime("%Y-%m-%d"), df.index.tolist())
         star_se = df.star.diff().fillna(0)
         fork_se = df.fork.diff().fillna(0)
