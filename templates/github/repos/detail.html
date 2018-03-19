@@ -4,8 +4,8 @@
     <section id="content">
         <div class="container">
 {#            <div class="col">#}
-            <div class="columns is-multiline">
-                <div class="column is-8 is-offset-2">
+            <div class="columns is-multiline is-centered">
+                <div class="column is-8">
                     <div class="box">
                         <h1 class="title">{{ object }}</h1>
                         <div class="field is-grouped is-grouped-multiline">
@@ -40,8 +40,15 @@
                     </div>
                 </div>
 
-                <div class="column is-8 is-offset-2">
+                <div class="column is-8">
+                    <div class="box">
+                        <figure class="is-16by9">
+                            <embed type="image/svg+xml" src="{{ chart|safe }}" />
+                        </figure>
+                    </div>
+                </div>
 
+                <div class="column is-8">
                     <article class="box">
                         {{ object.render_readme|safe }}
                     </article>
