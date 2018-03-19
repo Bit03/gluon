@@ -37,6 +37,7 @@ parso==0.1.1
 Pillow==5.0.0
 prompt-toolkit==1.0.15
 ptpython==0.41
+pygal==2.4.0
 Pygments==2.2.0
 PyJWT==1.5.3
 python-dateutil==2.7.0
