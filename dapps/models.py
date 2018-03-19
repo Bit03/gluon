@@ -21,16 +21,16 @@ class DApp(SoftDeletableModel):
 
     slug = fields.RandomCharField(length=12, unique=True,
                                   include_alpha=False, db_index=True, editable=False)
-    name = models.CharField(max_length=64,)
+    name = models.CharField(max_length=64, )
     platform = models.CharField(max_length=64, )
     symbol = models.CharField(max_length=64, null=True, blank=True)
-    description = models.TextField(blank=True, default='',)
+    description = models.TextField(blank=True, default='', )
     description_cn = models.TextField(blank=True, default='')
     country_of_origin = models.CharField(max_length=64, default='', blank=True)
 
     faq = models.CharField(max_length=255, default='')
     founder = models.CharField(max_length=255, default='', blank=True)
-    vc = models.CharField(max_length=255, default='', blank=True,)
+    vc = models.CharField(max_length=255, default='', blank=True, )
     etherian = models.CharField(max_length=255, default='', blank=True)
 
     license = StatusField(choices_name='LICENSE_CHOICES', null=True, blank=True, default=None)
@@ -48,7 +48,7 @@ class DApp(SoftDeletableModel):
     class Meta:
         verbose_name = "Decentralised Applications"
         verbose_name_plural = "Decentralised Applications"
-        ordering = ("last_update", )
+        ordering = ("last_update",)
 
     def __str__(self):
         return self.name
@@ -117,13 +117,20 @@ class GitHub(models.Model):
         return self.url
 
     @property
-    def author_url(self):
+    def author(self):
         if "https://github.com" in self.url:
             o = urlparse(self.url)
             path_group = o.path.split("/")
             author = path_group[1]
+            return author
+        return None
+
+    @property
+    def author_url(self):
+        if "https://github.com" in self.url:
+            o = urlparse(self.url)
             return "{scheme}://{host}/{author}".format(scheme=o.scheme,
-                                          host=o.netloc, author=author)
+                                                       host=o.netloc, author=self.author)
         return None
 
 

@@ -1,0 +1,20 @@
+{% extends 'base/base.html' %}
+
+
+{% block content %}
+
+    <section id="content">
+        <div class="container">
+            <div class="columns is-multiline">
+                {% for row in object_list %}
+                    <div class="column is-3">
+                        <div class="box">
+                            {{ row }}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

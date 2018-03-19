@@ -1,8 +1,12 @@
+import logging
 from django.views import generic
 from django_filters import views
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Q
 from dapps.models import DApp
+
+
+logger = logging.getLogger('django')
 
 
 class DAppSearchListView(LoginRequiredMixin,
@@ -48,3 +52,7 @@ class DAppsDetailView(LoginRequiredMixin,
     queryset = DApp.objects.all()
     template_name = 'dapps/detail.html'
     slug_field = 'slug'
+
+    def get_object(self, queryset=None):
+        _obj = super().get_object()
+        return _obj

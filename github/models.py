@@ -1,4 +1,5 @@
 from hashlib import md5
+from urllib.parse import urlparse
 
 from datetime import datetime, timedelta
 from django.utils import timezone
@@ -6,7 +7,6 @@ from django.db import models
 from django_extensions.db import fields
 from django.utils.translation import ugettext_lazy as _
 from django.utils.functional import cached_property
-# from dapps.models import DApp
 from caching.base import CachingManager, CachingMixin
 from django_pandas.managers import DataFrameManager
 from taggit.managers import TaggableManager
@@ -34,9 +34,14 @@ class Organization(CachingMixin, models.Model):
         verbose_name = _("organization")
         verbose_name_plural = _("organization")
 
-    # @property
-    # def url(self):
-    #     return "https://github.com/{name}".format(name=self.name)
+    @property
+    def author(self):
+        # if "https://github.com" in self.url:
+        o = urlparse(self.url)
+        path_group = o.path.split("/")
+        author = path_group[1]
+        return author
+        # return None
 
 
 class People(CachingMixin, models.Model):
