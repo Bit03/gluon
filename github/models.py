@@ -11,6 +11,8 @@ from caching.base import CachingManager, CachingMixin
 from django_pandas.managers import DataFrameManager
 from taggit.managers import TaggableManager
 
+from utils.render_md import md
+
 
 class Organization(CachingMixin, models.Model):
     slug = fields.RandomCharField(length=12, unique=True,
@@ -108,6 +110,10 @@ class Repository(CachingMixin, models.Model):
     @property
     def fork(self):
         return self.last_stats.fork
+
+    # @property
+    def render_readme(self):
+        return md.convert(self.readme)
 
     def stats_df(self, days=31):
         return self.stats \
