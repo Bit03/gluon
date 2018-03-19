@@ -1,0 +1,52 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+    <section id="content">
+        <div class="container">
+{#            <div class="col">#}
+            <div class="columns is-multiline">
+                <div class="column is-8 is-offset-2">
+                    <div class="box">
+                        <h1 class="title">{{ object }}</h1>
+                        <div class="field is-grouped is-grouped-multiline">
+{#                            <div>{{ object.star }}</div>#}
+                            <div class="control">
+                                <div class="tags has-addons">
+                                    <span class="tag is-dark"><i class="fa fa-eye"></i></span>
+                                    <a rel="nofollow" href="{{ object.get_subscription }}" target="_blank" class="tag is-light">
+                                        {{ object.watch }}
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="control">
+                                <div class="tags has-addons">
+                                    <span class="tag is-dark"><i class="fa fa-star"></i></span>
+                                    <a rel="nofollow" href="{{ object.get_star }}" target="_blank" class="tag is-light">
+                                        {{ object.star }}
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="control">
+                                <div class="tags has-addons">
+                                    <span class="tag is-dark"><i class="fa fa-code-fork"></i></span>
+                                    <a rel="nofollow" href="{{ object.get_fork }}" target="_blank" class="tag is-light">
+                                        {{ object.fork }}
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column is-8 is-offset-2">
+
+                    <article class="box">
+                        {{ object.readme|safe }}
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

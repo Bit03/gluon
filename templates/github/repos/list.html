@@ -9,7 +9,7 @@
                 {% for row in object_list %}
                     <div class="column is-3">
                         <div class="box">
-                            {{ row }}
+                            <a href="{% url 'github:repos_detail' row.identified_code %}" title="{{ row }}">{{ row }}</a>
                         </div>
                     </div>
                 {% endfor %}

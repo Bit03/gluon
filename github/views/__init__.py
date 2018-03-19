@@ -25,3 +25,11 @@ class ReposListView(generic.ListView):
     def get(self, request, *args, **kwargs):
         self.author = kwargs.pop('author', None)
         return super().get(request, *args, **kwargs)
+
+
+class ReposDetailView(generic.DetailView):
+    model = Repository
+    template_name = 'github/repos/detail.html'
+    queryset = Repository.objects.all()
+    slug_field = 'identified_code'
+
