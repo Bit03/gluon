@@ -1,7 +1,8 @@
-                        <div class="box">
-                            <a href="{% url 'github:repos_detail' row.identified_code %}" title="{{ row.author }}-{{ row.name }}">
-                                {{ row.author }} / {{ row.name }}
-                            </a>
+<div class="box">
+    <a href="{% url 'github:repos_detail' row.identified_code %}" title="{{ row.author }}-{{ row.name }}">
+        {{ row.author }} / {{ row.name }}
+    </a>
+    <div></div>
                             <div class="field is-grouped is-grouped-multiline">
                                 <div class="control">
                                     <div class="tags has-addons">
@@ -23,4 +24,4 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+</div>
