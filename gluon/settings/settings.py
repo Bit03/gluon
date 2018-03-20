@@ -39,9 +39,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'django_extensions',
+    'django_filters',
     'rest_framework',
     'rest_framework.authtoken',
-    'django_filters',
+
+    'haystack',
     'compressor',
     'bulma',
     'taggit',
@@ -186,7 +188,7 @@ from gluon.settings.gluon_logging import *
 HAYSTACK_CONNECTIONS = {
     'default': {
         'ENGINE': 'haystack.backends.elasticsearch2_backend.Elasticsearch2SearchEngine',
-        'URL': 'http://127.0.0.1:9200/',
+        'URL': 'http://10.0.1.71:9200/',
         'INDEX_NAME': 'repos',
         'BATCH_SIZE': 100,
         # 'EXCLUDED_INDEXES': ['accounts.search_indexes.UserIndex',
