@@ -1,0 +1,26 @@
+                        <div class="box">
+                            <a href="{% url 'github:repos_detail' row.identified_code %}" title="{{ row.author }}-{{ row.name }}">
+                                {{ row.author }} / {{ row.name }}
+                            </a>
+                            <div class="field is-grouped is-grouped-multiline">
+                                <div class="control">
+                                    <div class="tags has-addons">
+                                        <span class="tag is-dark"><i class="fa fa-eye"></i></span>
+                                        <a href="#" class="tag is-light">{{ row.watch }}</a>
+                                    </div>
+                                </div>
+
+                                <div class="control">
+                                    <div class="tags has-addons">
+                                        <span class="tag is-dark"><i class="fa fa-star"></i></span>
+                                        <a href="#" class="tag is-light">{{ row.star }}</a>
+                                    </div>
+                                </div>
+                                <div class="control">
+                                    <div class="tags has-addons">
+                                        <span class="tag is-dark"><i class="fa fa-code-fork"></i></span>
+                                        <a href="#" class="tag is-light">{{ row.fork }}</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>

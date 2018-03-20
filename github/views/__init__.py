@@ -1,6 +1,7 @@
 import logging
 from django.views import generic
 from github.models import Organization, People, Repository
+from haystack.query import SearchQuerySet
 
 import pygal
 from pygal.style import DarkSolarizedStyle
@@ -13,16 +14,19 @@ class GitHubListView(generic.ListView):
     template_name = 'github/list.html'
     paginate_by = 60
 
+    def get_queryset(self):
+        qs = SearchQuerySet().all().order_by("-star")
+        return qs
+
 
 class ReposListView(generic.ListView):
     model = Repository
     template_name = 'github/repos/list.html'
     paginate_by = 30
+    queryset = Repository.objects.all()
 
     def get_queryset(self):
-        qs = super().get_queryset()
-        qs = qs.filter(author=self.author)
-        # logger.info(qs)
+        qs = SearchQuerySet().filter(author=self.author).order_by("-star")
         return qs
 
     def get(self, request, *args, **kwargs):

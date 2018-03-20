@@ -72,6 +72,7 @@ server {
 server {
     listen      80;
     server_name static.dapprank.com;
+    add_header 'Access-Control-Allow-Origin' "*";
     access_log off;
     log_not_found off;
 
@@ -80,6 +81,7 @@ server {
       alias /data/www/static/;
       expires max;
     }
+
 
     listen 443 ssl; # managed by Certbot
 ssl_certificate /etc/letsencrypt/live/static.dapprank.com/fullchain.pem; # managed by Certbot

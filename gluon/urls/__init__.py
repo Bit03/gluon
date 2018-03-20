@@ -40,3 +40,7 @@ urlpatterns += [
 urlpatterns += [
     url(r'^api/', include('gluon.urls.api', namespace="api")),
 ]
+
+urlpatterns += [
+    url(r'^', include('cms.urls')),
+]
