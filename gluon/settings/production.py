@@ -60,3 +60,20 @@ REST_FRAMEWORK = {
 from .compress import *
 
 # COMPRESS_ROOT
+
+
+
+##
+# django haystack
+##
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.elasticsearch2_backend.Elasticsearch2SearchEngine',
+        'URL': 'http://127.0.0.1:9200/',
+        'INDEX_NAME': 'repos',
+        'BATCH_SIZE': 100,
+        # 'EXCLUDED_INDEXES': ['accounts.search_indexes.UserIndex',
+        #                         'news.search_indexes.NewsIndex',]
+    },
+}
+HAYSTACK_DEFAULT_OPERATOR = 'AND'
