@@ -22,7 +22,7 @@ class ReposListView(generic.ListView):
     def get_queryset(self):
         qs = super().get_queryset()
         qs = qs.filter(author=self.author)
-        logger.info(qs)
+        # logger.info(qs)
         return qs
 
     def get(self, request, *args, **kwargs):
@@ -37,19 +37,6 @@ class ReposDetailView(generic.DetailView):
     slug_field = 'identified_code'
 
     def get_context_data(self, **kwargs):
-        # _context = super(ProjectDetailView, self).get_context_data(**kwargs)
-
-        # _status = Status.objects.filter(project=self.object,
-        #                                 datetime__gte=datetime.now() - timedelta(31)
-        #                                 ).order_by('datetime')
-        # chart = self.get_chart(_status)
-        #
-        # _context.update({
-        #     'meta': {
-        #         'author': self.object.author,
-        #     },
-        #     'chart': chart.render_data_uri(show_dots=True),
-        # })
         _context = super().get_context_data()
         _chart = self.get_chart()
 
