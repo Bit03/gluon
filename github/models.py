@@ -101,15 +101,27 @@ class Repository(CachingMixin, models.Model):
 
     @property
     def watch(self):
-        return self.last_stats.watch
+        try:
+            _watch = self.last_stats.watch
+        except Exception:
+            _watch = 0
+        return _watch
 
     @property
     def star(self):
-        return self.last_stats.star
+        try:
+            _star = self.last_stats.star
+        except Exception:
+            _star = 0
+        return _star
 
     @property
     def fork(self):
-        return self.last_stats.fork
+        try:
+            _fork = self.last_stats.fork
+        except Exception:
+            _fork = 0
+        return _fork
 
     # @property
     def render_readme(self):

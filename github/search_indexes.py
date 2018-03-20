@@ -17,3 +17,6 @@ class ReposIndex(indexes.Indexable, indexes.SearchIndex):
 
     def get_model(self):
         return Repository
+
+    def index_queryset(self, using=None):
+        return self.get_model().objects.all()
