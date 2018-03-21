@@ -112,6 +112,11 @@ DATABASES = {
 }
 
 
+LOCALE_PATHS = (
+    # os.path.join(os.path.dirname(__file__), '../conf/locale'),
+    os.path.join(os.getcwd(), 'conf/locale'),
+)
+
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
 
@@ -216,7 +221,7 @@ HAYSTACK_CONNECTIONS = {
 HAYSTACK_DEFAULT_OPERATOR = 'AND'
 # HAYSTACK_SIGNAL_PROCESSOR = "haystack.signals.RealtimeSignalProcessor"
 
-
-CMS_TEMPLATES = [
-    ('home.html', 'Home page template'),
-]
+#
+# CMS_TEMPLATES = [
+#     ('home.html', 'Home page template'),
+# ]
