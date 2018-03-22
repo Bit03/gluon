@@ -3,14 +3,17 @@
         <div class="control">
             <a href="{%  url 'github:repos_list' row.author %}" title="{{ row.author }}">{{ row.author }}</a>
         </div>
-        <span>/</span>
+        <span>/&nbsp;</span>
         <div class="control">
             <a href="{% url 'github:repos_detail' row.object.identified_code %}" title="{{ row.name }}">
             {{ row.name }}
             </a>
         </div>
+        <div class="control"><i class="fa fa-star"></i>{{ row.latest_7_day_star }}</div>
     </div>
-    <div></div>
+    <div class="field">
+        <p>{{ row.desc }}</p>
+    </div>
     <div class="field is-grouped is-grouped-multiline">
         <div class="control">
             <div class="tags has-addons">
