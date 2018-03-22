@@ -15,7 +15,7 @@ class GitHubListView(generic.ListView):
     paginate_by = 60
 
     def get_queryset(self):
-        qs = SearchQuerySet().all().order_by("-star")
+        qs = SearchQuerySet().all().order_by("-latest_7_day_star")
         return qs
 
 
@@ -26,7 +26,7 @@ class ReposListView(generic.ListView):
     queryset = Repository.objects.all()
 
     def get_queryset(self):
-        qs = SearchQuerySet().filter(author=self.author).order_by("-star")
+        qs = SearchQuerySet().filter(author=self.author).order_by("-latest_7_day_star")
         return qs
 
     def get(self, request, *args, **kwargs):
