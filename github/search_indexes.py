@@ -27,7 +27,7 @@ class ReposIndex(indexes.Indexable, indexes.SearchIndex):
 
     def prepare_latest_7_day_star(self, obj):
         star_sum = obj.stats_df(8).star.diff().fillna(0).sum()
-        print(star_sum)
+        # print(star_sum)
         return int(star_sum)
 
     def prepare_latest_7_day_fork(self, obj):
