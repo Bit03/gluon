@@ -21,12 +21,14 @@ django-haystack==2.7.0
 django-htmlmin==0.10.0
 django-model-utils==3.1.1
 django-pandas==0.4.5
+django-rest-auth==0.9.3
 django-sekizai==0.10.0
 django-taggit==0.22.2
 django-treebeard==4.2.1
 djangocms-admin-style==1.2.7
 djangocms-installer==1.0.0
 djangorestframework==3.7.7
+djangorestframework-jwt==1.11.0
 docopt==0.6.2
 elasticsearch==2.4.0
 gevent==1.2.2
