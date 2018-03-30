@@ -3,7 +3,6 @@ from github.models import (Organization, People, Repository)
 
 
 # Register your models here.
-
 class OrganizationAdmin(admin.ModelAdmin):
     list_display = ("name", "web_site", "email", "bio", "location", "url", "created_at")
 

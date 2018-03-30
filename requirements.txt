@@ -17,7 +17,7 @@ django-compressor==2.2
 django-extensions==1.9.9
 django-filter==1.1.0
 django-formtools==2.1
-django-haystack==2.7.0
+django-haystack==2.8.0
 django-htmlmin==0.10.0
 django-model-utils==3.1.1
 django-pandas==0.4.5
@@ -56,7 +56,6 @@ python-dateutil==2.7.0
 pytz==2018.3
 rcssmin==1.0.6
 requests==2.18.4
-rest-pandas==1.0.0
 rjsmin==1.0.12
 six==1.11.0
 typing==3.6.2
