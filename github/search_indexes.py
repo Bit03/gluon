@@ -1,5 +1,30 @@
 from haystack import indexes
-from github.models import Repository
+from github.models import Repository, Organization
+
+
+class OrganizationIndex(indexes.Indexable, indexes.SearchIndex):
+    text = indexes.CharField(document=True, use_template=False)
+    name = indexes.CharField(model_attr='name')
+    bio = indexes.CharField(model_attr='bio')
+    location = indexes.CharField(model_attr='location')
+    web_site = indexes.CharField(model_attr='web_site')
+    avatar = indexes.CharField(model_attr='avatar')
+    star = indexes.IntegerField(default=0)
+    # fork = indexes.IntegerField(default=0)
+    # watch = indexes.IntegerField(default=0)
+
+    def get_model(self):
+        return Organization
+
+    def index_queryset(self, using=None):
+        return self.get_model().objects.all()
+
+    def prepare_star(self, obj):
+        _star = 0
+        repos = Repository.objects.filter(author=obj.author)
+        for row in repos:
+            _star += row.star
+        return _star
 
 
 class ReposIndex(indexes.Indexable, indexes.SearchIndex):

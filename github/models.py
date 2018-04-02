@@ -38,12 +38,10 @@ class Organization(CachingMixin, models.Model):
 
     @property
     def author(self):
-        # if "https://github.com" in self.url:
         o = urlparse(self.url)
         path_group = o.path.split("/")
         author = path_group[1]
         return author
-        # return None
 
 
 class People(CachingMixin, models.Model):
@@ -157,3 +155,9 @@ class RepositoryStats(CachingMixin, models.Model):
             star=self.star,
             fork=self.fork,
         )
+
+
+class Commit(models.Model):
+    repos = models.ForeignKey(Repository, related_name='commit')
+    hash = models.CharField()
+    commit_datetime = models.DateField(db_index=True, default=timezone.now)
