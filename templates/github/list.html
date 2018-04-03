@@ -18,10 +18,12 @@
                                     <img src="{{ row.avatar }}" title="{{ row.author }}">
                                 </p>
                             </figure>
+
                             <div class="control">
                                 <a href="{%  url 'github:repos_list' row.author %}" title="{{ row.name }}">{{ row.name }}</a>
 {#                                {{ row.name }}#}
                             </div>
+
                             <div class="control"><i class="fa fa-star"></i>&nbsp;{{ row.star }}</div>
                         </div>
                         <div class="field">

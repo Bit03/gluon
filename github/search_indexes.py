@@ -12,8 +12,8 @@ class OrganizationIndex(indexes.Indexable, indexes.SearchIndex):
     web_site = indexes.CharField(model_attr='web_site', null=True)
     avatar = indexes.CharField(model_attr='avatar', null=True)
     star = indexes.IntegerField(default=0)
-    # fork = indexes.IntegerField(default=0)
-    # watch = indexes.IntegerField(default=0)
+    fork = indexes.IntegerField(default=0)
+    watch = indexes.IntegerField(default=0)
 
     def get_model(self):
         return Organization
@@ -27,6 +27,13 @@ class OrganizationIndex(indexes.Indexable, indexes.SearchIndex):
         for row in repos:
             _star += row.star
         return _star
+
+    def prepare_fork(self, obj):
+        _fork = 0
+        repos = SearchQuerySet().models(Repository).filter(author=obj.author)
+        for row in repos:
+            _fork += row.fork
+        return _fork
 
 
 class ReposIndex(indexes.Indexable, indexes.SearchIndex):
