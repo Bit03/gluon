@@ -35,6 +35,13 @@ class OrganizationIndex(indexes.Indexable, indexes.SearchIndex):
             _fork += row.fork
         return _fork
 
+    def prepare_watch(self, obj):
+        _watch = 0
+        repos = SearchQuerySet().models(Repository).filter(author=obj.author)
+        for row in repos:
+            _watch += row.watch
+        return _watch
+
 
 class ReposIndex(indexes.Indexable, indexes.SearchIndex):
     text = indexes.CharField(document=True, use_template=True)
