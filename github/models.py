@@ -159,5 +159,8 @@ class RepositoryStats(CachingMixin, models.Model):
 
 class Commit(models.Model):
     repos = models.ForeignKey(Repository, related_name='commit')
-    hash = models.CharField()
+    hash = models.CharField(max_length=128)
     commit_datetime = models.DateField(db_index=True, default=timezone.now)
+
+    def __str__(self):
+        return "{s} - {hash}".format(self.repos, self.hash)
