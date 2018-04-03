@@ -1,7 +1,6 @@
 from rest_framework import generics
 from rest_framework.filters import OrderingFilter
 from rest_framework.pagination import PageNumberPagination
-from rest_pandas import PandasView, PandasUnstackedSerializer, PandasSimpleView
 from github.models import (Organization,
                            People,
                            Repository,
