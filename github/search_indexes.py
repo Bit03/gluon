@@ -1,4 +1,5 @@
 from haystack import indexes
+from haystack.query import SearchQuerySet
 from github.models import Repository, Organization
 
 
@@ -21,7 +22,7 @@ class OrganizationIndex(indexes.Indexable, indexes.SearchIndex):
 
     def prepare_star(self, obj):
         _star = 0
-        repos = Repository.objects.filter(author=obj.author)
+        repos = SearchQuerySet().models(Repository).filter(author=obj.author)
         for row in repos:
             _star += row.star
         return _star
