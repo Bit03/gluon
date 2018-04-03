@@ -10,7 +10,19 @@
             <div class="columns is-centered is-multiline">
             {% for row in object_list %}
                 <div class="column is-8">
-                    {% include 'github/repos/snippets/cell.html' with row=row %}
+                    <div class="box">
+                        <div class="field is-grouped is-grouped-multiline">
+                            <div class="control">
+                                <a href="{%  url 'github:repos_list' row.author %}" title="{{ row.name }}">{{ row.name }}</a>
+{#                                {{ row.name }}#}
+                            </div>
+                            <div class="control"><i class="fa fa-star"></i>&nbsp;{{ row.star }}</div>
+                        </div>
+                        <div class="field">
+                            <p>{{ row.bio }}</p>
+                        </div>
+                    </div>
+{#                    {% include 'github/repos/snippets/cell.html' with row=row %}#}
                 </div>
             {% endfor %}
             </div>

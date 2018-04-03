@@ -6,6 +6,7 @@ from github.models import Repository, Organization
 class OrganizationIndex(indexes.Indexable, indexes.SearchIndex):
     text = indexes.CharField(document=True, use_template=False)
     name = indexes.CharField(model_attr='name')
+    author = indexes.CharField(model_attr='author')
     bio = indexes.CharField(model_attr='bio', null=True)
     location = indexes.CharField(model_attr='location', null=True)
     web_site = indexes.CharField(model_attr='web_site', null=True)

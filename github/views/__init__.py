@@ -15,7 +15,7 @@ class GitHubListView(generic.ListView):
     paginate_by = 60
 
     def get_queryset(self):
-        qs = SearchQuerySet().all().order_by("-latest_7_day_star")
+        qs = SearchQuerySet().models(Organization).all().order_by('-star')
         return qs
 
 
