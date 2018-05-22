@@ -31,7 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'djangocms_admin_style',
+    # 'djangocms_admin_style',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -40,10 +40,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
-    'cms',
-    'menus',
-    'treebeard',
-    'sekizai',
+    # 'cms',
+    # 'menus',
+    # 'treebeard',
+    # 'sekizai',
 
     'django_extensions',
     'django_filters',
@@ -71,10 +71,10 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.locale.LocaleMiddleware',
 
-    'cms.middleware.user.CurrentUserMiddleware',
-    'cms.middleware.page.CurrentPageMiddleware',
-    'cms.middleware.toolbar.ToolbarMiddleware',
-    'cms.middleware.language.LanguageCookieMiddleware',
+    # 'cms.middleware.user.CurrentUserMiddleware',
+    # 'cms.middleware.page.CurrentPageMiddleware',
+    # 'cms.middleware.toolbar.ToolbarMiddleware',
+    # 'cms.middleware.language.LanguageCookieMiddleware',
 
     'htmlmin.middleware.HtmlMinifyMiddleware',
     'htmlmin.middleware.MarkRequestMiddleware',
@@ -93,8 +93,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'cms.context_processors.cms_settings',
-                'sekizai.context_processors.sekizai',
+                # 'cms.context_processors.cms_settings',
+                # 'sekizai.context_processors.sekizai',
             ],
         },
     },
@@ -200,10 +200,12 @@ SESSION_FILE_PATH = '/tmp/'
 
 SITE_ID = 1
 
-###
-# import logging
-###
-from gluon.settings.gluon_logging import *
+# logging
+# --------------------------------------------------------
+# https://docs.djangoproject.com/en/1.11/topics/logging/
+from gluon.settings.gluon_logging import LOGGING as loggin_config
+LOGGING = loggin_config
+
 
 
 
@@ -223,7 +225,3 @@ HAYSTACK_CONNECTIONS = {
 HAYSTACK_DEFAULT_OPERATOR = 'AND'
 # HAYSTACK_SIGNAL_PROCESSOR = "haystack.signals.RealtimeSignalProcessor"
 
-#
-# CMS_TEMPLATES = [
-#     ('home.html', 'Home page template'),
-# ]

@@ -16,8 +16,6 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from django.contrib.auth.views import (LoginView, LogoutView)
-from rest_framework import permissions
-from rest_framework.documentation import include_docs_urls
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -41,14 +39,14 @@ urlpatterns += [
 urlpatterns += [
     url(r'^api/', include('gluon.urls.api', namespace="api")),
 
-    url(r'^docs/', include_docs_urls(title='Baryon API Docs',
-                                     public=False,
-                                     permission_classes=[
-                                         permissions.IsAdminUser,
-                                     ])
-        ),
+    # url(r'^docs/', include_docs_urls(title='Baryon API Docs',
+    #                                  public=False,
+    #                                  permission_classes=[
+    #                                      permissions.IsAdminUser,
+    #                                  ])
+    #     ),
 ]
 
-urlpatterns += [
-    url(r'^', include('cms.urls')),
-]
+# urlpatterns += [
+#     url(r'^', include('cms.urls')),
+# ]

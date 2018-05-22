@@ -1,6 +1,6 @@
-##
 # logging
-##
+# --------------------------------------------------------
+# https://docs.djangoproject.com/en/1.11/topics/logging/
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': True,

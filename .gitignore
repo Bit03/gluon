@@ -128,10 +128,10 @@ db.sqlite3
 
 
 #pycharm
-.idea/
+.idea
 
 #settings
-dev_anchen.py
+dev_*.py
 
 #vue cli
 .DS_Store
@@ -140,7 +140,7 @@ node_modules/
 #css
 .sass-cache
 
-#js
 
-.idea/
+scripts
+
 
