@@ -11,6 +11,7 @@ install:
 before_script:
   - export DJANGO_SETTINGS_MODULE=gluon.settings.stage
 script:
+  - mv .env.example .env
   - python manage.py test
 after_success:
   - pip install python-coveralls
