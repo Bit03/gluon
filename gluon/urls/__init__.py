@@ -13,6 +13,7 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
+from django.conf import settings
 from django.conf.urls import url, include
 from django.contrib import admin
 from django.contrib.auth.views import (LoginView, LogoutView)
@@ -20,7 +21,6 @@ from django.contrib.auth.views import (LoginView, LogoutView)
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
 ]
-
 
 urlpatterns += [
     # url(r'^accounts/', include('django.contrib.auth.urls')),
@@ -34,19 +34,15 @@ urlpatterns += [
     ), name='login'),
 ]
 
-
 # API
 urlpatterns += [
     url(r'^api/', include('gluon.urls.api', namespace="api")),
-
-    # url(r'^docs/', include_docs_urls(title='Baryon API Docs',
-    #                                  public=False,
-    #                                  permission_classes=[
-    #                                      permissions.IsAdminUser,
-    #                                  ])
-    #     ),
 ]
 
-# urlpatterns += [
-#     url(r'^', include('cms.urls')),
-# ]
+if settings.DEBUG:
+    if 'debug_toolbar' in settings.INSTALLED_APPS:
+        import debug_toolbar
+
+        urlpatterns = [
+                          url(r'^__debug__/', include(debug_toolbar.urls)),
+                      ] + urlpatterns

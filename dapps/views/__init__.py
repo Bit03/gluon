@@ -9,8 +9,7 @@ from dapps.models import DApp
 logger = logging.getLogger('django')
 
 
-class DAppSearchListView(LoginRequiredMixin,
-                         generic.ListView):
+class DAppSearchListView(generic.ListView):
     model = DApp
     queryset = DApp.objects.all()
     template_name = 'dapps/list.html'
@@ -25,12 +24,10 @@ class DAppSearchListView(LoginRequiredMixin,
         return super().get(request, *args, **kwargs)
 
 
-class DAppsListView(LoginRequiredMixin,
-                    views.FilterView):
+class DAppsListView(views.FilterView):
     model = DApp
     queryset = DApp.objects.all()
     template_name = 'dapps/list.html'
-    # template_name = 'web/index.html'
     paginate_by = 100
     filter_fields = ("status", "ico_status", "platform")
 
@@ -46,8 +43,7 @@ class DAppsListView(LoginRequiredMixin,
         return context
 
 
-class DAppsDetailView(LoginRequiredMixin,
-                      generic.DetailView):
+class DAppsDetailView(generic.DetailView):
     model = DApp
     queryset = DApp.objects.all()
     template_name = 'dapps/detail.html'

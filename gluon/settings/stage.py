@@ -10,7 +10,7 @@ ALLOWED_HOSTS = [
 # django-node
 # ------------------------------------------------------------------------------------
 # https://django-nose.readthedocs.io/en/latest/index.html
-INSTALLED_APPS += ['django_nose']
+INSTALLED_APPS += ['django_nose',]
 # Use nose to run all tests
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 
@@ -19,6 +19,7 @@ NOSE_ARGS = [
     '--with-coverage',
     '--cover-package=dapps,github',
 ]
+
 
 # # django-debug-toolbar
 # # ------------------------------------------------------------------------------
