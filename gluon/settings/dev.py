@@ -1,7 +1,7 @@
-from .base import *  # noqa
+from .base import *
 from .base import env
 
-SECRET_KEY = env('SECRET_KEY', default='g3tg^^e!o4fhaw1!ttjxn7j_9g@l@dsk2oe390c!g48oqkkk25')
+SECRET_KEY = env('SECRET_KEY', default='dapprank.com')
 
 ALLOWED_HOSTS = [
     "*",
