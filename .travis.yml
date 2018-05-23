@@ -9,7 +9,7 @@ install:
   - pip install -r requirements/local.txt
   - pip install flake8
 before_script:
-  - export DJANGO_SETTINGS_MODULE=gloun.settings.stage
+  - export DJANGO_SETTINGS_MODULE=gluon.settings.stage
 script:
   - python manage.py test
 after_success:
