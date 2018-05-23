@@ -1,0 +1,19 @@
+language: python
+python:
+  - "3.6.5"
+dist: xenial
+branches:
+  only:
+    - master
+install:
+  - pip install -r requirements/local.txt
+  - pip install flake8
+before_script:
+  - export DJANGO_SETTINGS_MODULE=dugong.settings.stage
+script:
+  - cd ..
+  - python manage.py test
+after_success:
+  - pip install python-coveralls
+  - coveralls
+
