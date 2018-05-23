@@ -21,6 +21,15 @@ class DAppsViewTestCase(TestCase):
     def tearDown(self):
         DApp.objects.all().delete()
 
+    def test_can_search_dapps(self):
+        _url = reverse('dapps:search')
+        data = {
+            'q': "eos"
+        }
+        res = self.client.get(_url, data=data)
+        self.assertEqual(res.status_code, status.HTTP_200_OK)
+        self.assertTemplateUsed(res, 'dapps/list.html')
+
     def test_can_get_dapps_list(self):
         _url = reverse('dapps:list')
         res = self.client.get(_url)
