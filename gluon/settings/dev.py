@@ -10,7 +10,7 @@ ALLOWED_HOSTS = [
 # django-node
 # ------------------------------------------------------------------------------------
 # https://django-nose.readthedocs.io/en/latest/index.html
-INSTALLED_APPS += ['django_nose', 'django_faker']
+INSTALLED_APPS += ['django_nose', ]
 # Use nose to run all tests
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 
@@ -19,9 +19,6 @@ NOSE_ARGS = [
     '--with-coverage',
     '--cover-package=dapps,github',
 ]
-
-FAKER_LOCALE = None     # settings.LANGUAGE_CODE is loaded
-FAKER_PROVIDERS = None  # faker.DEFAULT_PROVIDERS is loaded (all)
 
 # django-debug-toolbar
 # ------------------------------------------------------------------------------

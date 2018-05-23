@@ -11,12 +11,12 @@ fake.add_provider(DappProvider)
 
 class DAppsViewTestCase(TestCase):
     def setUp(self):
-        dapp = DApp()
-        dapp.name = fake.name()
-        dapp.platform = fake.word()
-        dapp.license = fake.license()
-        dapp.status = fake.status()
-        dapp.save()
+        self.dapp = DApp()
+        self.dapp.name = fake.name()
+        self.dapp.platform = fake.word()
+        self.dapp.license = fake.license()
+        self.dapp.status = fake.status()
+        self.dapp.save()
 
     def tearDown(self):
         DApp.objects.all().delete()
@@ -24,4 +24,12 @@ class DAppsViewTestCase(TestCase):
     def test_can_get_dapps_list(self):
         _url = reverse('dapps:list')
         res = self.client.get(_url)
-        self.assertEqual(res.status_code, status.HTTP_302_FOUND)
+        self.assertEqual(res.status_code, status.HTTP_200_OK)
+        self.assertTemplateUsed(res, 'dapps/list.html')
+
+    def test_can_get_a_dapps(self):
+        _url = reverse('dapps:detail', args=[self.dapp.slug])
+        res = self.client.get(_url)
+        self.assertEqual(res.status_code, status.HTTP_200_OK)
+        self.assertTemplateUsed(res, 'dapps/detail.html')
+
