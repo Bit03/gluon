@@ -51,7 +51,6 @@ DJANGO_APPS = [
 ]
 REST_FRAMEWORK_APPS = [
     'rest_framework',
-    # 'rest_framework.authtoken',
     'rest_framework_swagger',
 ]
 THIRD_PARTY_APPS = [
@@ -59,6 +58,7 @@ THIRD_PARTY_APPS = [
     'django_filters',
     'haystack',
     'taggit',
+    'webpack_loader',
     # 'bulma',
 ]
 LOCAL_APPS = [

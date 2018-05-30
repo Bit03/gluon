@@ -43,6 +43,6 @@ SHELL_PLUS = "ptpython"
 WEBPACK_LOADER = {
     'DEFAULT': {
         'BUNDLE_DIR_NAME': 'static/',
-        'STATS_FILE': str(ROOT_DIR.path('webpack-stats.dev.json')),
+        'STATS_FILE': str(ROOT_DIR.path('webpack-stats.prod.json')),
     }
 }

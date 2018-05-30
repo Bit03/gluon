@@ -1,29 +1,12 @@
-{% extends 'bulma/base.html' %}
-{#{% load static %}#}
-{% load render_bundle from webpack_loader %}
-{#{% load compress %}#}
-
-{% block title %}DAppRank | dapprank.com{% endblock title %}
-
-{% block extra_css %}
-    {% render_bundle 'main' 'css' %}
-{#    {% compress css %}#}
-{#        <link href="{% static 'css/main.css' %}" type="text/css" charset="UTF-8" rel="stylesheet">#}
-{#    {% endcompress %}#}
-{% endblock %}
-
-
-{#{% block header %}#}
-{#    {% include 'base/snippets/header.html' %}#}
-{#{% endblock %}#}
-{##}
-{#{% block footer %}#}
-{#    {% include 'base/snippets/footer.html' %}#}
-{#{% endblock %}#}
-
- {% block extra_javascript %}
-     {% render_bundle 'main' 'js' %}
-{#     {% compress js %}#}
-{#        <script type="text/javascript" src="{% static 'js/build/app_build.js' %}" charset="UTF-8"></script>#}
-{#     {% endcompress %}#}
- {% endblock extra_javascript %}
+<!DOCTYPE html>
+<html {% if LANGUAGE_CODE %}lang="{{ LANGUAGE_CODE }}"{% endif %}>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}DAppRank| dapprank.com{% endblock %}]</title>
+    {% block css %}{% endblock %}
+</head>
+<body>
+{% block content %}{% endblock %}
+{% block js %}{% endblock %}
+</body>
+</html>
