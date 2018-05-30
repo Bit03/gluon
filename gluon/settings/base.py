@@ -51,14 +51,15 @@ DJANGO_APPS = [
 ]
 REST_FRAMEWORK_APPS = [
     'rest_framework',
-    'rest_framework.authtoken',
+    # 'rest_framework.authtoken',
+    'rest_framework_swagger',
 ]
 THIRD_PARTY_APPS = [
     'django_extensions',
     'django_filters',
     'haystack',
     'taggit',
-    'bulma',
+    # 'bulma',
 ]
 LOCAL_APPS = [
     'dapps',
@@ -139,7 +140,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # django session configure
 # -----------------------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/1.11/topics/http/sessions/
@@ -183,8 +183,9 @@ HAYSTACK_CONNECTIONS = {
 }
 HAYSTACK_SEARCH_RESULTS_PER_PAGE = 20
 
-
 # django-taggit
 # --------------------------------------------------------------------------------
 # https://django-taggit.readthedocs.io/en/latest/
 TAGGIT_CASE_INSENSITIVE = True
+
+

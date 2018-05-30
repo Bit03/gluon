@@ -16,23 +16,23 @@ Including another URLconf
 from django.conf import settings
 from django.conf.urls import url, include
 from django.contrib import admin
-from django.contrib.auth.views import (LoginView, LogoutView)
+
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
 ]
 
 urlpatterns += [
-    # url(r'^accounts/', include('django.contrib.auth.urls')),
-    url(r'^dapps/', include('dapps.urls', namespace='dapps')),
-    url(r'^github/', include('github.urls', namespace='github')),
+    # url(r'^$')
+    # url(r'^dapps/', include('dapps.urls', namespace='dapps')),
+    # url(r'^github/', include('github.urls', namespace='github')),
 ]
 
-urlpatterns += [
-    url(r'^login/$', LoginView.as_view(
-        template_name="accounts/login.html",
-    ), name='login'),
-]
+# urlpatterns += [
+#     url(r'^login/$', LoginView.as_view(
+#         template_name="accounts/login.html",
+#     ), name='login'),
+# ]
 
 # API
 urlpatterns += [

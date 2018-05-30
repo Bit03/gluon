@@ -38,3 +38,11 @@ INTERNAL_IPS = ['127.0.0.1']
 
 
 SHELL_PLUS = "ptpython"
+
+
+WEBPACK_LOADER = {
+    'DEFAULT': {
+        'BUNDLE_DIR_NAME': 'static/',
+        'STATS_FILE': str(ROOT_DIR.path('webpack-stats.dev.json')),
+    }
+}
