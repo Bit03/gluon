@@ -9,3 +9,20 @@
 [![Updates](https://pyup.io/repos/github/Bit03/gluon/shield.svg)](https://pyup.io/repos/github/Bit03/gluon/)
 [![Python 3](https://pyup.io/repos/github/Bit03/gluon/python-3-shield.svg)](https://pyup.io/repos/github/Bit03/gluon/)
 [![Twitter](https://img.shields.io/twitter/url/https/github.com/Bit03/gluon.svg?style=social)](https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2FBit03%2Fgluon)
+
+
+
+## 准备工作
+
+```.bash
+git clone --recursive -j8 https://github.com/Bit03/gluon.git
+
+cd gluon/
+mkvirtualenv -p `which python3.6` -r requirements/local.txt
+
+
+cd frontend/
+npm i
+npm run build
+
+```
