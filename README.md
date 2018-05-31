@@ -21,8 +21,15 @@ cd gluon/
 mkvirtualenv -p `which python3.6` -r requirements/local.txt
 
 
-cd frontend/
+cd path/to/gluon/frontend/
 npm i
 npm run build
 
+```
+
+## 启动 Django server
+```.bash
+mv .env.example .env
+
+python manage.py runserver
 ```
