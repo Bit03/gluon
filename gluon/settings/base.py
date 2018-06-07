@@ -59,7 +59,6 @@ THIRD_PARTY_APPS = [
     'haystack',
     'taggit',
     'webpack_loader',
-    # 'bulma',
 ]
 LOCAL_APPS = [
     'dapps',
