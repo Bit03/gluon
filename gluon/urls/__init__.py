@@ -23,13 +23,13 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
 ]
 
-urlpatterns += [
-    url(r'^$', IndexView.as_view(), name='index'),
-]
-
 # API
 urlpatterns += [
     url(r'^api/', include('gluon.urls.api', namespace="api")),
+]
+
+urlpatterns += [
+    url(r'^.*$', IndexView.as_view(), name='index'),
 ]
 
 if settings.DEBUG:
