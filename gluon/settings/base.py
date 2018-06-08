@@ -187,3 +187,10 @@ HAYSTACK_SEARCH_RESULTS_PER_PAGE = 20
 TAGGIT_CASE_INSENSITIVE = True
 
 
+# logging
+# ---------------------------------------------------------------------------------
+#
+from .gluon_logging import LOGGING as logging_config
+LOGGING = logging_config
+
+
