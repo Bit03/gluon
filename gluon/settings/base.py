@@ -6,11 +6,12 @@ env.read_env(str(ROOT_DIR.path('.env')))
 
 DEBUG = env('DJANGO_DEBUG', default=True, cast=bool)  # False if not in os.environ
 
+print (DEBUG)
 # DATABASES
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
 DATABASES = {
-    'default': env.db('DATABASE_URL', default=str(ROOT_DIR.path('db.sqlite3'))),
+    'default': env.db('DATABASE_URL', default=str(ROOT_DIR.path('sqlite:///db.sqlite3'))),
 }
 DATABASES['default']['ATOMIC_REQUESTS'] = True
 
