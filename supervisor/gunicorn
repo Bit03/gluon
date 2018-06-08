@@ -1,9 +1,0 @@
-# coding=utf-8
-import multiprocessing
-
-pidfile = "/tmp/gunicorn.pid"
-bind = "127.0.0.1:8000"
-workers = (2 * multiprocessing.cpu_count()) + 1
-worker_class = "gevent"
-max_requests = 1024
-keep_alive = 5
