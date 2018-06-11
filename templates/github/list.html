@@ -1,8 +1,18 @@
-{% extends 'base/base.html' %}
-{% load i18n %}
-
-
-{% block content %}
+{#{% extends 'base/base.html' %}#}
+{#{% load i18n %}#}
+{##}
+{##}
+{#{% block content %}#}
+{#    <div class="container">#}
+{#        <ul>#}
+{#        {% for row in object_list %}#}
+{#            <li>{{ row }}</li>#}
+{#        {% endfor %}#}
+{#        </ul>#}
+{#    </div>#}
+{#{% endblock %}#}
+<html>
+<body>
     <div class="container">
         <ul>
         {% for row in object_list %}
@@ -10,8 +20,8 @@
         {% endfor %}
         </ul>
     </div>
-{% endblock %}
-
+</body>
+</html>
 {#{% block content %}#}
 {#    <section id="content">#}
 {#        <div class="container">#}
