@@ -5,9 +5,13 @@
 
 
 {% block content %}
-    {% for row in object_list %}
-        {{ row }}
-    {% endfor %}
+    <div class="container">
+        <ul>
+        {% for row in object_list %}
+            <li>{{ row }}</li>
+        {% endfor %}
+        </ul>
+    </div>
 {% endblock %}
 
 {#{% block content %}#}
