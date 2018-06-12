@@ -6,6 +6,8 @@ env.read_env(str(ROOT_DIR.path('.env')))
 
 DEBUG = env('DJANGO_DEBUG', default=True, cast=bool)  # False if not in os.environ
 
+SECRET_KEY = env('SECRET_KEY', default='dapprank.com')
+
 # DATABASES
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
@@ -187,11 +189,16 @@ HAYSTACK_SEARCH_RESULTS_PER_PAGE = 20
 # https://django-taggit.readthedocs.io/en/latest/
 TAGGIT_CASE_INSENSITIVE = True
 
-
 # logging
 # ---------------------------------------------------------------------------------
 #
 from .gluon_logging import LOGGING as logging_config
+
 LOGGING = logging_config
 
+# django rest framework jwt
+# -----------------------------------------------------------------------------------
+#
+from gluon.settings.jwt import JWT_AUTH as jwt_auth_config
 
+JWT_AUTH = jwt_auth_config
