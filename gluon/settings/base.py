@@ -6,7 +6,6 @@ env.read_env(str(ROOT_DIR.path('.env')))
 
 DEBUG = env('DJANGO_DEBUG', default=True, cast=bool)  # False if not in os.environ
 
-print (DEBUG)
 # DATABASES
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
