@@ -5,6 +5,7 @@ from github.models import (Organization, People, Repository)
 # Register your models here.
 class OrganizationAdmin(admin.ModelAdmin):
     list_display = ("name", "web_site", "email", "bio", "location", "url", "created_at")
+    search_fields = ("name", )
 
 
 class PeopleAdmin(admin.ModelAdmin):
@@ -16,6 +17,7 @@ class RepositoryAdmin(admin.ModelAdmin):
                     "watch", "star", "fork",
                     "created_at", "updated_at")
     ordering = ("-updated_at",)
+    search_fields = ("name", )
 
 
 admin.site.register(Organization, OrganizationAdmin)
