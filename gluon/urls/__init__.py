@@ -21,7 +21,7 @@ from views.index import IndexView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^github/', include('github.urls')),
+    url(r'^github/', include('github.urls', namespace='github')),
 
 ]
 

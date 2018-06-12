@@ -16,7 +16,9 @@
     <div class="container">
         <ul>
         {% for row in object_list %}
-            <li>{{ row.name }}</li>
+            <li>
+                <div><a href="{% url 'github:repos_detail' row.object.slug %}">{{ row.name }}</a></div>
+            </li>
         {% endfor %}
         </ul>
     </div>
