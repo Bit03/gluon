@@ -1,5 +1,11 @@
 from rest_framework import serializers
-from dapps.models import DApp, Social, GitHub
+from dapps.models import DApp, Social, GitHub, Site
+
+
+class SiteSerializers(serializers.ModelSerializer):
+    class Meta:
+        model = Site
+        exclude = ['id']
 
 
 class SocialSerializers(serializers.ModelSerializer):
@@ -15,6 +21,7 @@ class GithubSerializers(serializers.ModelSerializer):
 
 
 class DAppSerializers(serializers.ModelSerializer):
+    site = SiteSerializers()
     social = SocialSerializers()
     github = GithubSerializers()
 
