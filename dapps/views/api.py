@@ -1,5 +1,5 @@
 from rest_framework import generics
-from dapps.serializers import DAppSerializers
+from dapps.serializers import DAppSerializers, GitHub
 from dapps.models import DApp
 
 
