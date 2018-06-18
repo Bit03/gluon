@@ -1,5 +1,7 @@
 from django.contrib import admin
-from github.models import (Organization, People, Repository)
+from applications.github.models import (
+    Organization, People, Repository
+)
 
 
 # Register your models here.

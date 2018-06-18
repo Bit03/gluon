@@ -1,14 +1,19 @@
 from rest_framework import generics
 from rest_framework.filters import OrderingFilter
 from rest_framework.pagination import PageNumberPagination
-from github.models import (Organization,
-                           People,
-                           Repository,
-                           RepositoryStats)
-from github.serializers import (OrganizationSerializer,
-                                PeopleSerializer,
-                                RepositorySerializer,
-                                RepositoryStatsSerializer)
+
+from applications.github.models import (
+    Organization,
+    People,
+    Repository,
+    RepositoryStats
+)
+from applications.github.serializers import (
+    OrganizationSerializer,
+    PeopleSerializer,
+    RepositorySerializer,
+    RepositoryStatsSerializer
+)
 
 
 class StandardResultsSetPagination(PageNumberPagination):
@@ -60,4 +65,3 @@ class RepoStatsListAPIView(generics.ListCreateAPIView):
     model = RepositoryStats
     queryset = RepositoryStats.objects.all()
     serializer_class = RepositoryStatsSerializer
-

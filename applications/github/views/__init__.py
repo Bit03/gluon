@@ -1,10 +1,14 @@
 import logging
-from django.views import generic
-from github.models import Organization, People, Repository
-from haystack.query import SearchQuerySet
 
 import pygal
+from django.views import generic
+from haystack.query import SearchQuerySet
 from pygal.style import DarkSolarizedStyle
+
+from applications.github.models import (
+    Organization,
+    Repository
+)
 
 logger = logging.getLogger('django')
 

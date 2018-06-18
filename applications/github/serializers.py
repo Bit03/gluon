@@ -1,6 +1,10 @@
 from rest_framework import serializers
-from github.models import (Organization, People,
-                           Repository, RepositoryStats)
+from applications.github.models import (
+    Organization,
+    People,
+    Repository,
+    RepositoryStats
+)
 
 
 class OrganizationSerializer(serializers.ModelSerializer):
@@ -18,7 +22,6 @@ class PeopleSerializer(serializers.ModelSerializer):
 
 
 class RepositorySerializer(serializers.ModelSerializer):
-
     date = serializers.SerializerMethodField(read_only=True)
     star = serializers.SerializerMethodField(read_only=True)
     fork = serializers.SerializerMethodField(read_only=True)
@@ -28,7 +31,7 @@ class RepositorySerializer(serializers.ModelSerializer):
         model = Repository
         fields = ("identified_code", "author", "name", "desc",
                   "date", "fork", "star", "watch",
-                  "readme", "url", )
+                  "readme", "url",)
         read_only_fields = ('created_at',)
 
     def get_star(self, obj):

@@ -12,7 +12,7 @@ urlpatterns = [
 
 urlpatterns += [
     url(r'^dapps/', include('applications.dapps.urls.api', namespace='dapps')),
-    url(r'^github/', include('github.urls.api', namespace='github')),
+    url(r'^github/', include('applications.github.urls.api', namespace='github')),
 
     # auth api
     url(r'^auth/verify/?$', verify_jwt_token, name='verify'),

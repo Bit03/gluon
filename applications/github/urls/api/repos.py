@@ -1,7 +1,9 @@
 from django.conf.urls import url
-from github.views.api import (RepositoryListAPIView,
-                              RepositoryDetailAPIView,
-                              RepoStatsListAPIView)
+from applications.github.views.api import (
+    RepositoryListAPIView,
+    RepositoryDetailAPIView,
+    RepoStatsListAPIView
+)
 
 urlpatterns = [
     url(r'^$', RepositoryListAPIView.as_view(), name='list'),
