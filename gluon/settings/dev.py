@@ -1,6 +1,11 @@
 from .base import *
 from .base import env
 
+env.read_env(str(ROOT_DIR.path('.env')))
+
+DEBUG = env('DJANGO_DEBUG', default=False, cast=bool)  # False if not in os.environ
+# DEBUG = True
+
 SECRET_KEY = env('SECRET_KEY', default='dapprank.com')
 
 ALLOWED_HOSTS = [

@@ -4,7 +4,7 @@ ROOT_DIR = environ.Path(__file__) - 3  # three folder back (/a/b/c/ - 3 = /)
 env = environ.Env()
 env.read_env(str(ROOT_DIR.path('.env')))
 
-DEBUG = env('DJANGO_DEBUG', default=True, cast=bool)  # False if not in os.environ
+DEBUG = env('DJANGO_DEBUG', default=False, cast=bool)  # False if not in os.environ
 
 SECRET_KEY = env('SECRET_KEY', default='dapprank.com')
 

@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 
 from django.contrib import admin
 from applications.dapps.models import (
-    DApp, GitHub, Social,
+    DApp, GitHub, Social, Site,
     EmailAddress, ContractAddress
 )
 
@@ -25,6 +25,10 @@ class DAppSocialStackInlineAdmin(admin.StackedInline):
     model = Social
 
 
+class DAppSiteInlineAdmin(admin.StackedInline):
+    model = Site
+
+
 class DAppAdmin(admin.ModelAdmin):
     list_display = ('name', 'platform', 'status', 'ico_status', "etherian",
                     'tag_list', 'submitted', 'last_update')
@@ -37,9 +41,9 @@ class DAppAdmin(admin.ModelAdmin):
     inlines = [
         DAppEmailStackInlineAdmin,
         DappContractAddressStackInlineAdmin,
-        # DAppLogoStackInlineAdmin,
         DAppGitHubStackInlineAdmin,
         DAppSocialStackInlineAdmin,
+        DAppSiteInlineAdmin,
     ]
 
     def get_queryset(self, request):
