@@ -3,7 +3,7 @@ from django.views import generic
 from django_filters import views
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Q
-from dapps.models import DApp
+from applications.dapps.models import DApp
 
 
 logger = logging.getLogger('django')

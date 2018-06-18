@@ -1,6 +1,6 @@
 from rest_framework import generics
-from dapps.serializers import DAppSerializers, GitHub
-from dapps.models import DApp
+from applications.dapps.serializers import DAppSerializers
+from applications.dapps.models import DApp
 
 
 class DAppListAPIView(generics.ListAPIView):

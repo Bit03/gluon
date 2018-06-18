@@ -1,8 +1,8 @@
 from django.conf.urls import url
-from dapps.views import (
-                        DAppSearchListView,
-                        DAppsListView,
-                         DAppsDetailView
+from applications.dapps.views import (
+    DAppSearchListView,
+    DAppsListView,
+    DAppsDetailView
 )
 
 urlpatterns = [

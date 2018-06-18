@@ -1,6 +1,10 @@
 from django.conf.urls import url
-from github.views import (GitHubListView, ReposListView, ReposDetailView)
 
+from applications.github.views import (
+    GitHubListView,
+    ReposListView,
+    ReposDetailView
+)
 
 urlpatterns = [
     url(r'^$', GitHubListView.as_view(), name='list'),

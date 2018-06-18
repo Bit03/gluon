@@ -3,7 +3,7 @@ import time
 import requests
 import logging
 from django.core.management import BaseCommand
-from dapps.models import GitHub
+from applications.dapps.models import GitHub
 
 logger = logging.getLogger('django')
 

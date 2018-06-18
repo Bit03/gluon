@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from github.views.api import PeopleListAPIView
+from applications.github.views.api import PeopleListAPIView
 
 
 urlpatterns = [

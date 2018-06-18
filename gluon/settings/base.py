@@ -64,7 +64,7 @@ THIRD_PARTY_APPS = [
     'webpack_loader',
 ]
 LOCAL_APPS = [
-    'dapps',
+    'applications.dapps',
     'github',
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps

@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from dapps.models import (
+from applications.dapps.models import (
     DApp, Social, GitHub,
     Site, ContractAddress, EmailAddress
 )

@@ -2,7 +2,10 @@
 from __future__ import unicode_literals
 
 from django.contrib import admin
-from dapps.models import DApp, GitHub, Social, EmailAddress, ContractAddress
+from applications.dapps.models import (
+    DApp, GitHub, Social,
+    EmailAddress, ContractAddress
+)
 
 
 # Register your models here.

@@ -1,7 +1,7 @@
 import requests
 import time
 import logging
-from github.models import Repository
+from applications.github.models import Repository
 from django.core.management import BaseCommand
 
 

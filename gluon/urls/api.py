@@ -11,7 +11,7 @@ urlpatterns = [
 ]
 
 urlpatterns += [
-    url(r'^dapps/', include('dapps.urls.api', namespace='dapps')),
+    url(r'^dapps/', include('applications.dapps.urls.api', namespace='dapps')),
     url(r'^github/', include('github.urls.api', namespace='github')),
 
     # auth api
