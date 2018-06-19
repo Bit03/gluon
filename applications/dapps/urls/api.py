@@ -8,7 +8,7 @@ from applications.dapps.views.api import (
 
 urlpatterns = [
     url(r'^$', DAppListAPIView.as_view(), name='list'),
-    url(r'(?P<slug>\w+)/?$', DAppDetailAPIView.as_view(), name='detail'),
     url(r'^platform/?$', DAppPlatformAPIView.as_view(), name='platform'),
+    url(r'^(?P<slug>\d+)/?$', DAppDetailAPIView.as_view(), name='detail'),
 ]
 
