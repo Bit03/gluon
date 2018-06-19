@@ -1,6 +1,6 @@
 from rest_framework import generics
 from rest_framework.filters import OrderingFilter
-from rest_framework.pagination import PageNumberPagination
+# from rest_framework.pagination import PageNumberPagination
 
 from applications.github.models import (
     Organization,
@@ -16,10 +16,10 @@ from applications.github.serializers import (
 )
 
 
-class StandardResultsSetPagination(PageNumberPagination):
-    page_size = 10
-    page_size_query_param = 'size'
-    max_page_size = 1000
+# class StandardResultsSetPagination(PageNumberPagination):
+#     page_size = 10
+#     page_size_query_param = 'size'
+#     max_page_size = 1000
 
 
 class OrganizationListAPIView(generics.ListCreateAPIView):
@@ -40,17 +40,17 @@ class PeopleListAPIView(generics.ListCreateAPIView):
     model = People
     queryset = People.objects.all()
     serializer_class = PeopleSerializer
-    pagination_class = StandardResultsSetPagination
+    # pagination_class = StandardResultsSetPagination
     filter_backends = (OrderingFilter,)
     ordering_fields = ('created_at',)
 
 
 class RepositoryListAPIView(generics.ListCreateAPIView):
-    model = Repository
+    # model = Repository
     queryset = Repository.objects.all()
     serializer_class = RepositorySerializer
-    pagination_class = StandardResultsSetPagination
-    filter_backends = (OrderingFilter,)
+    # pagination_class = StandardResultsSetPagination
+    # filter_backends = (OrderingFilter,)
     ordering_fields = ('created_at',)
 
 

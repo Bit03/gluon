@@ -22,15 +22,15 @@ class PeopleSerializer(serializers.ModelSerializer):
 
 
 class RepositorySerializer(serializers.ModelSerializer):
-    date = serializers.SerializerMethodField(read_only=True)
-    star = serializers.SerializerMethodField(read_only=True)
-    fork = serializers.SerializerMethodField(read_only=True)
-    watch = serializers.SerializerMethodField(read_only=True)
+    # date = serializers.SerializerMethodField(read_only=True)
+    # star = serializers.SerializerMethodField(read_only=True)
+    # fork = serializers.SerializerMethodField(read_only=True)
+    # watch = serializers.SerializerMethodField(read_only=True)
 
     class Meta:
         model = Repository
         fields = ("identified_code", "author", "name", "desc",
-                  "date", "fork", "star", "watch",
+                  # "date", "fork", "star", "watch",
                   "readme", "url",)
         read_only_fields = ('created_at',)
 
