@@ -29,9 +29,10 @@ class RepositorySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Repository
-        fields = ("identified_code", "author", "name", "desc",
-                  "fork", "star", "watch",
-                  "readme", "url",)
+        exclude = ('id', )
+        # fields = ("identified_code", "author", "name", "desc",
+        #           "fork", "star", "watch",
+        #           "readme", "url",)
         read_only_fields = ('created_at',)
 
     # def get_star(self, obj):
