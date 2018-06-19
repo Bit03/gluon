@@ -1,6 +1,6 @@
 from haystack import indexes
 from haystack.query import SearchQuerySet
-from github.models import Repository, Organization
+from applications.github.models import Repository, Organization
 
 
 class OrganizationIndex(indexes.Indexable, indexes.SearchIndex):
