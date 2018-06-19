@@ -11,4 +11,4 @@ class DAppListAPIView(generics.ListAPIView):
 
 class DAppPlatformAPIView(generics.ListAPIView):
     serializer_class = DAppPlatformSerializers
-    queryset = DApp.objects.values('platform').distinct()
+    queryset = DApp.objects.exclude(platform="").values('platform').distinct()
