@@ -25,7 +25,15 @@ class Organization(CachingMixin, models.Model):
     avatar = models.URLField(max_length=255, blank=True, null=True)
     url = models.URLField(max_length=255, unique=True, default='')
 
-    created_at = models.DateTimeField(default=timezone.now, db_index=True, editable=False)
+    created_at = models.DateTimeField(
+        default=timezone.now,
+        db_index=True,
+        editable=False
+    )
+    updated_at = models.DateTimeField(
+        default=timezone.now,
+        db_index=True,
+    )
 
     objects = CachingManager()
 
