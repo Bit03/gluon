@@ -3,7 +3,7 @@ from rest_framework import status
 from rest_framework.reverse import reverse
 from faker import Faker
 
-from dapps.models import DApp
+from applications.dapps.models import DApp
 from .faker_dapp import DappProvider
 
 fake = Faker()
@@ -26,5 +26,4 @@ class DAppListAPIViewTestCase(APITestCase):
         _url = reverse('api:dapps:list')
         res = self.client.get(_url)
         self.assertEqual(res.status_code, status.HTTP_200_OK)
-        print (res.json())
-
+        # print(res.json())

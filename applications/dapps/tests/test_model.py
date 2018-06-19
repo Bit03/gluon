@@ -1,5 +1,5 @@
 from django.test import TestCase
-from dapps.models import DApp
+from applications.dapps.models import DApp
 from faker import Faker
 from .faker_dapp import DappProvider
 

@@ -165,6 +165,8 @@ REST_FRAMEWORK = {
     ],
     'DEFAULT_FILTER_BACKENDS': [
         'django_filters.rest_framework.DjangoFilterBackend',
+        'rest_framework.filters.OrderingFilter',
+        'rest_framework.filters.SearchFilter',
     ],
     'DEFAULT_PAGINATION_CLASS': 'utils.pagination.StandardResultsSetPagination',
     'PAGE_SIZE': 30,
@@ -184,7 +186,7 @@ HAYSTACK_CONNECTIONS = {
         'BATCH_SIZE': 100,
     },
 }
-HAYSTACK_SEARCH_RESULTS_PER_PAGE = 20
+HAYSTACK_SEARCH_RESULTS_PER_PAGE = 30
 
 # django-taggit
 # --------------------------------------------------------------------------------
