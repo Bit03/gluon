@@ -30,22 +30,22 @@ class RepositorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Repository
         fields = ("identified_code", "author", "name", "desc",
-                  # "date", "fork", "star", "watch",
+                  "fork", "star", "watch",
                   "readme", "url",)
         read_only_fields = ('created_at',)
 
-    def get_star(self, obj):
-        return obj.stats_df().star.diff().fillna(0).tolist()
-
-    def get_fork(self, obj):
-        return obj.stats_df().fork.diff().fillna(0).tolist()
-
-    def get_watch(self, obj):
-        return obj.stats_df().watch.diff().fillna(0).tolist()
-
-    def get_date(self, obj):
-        _date = map(lambda x: x.strftime("%Y-%m-%d"), obj.stats_df().index.tolist())
-        return _date
+    # def get_star(self, obj):
+    #     return obj.stats_df().star.diff().fillna(0).tolist()
+    #
+    # def get_fork(self, obj):
+    #     return obj.stats_df().fork.diff().fillna(0).tolist()
+    #
+    # def get_watch(self, obj):
+    #     return obj.stats_df().watch.diff().fillna(0).tolist()
+    #
+    # def get_date(self, obj):
+    #     _date = map(lambda x: x.strftime("%Y-%m-%d"), obj.stats_df().index.tolist())
+    #     return _date
 
 
 class RepositoryStatsSerializer(serializers.ModelSerializer):
