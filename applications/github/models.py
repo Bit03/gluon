@@ -7,14 +7,21 @@ from django.db import models
 from django_extensions.db import fields
 from django.utils.translation import ugettext_lazy as _
 from django.utils.functional import cached_property
-from caching.base import CachingManager, CachingMixin
 from django_pandas.managers import DataFrameManager
+# from model_utils
+from model_utils import Choices
 from taggit.managers import TaggableManager
+from caching.base import CachingManager, CachingMixin
 
 from utils.render_md import md
 
 
 class Organization(CachingMixin, models.Model):
+    TYPE = Choices(
+        (0, 'user', _('user')),
+        (1, 'organization', _('organization'))
+    )
+
     slug = fields.RandomCharField(length=12, unique=True,
                                   include_alpha=False, db_index=True, editable=False)
     name = models.CharField(max_length=128)
@@ -24,6 +31,8 @@ class Organization(CachingMixin, models.Model):
     email = models.EmailField(max_length=255, blank=True, null=True)
     avatar = models.URLField(max_length=255, blank=True, null=True)
     url = models.URLField(max_length=255, unique=True, default='')
+
+    type = models.IntegerField(choices=TYPE, default=TYPE.user)
 
     created_at = models.DateTimeField(
         default=timezone.now,
@@ -53,8 +62,10 @@ class Organization(CachingMixin, models.Model):
 
 
 class People(CachingMixin, models.Model):
+
     name = models.CharField(blank=True, null=True, max_length=128, )
     nickname = models.CharField(blank=True, max_length=128)
+    company = models.CharField(blank=True, max_length=128)
     bio = models.CharField(max_length=255, blank=True, null=True)
     location = models.CharField(max_length=255, blank=True, null=True)
     email = models.EmailField(max_length=255, blank=True, null=True)
@@ -64,6 +75,7 @@ class People(CachingMixin, models.Model):
 
     url = models.URLField(max_length=255, unique=True, default='')
     created_at = models.DateTimeField(default=timezone.now, db_index=True, editable=False)
+    updated_at = models.DateTimeField(default=timezone.now, db_index=True)
 
     def __str__(self):
         return self.nickname
