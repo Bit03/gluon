@@ -1,3 +1,5 @@
+import re
+
 import environ
 
 ROOT_DIR = environ.Path(__file__) - 3  # three folder back (/a/b/c/ - 3 = /)
@@ -202,3 +204,16 @@ LOGGING = logging_config
 from gluon.settings.jwt import JWT_AUTH as jwt_auth_config
 
 JWT_AUTH = jwt_auth_config
+
+
+
+# disallowed-user-agents
+# -----------------------------------------------------------------
+# https://docs.djangoproject.com/en/1.11/ref/settings/#disallowed-user-agents
+DISALLOWED_USER_AGENTS = [
+    re.compile(r'scrapy', re.IGNORECASE),
+    re.compile(r'go-http-client', re.IGNORECASE),
+    re.compile(r'mj12bot', re.IGNORECASE),
+    re.compile(r'yandexbot', re.IGNORECASE),
+    re.compile(r'ahrefsbot', re.IGNORECASE),
+]
