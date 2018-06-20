@@ -17,11 +17,6 @@ from utils.render_md import md
 
 
 class Organization(CachingMixin, models.Model):
-    TYPE = Choices(
-        (0, 'user', _('user')),
-        (1, 'organization', _('organization'))
-    )
-
     slug = fields.RandomCharField(length=12, unique=True,
                                   include_alpha=False, db_index=True, editable=False)
     name = models.CharField(max_length=128)
@@ -32,7 +27,7 @@ class Organization(CachingMixin, models.Model):
     avatar = models.URLField(max_length=255, blank=True, null=True)
     url = models.URLField(max_length=255, unique=True, default='')
 
-    type = models.IntegerField(choices=TYPE, default=TYPE.user)
+    # type = models.IntegerField(choices=TYPE, default=TYPE.user)
 
     created_at = models.DateTimeField(
         default=timezone.now,
@@ -62,6 +57,10 @@ class Organization(CachingMixin, models.Model):
 
 
 class People(CachingMixin, models.Model):
+    TYPE = Choices(
+        (0, 'user', _('user')),
+        (1, 'organization', _('organization'))
+    )
 
     name = models.CharField(blank=True, null=True, max_length=128, )
     nickname = models.CharField(blank=True, max_length=128)
@@ -72,6 +71,8 @@ class People(CachingMixin, models.Model):
     web_site = models.URLField(max_length=255, blank=True, null=True)
 
     avatar = models.URLField(max_length=255, blank=True, null=True)
+
+    type = models.IntegerField(choices=TYPE, default=TYPE.user)
 
     url = models.URLField(max_length=255, unique=True, default='')
     created_at = models.DateTimeField(default=timezone.now, db_index=True, editable=False)
