@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.conf.urls import url, include
 from django.contrib import admin
-from views.index import IndexView
+from applications.views.index import IndexView
 
 
 urlpatterns = [
