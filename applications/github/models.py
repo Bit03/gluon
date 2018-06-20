@@ -68,13 +68,14 @@ class People(CachingMixin, models.Model):
     bio = models.CharField(max_length=255, blank=True, null=True)
     location = models.CharField(max_length=255, blank=True, null=True)
     email = models.EmailField(max_length=255, blank=True, null=True)
-    web_site = models.URLField(max_length=255, blank=True, null=True)
+    blog = models.URLField(max_length=255, blank=True, null=True)
 
     avatar = models.URLField(max_length=255, blank=True, null=True)
 
     type = models.IntegerField(choices=TYPE, default=TYPE.user)
 
     url = models.URLField(max_length=255, unique=True, default='')
+    html_url = models.URLField(max_length=255, default='')
     created_at = models.DateTimeField(default=timezone.now, db_index=True, editable=False)
     updated_at = models.DateTimeField(default=timezone.now, db_index=True)
 

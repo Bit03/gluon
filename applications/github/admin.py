@@ -11,7 +11,12 @@ class OrganizationAdmin(admin.ModelAdmin):
 
 
 class PeopleAdmin(admin.ModelAdmin):
-    list_display = ("name", "nickname", "bio", "web_site", "location", "url", "created_at")
+    list_display = (
+        "name", "nickname", "type", "bio",
+        "location", "url", "html_url", "created_at"
+    )
+    search_fields = ["name", "nickname"]
+    list_filter = ['type']
 
 
 class RepositoryAdmin(admin.ModelAdmin):
