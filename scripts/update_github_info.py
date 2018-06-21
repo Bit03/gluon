@@ -9,11 +9,11 @@ def run():
     g = Github("9284523b8916172be723b1dd4d8928a77273a731")
     users = People.objects.all()
     for row in users:
-        print(row.nickname)
+        print(row.login)
         try:
-            user = g.get_user(row.nickname)
+            user = g.get_user(row.login)
         except UnknownObjectException as e:
-            print(row.nickname)
+            print(row.login)
             logger.info(e)
             continue
 

@@ -15,7 +15,8 @@ class PeopleAdmin(admin.ModelAdmin):
         "name", "login", "type", "bio",
         "location", "url", "html_url", "created_at", "updated_at",
     )
-    search_fields = ["name", "nickname"]
+    list_display_links = ["login", ]
+    search_fields = ["name", "login"]
     list_filter = ['type']
     ordering = ("-updated_at",)
 
