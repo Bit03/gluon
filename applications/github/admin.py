@@ -1,4 +1,6 @@
 from django.contrib import admin
+from django.utils.safestring import mark_safe
+
 from applications.github.models import (
     Organization, People, Repository
 )
@@ -12,6 +14,7 @@ class OrganizationAdmin(admin.ModelAdmin):
 
 class PeopleAdmin(admin.ModelAdmin):
     list_display = (
+        "get_avatar_tag",
         "name", "login", "type", "bio",
         "location", "html_url", "created_at", "updated_at",
     )
@@ -19,6 +22,12 @@ class PeopleAdmin(admin.ModelAdmin):
     search_fields = ["name", "login"]
     list_filter = ['type']
     ordering = ("-updated_at",)
+
+    def get_avatar_tag(self, obj):
+        return mark_safe('<img width="40" src="{image_url}">'
+                         .format(image_url=obj.avatar))
+
+    get_avatar_tag.short_description = 'avatar'
 
 
 class RepositoryAdmin(admin.ModelAdmin):
