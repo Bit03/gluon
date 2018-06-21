@@ -28,4 +28,8 @@ def run():
         row.created_at = user.created_at
         row.updated_at = user.updated_at
 
-        row.save()
+        try:
+
+            row.save()
+        except Exception as e:
+            print (row.url)
