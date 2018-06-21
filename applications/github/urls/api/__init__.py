@@ -4,8 +4,8 @@ from django.conf.urls import url, include
 
 
 urlpatterns = [
-    url(r'^org/', include('applications.github.urls.api.org', namespace='org')),
-    url(r'^people/', include('applications.github.urls.api.people', namespace='people')),
+    # url(r'^org/', include('applications.github.urls.api.org', namespace='org')),
+    url(r'^users/', include('applications.github.urls.api.people', namespace='people')),
     url(r'^repos/', include('applications.github.urls.api.repos', namespace='repos')),
 ]
 

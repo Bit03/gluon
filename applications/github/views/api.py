@@ -40,17 +40,18 @@ class PeopleListAPIView(generics.ListCreateAPIView):
     model = People
     queryset = People.objects.all()
     serializer_class = PeopleSerializer
-    # pagination_class = StandardResultsSetPagination
-    filter_backends = (OrderingFilter,)
     ordering_fields = ('created_at',)
 
 
+class PeopleDetailAPIView(generics.RetrieveUpdateAPIView):
+    queryset = People.objects.all()
+    serializer_class = PeopleSerializer
+    lookup_field = 'login'
+
+
 class RepositoryListAPIView(generics.ListCreateAPIView):
-    # model = Repository
     queryset = Repository.objects.all()
     serializer_class = RepositorySerializer
-    # pagination_class = StandardResultsSetPagination
-    # filter_backends = (OrderingFilter,)
     ordering_fields = ('created_at',)
 
 

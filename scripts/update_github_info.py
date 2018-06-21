@@ -19,6 +19,7 @@ def run():
 
         row.name = user.name
         # row.bio = user.bio
+        row.avatar = user.avatar_url
         row.url = user.url
         row.html_url = user.html_url
         if user.type.lower() == 'user':
@@ -32,4 +33,4 @@ def run():
 
             row.save()
         except Exception as e:
-            print (row.url)
+            print(row.url)
