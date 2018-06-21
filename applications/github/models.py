@@ -83,8 +83,8 @@ class People(CachingMixin, models.Model):
         return self.nickname
 
     class Meta:
-        verbose_name = _('people')
-        verbose_name_plural = _('people')
+        verbose_name = _('users')
+        verbose_name_plural = _('user')
         ordering = ("-created_at",)
 
 

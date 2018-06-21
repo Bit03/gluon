@@ -13,7 +13,7 @@ class OrganizationAdmin(admin.ModelAdmin):
 class PeopleAdmin(admin.ModelAdmin):
     list_display = (
         "name", "login", "type", "bio",
-        "location", "url", "html_url", "created_at", "updated_at",
+        "location", "html_url", "created_at", "updated_at",
     )
     list_display_links = ["login", ]
     search_fields = ["name", "login"]
