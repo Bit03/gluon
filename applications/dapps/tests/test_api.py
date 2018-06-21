@@ -26,4 +26,8 @@ class DAppListAPIViewTestCase(APITestCase):
         _url = reverse('api:dapps:list')
         res = self.client.get(_url)
         self.assertEqual(res.status_code, status.HTTP_200_OK)
-        # print(res.json())
+
+    def test_can_get_a_dapp(self):
+        _url = reverse('api:dapps:detail', args=[self.dapp.slug])
+        res = self.client.get(_url)
+        self.assertEqual(res.status_code, status.HTTP_200_OK)
