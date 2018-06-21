@@ -13,7 +13,7 @@ from model_utils import Choices
 from taggit.managers import TaggableManager
 from caching.base import CachingManager, CachingMixin
 
-from utils.render_md import md
+from applications.utils.render_md import md
 
 
 class Organization(CachingMixin, models.Model):
@@ -63,7 +63,7 @@ class People(CachingMixin, models.Model):
     )
 
     name = models.CharField(blank=True, null=True, max_length=128, )
-    nickname = models.CharField(blank=True, max_length=128)
+    login = models.CharField(blank=True, max_length=128)
     company = models.CharField(blank=True, max_length=128)
     bio = models.CharField(max_length=255, blank=True, null=True)
     location = models.CharField(max_length=255, blank=True, null=True)

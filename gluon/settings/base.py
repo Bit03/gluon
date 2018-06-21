@@ -168,7 +168,7 @@ REST_FRAMEWORK = {
         'rest_framework.filters.OrderingFilter',
         'rest_framework.filters.SearchFilter',
     ],
-    'DEFAULT_PAGINATION_CLASS': 'utils.pagination.StandardResultsSetPagination',
+    'DEFAULT_PAGINATION_CLASS': 'applications.utils.pagination.StandardResultsSetPagination',
     'PAGE_SIZE': 30,
     'DATETIME_FORMAT': '%Y-%m-%d %H:%M:%S',
 }
