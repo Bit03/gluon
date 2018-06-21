@@ -17,7 +17,7 @@ def run():
             continue
 
         row.name = user.name
-        row.bio = user.bio
+        # row.bio = user.bio
         row.url = user.url
         row.html_url = user.html_url
         if user.type.lower() == 'user':
