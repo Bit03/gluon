@@ -24,9 +24,9 @@ class PeopleAdmin(admin.ModelAdmin):
     ordering = ("-updated_at",)
 
     def get_avatar_tag(self, obj):
+        print (obj.avatar)
         return mark_safe('<img width="40" src="{image_url}">'
                          .format(image_url=obj.avatar))
-
     get_avatar_tag.short_description = 'avatar'
 
 

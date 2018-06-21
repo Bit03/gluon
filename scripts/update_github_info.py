@@ -30,7 +30,6 @@ def run():
         row.updated_at = user.updated_at
 
         try:
-
             row.save()
         except Exception as e:
             print(row.url)
