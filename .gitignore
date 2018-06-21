@@ -141,7 +141,7 @@ node_modules/
 .sass-cache
 
 
-scripts
+scripts/dapps.csv
 nginx
 gluon/settings/prod*.py
 static
