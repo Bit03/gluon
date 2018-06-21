@@ -80,7 +80,7 @@ class People(CachingMixin, models.Model):
     updated_at = models.DateTimeField(default=timezone.now, db_index=True)
 
     def __str__(self):
-        return self.nickname
+        return self.login
 
     class Meta:
         verbose_name = _('users')
