@@ -13,6 +13,7 @@ def run():
         try:
             user = g.get_user(row.nickname)
         except UnknownObjectException as e:
+            print (row.nickname)
             logger.info(e)
             continue
 
