@@ -37,11 +37,10 @@ class DAppSerializers(serializers.ModelSerializer):
 
     class Meta:
         model = DApp
-        exclude = ("updated_at", "created_at", "is_removed",)
+        exclude = ("id", "updated_at", "created_at", "is_removed",)
 
 
 class DAppPlatformSerializers(serializers.Serializer):
-
     platform = serializers.CharField()
 
     def update(self, instance, validated_data):
@@ -49,4 +48,3 @@ class DAppPlatformSerializers(serializers.Serializer):
 
     def create(self, validated_data):
         pass
-
