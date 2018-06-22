@@ -7,6 +7,7 @@ class DAppListAPIView(generics.ListAPIView):
     serializer_class = DAppSerializers
     queryset = DApp.objects.all()
     filter_fields = ('status', 'ico_status', 'platform')
+    search_fields = ('name', )
 
 
 class DAppDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
