@@ -6,9 +6,11 @@ from applications.dapps.models import (
 
 
 class SiteSerializers(serializers.ModelSerializer):
+    logo_url = serializers.URLField()
+    
     class Meta:
         model = Site
-        exclude = ['id']
+        exclude = ['id', 'logo']
 
 
 class SocialSerializers(serializers.ModelSerializer):

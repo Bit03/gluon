@@ -104,6 +104,13 @@ class Site(models.Model):
     def __str__(self):
         return self.url
 
+    @property
+    def logo_url(self):
+        if len(self.logo) > 0:
+            return self.logo
+        else:
+            return self.dapp.github.avatar_url
+
 
 class GitHub(models.Model):
     dapp = models.OneToOneField(DApp, related_name='github')
