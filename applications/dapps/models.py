@@ -107,9 +107,10 @@ class Site(models.Model):
 
 class GitHub(models.Model):
     dapp = models.OneToOneField(DApp, related_name='github')
+    avatar_url = models.URLField(max_length=255, blank=True, null=True)
     url = models.URLField(max_length=255)
-    readme = models.TextField(blank=True, default='')
-
+    html_url = models.URLField(max_length=255, blank=True, null=True)
+    blog = models.URLField(max_length=255, blank=True, null=True)
     created_at = models.DateTimeField(default=timezone.now, db_index=True)
     updated_at = models.DateTimeField(auto_now=True, db_index=True, editable=False)
 
