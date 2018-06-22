@@ -19,5 +19,6 @@ class Command(BaseCommand):
 
                 row.login = user.login
                 row.avatar_url = user.avatar_url
+                row.url = user.url
                 row.html_url = user.html_url
                 row.save()

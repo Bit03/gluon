@@ -20,7 +20,7 @@ class SocialSerializers(serializers.ModelSerializer):
 class GithubSerializers(serializers.ModelSerializer):
     class Meta:
         model = GitHub
-        exclude = ["id", ]
+        exclude = ["id", "dapp", "url"]
 
 
 class EmailAddressSerializers(serializers.ModelSerializer):
