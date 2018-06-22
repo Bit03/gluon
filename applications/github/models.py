@@ -94,11 +94,14 @@ class Repository(CachingMixin, models.Model):
     desc = models.TextField(null=True, blank=True)
     readme = models.TextField(null=True, blank=True)
     url = models.URLField(max_length=255, null=True, blank=True)
+    homepage = models.URLField(max_length=255, null=True, blank=True)
+    language = models.CharField(max_length=255, default='')
 
     identified_code = models.CharField(null=True, blank=True, max_length=32, unique=True)
 
     created_at = models.DateTimeField(default=timezone.now, editable=False, db_index=True)
     updated_at = models.DateTimeField(auto_now=True, editable=False, db_index=True)
+    pushed_at = models.DateTimeField(default=timezone.now, editable=False, db_index=True)
 
     objects = CachingManager()
 
