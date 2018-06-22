@@ -22,17 +22,11 @@ class PeopleSerializer(serializers.ModelSerializer):
 
 
 class RepositorySerializer(serializers.ModelSerializer):
-    # date = serializers.SerializerMethodField(read_only=True)
-    # star = serializers.SerializerMethodField(read_only=True)
-    # fork = serializers.SerializerMethodField(read_only=True)
-    # watch = serializers.SerializerMethodField(read_only=True)
+    full_name = serializers.CharField(read_only=True)
 
     class Meta:
         model = Repository
-        exclude = ('id', )
-        # fields = ("identified_code", "author", "name", "desc",
-        #           "fork", "star", "watch",
-        #           "readme", "url",)
+        exclude = ('id', 'url',)
         read_only_fields = ('created_at',)
 
     # def get_star(self, obj):

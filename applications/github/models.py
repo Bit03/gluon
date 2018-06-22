@@ -94,6 +94,7 @@ class Repository(CachingMixin, models.Model):
     desc = models.TextField(null=True, blank=True)
     readme = models.TextField(null=True, blank=True)
     url = models.URLField(max_length=255, null=True, blank=True)
+    html_url = models.URLField(max_length=255, null=True, blank=True)
     homepage = models.URLField(max_length=255, null=True, blank=True)
     language = models.CharField(max_length=255, default='')
 
@@ -116,6 +117,13 @@ class Repository(CachingMixin, models.Model):
         return "{author}/{name}".format(
             author=self.author,
             name=self.name,
+        )
+
+    @property
+    def full_name(self):
+        return "{author}/{repos}".format(
+            author=self.author,
+            repos=self.name,
         )
 
     @cached_property
