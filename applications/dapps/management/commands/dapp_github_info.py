@@ -17,7 +17,7 @@ class Command(BaseCommand):
                 except UnknownObjectException:
                     continue
 
-
+                row.login = user.login
                 row.avatar_url = user.avatar_url
                 row.html_url = user.html_url
                 row.save()
