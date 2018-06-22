@@ -112,7 +112,7 @@ class GitHub(models.Model):
     url = models.URLField(max_length=255)
     html_url = models.URLField(max_length=255, blank=True, null=True)
     blog = models.URLField(max_length=255, blank=True, null=True)
-    mail = models.EmailField(max_length=255, blank=True, null=True)
+    email = models.EmailField(max_length=255, blank=True, null=True)
     created_at = models.DateTimeField(default=timezone.now, db_index=True)
     updated_at = models.DateTimeField(auto_now=True, db_index=True, editable=False)
 
