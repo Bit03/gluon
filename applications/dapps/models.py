@@ -118,6 +118,7 @@ class GitHub(models.Model):
     avatar_url = models.URLField(max_length=255, blank=True, null=True)
     url = models.URLField(max_length=255)
     html_url = models.URLField(max_length=255, blank=True, null=True)
+    company = models.CharField(max_length=255, blank=True, null=True)
     blog = models.URLField(max_length=255, blank=True, null=True)
     email = models.EmailField(max_length=255, blank=True, null=True)
     state = models.BooleanField(default=True)

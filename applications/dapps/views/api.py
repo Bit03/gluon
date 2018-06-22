@@ -19,4 +19,3 @@ class DAppDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
 class DAppPlatformAPIView(generics.ListAPIView):
     serializer_class = DAppPlatformSerializers
     queryset = DApp.objects.exclude(platform="").values('platform').distinct()
-    # pagination_class = StandardResultsSetPagination
