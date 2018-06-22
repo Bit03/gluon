@@ -14,7 +14,7 @@ class SiteSerializers(serializers.ModelSerializer):
 class SocialSerializers(serializers.ModelSerializer):
     class Meta:
         model = Social
-        exclude = ["id", ]
+        exclude = ["id", "dapp"]
 
 
 class GithubSerializers(serializers.ModelSerializer):

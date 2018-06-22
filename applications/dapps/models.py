@@ -107,6 +107,7 @@ class Site(models.Model):
 
 class GitHub(models.Model):
     dapp = models.OneToOneField(DApp, related_name='github')
+    login = models.CharField(max_length=64, default='')
     avatar_url = models.URLField(max_length=255, blank=True, null=True)
     url = models.URLField(max_length=255)
     html_url = models.URLField(max_length=255, blank=True, null=True)
