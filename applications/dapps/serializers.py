@@ -7,7 +7,7 @@ from applications.dapps.models import (
 
 class SiteSerializers(serializers.ModelSerializer):
     logo_url = serializers.URLField()
-    
+
     class Meta:
         model = Site
         exclude = ['id', 'logo']
@@ -28,7 +28,7 @@ class GithubSerializers(serializers.ModelSerializer):
 class EmailAddressSerializers(serializers.ModelSerializer):
     class Meta:
         model = EmailAddress
-        exclude = ['id', ]
+        exclude = ['id', 'dapp']
 
 
 class DAppSerializers(serializers.ModelSerializer):
