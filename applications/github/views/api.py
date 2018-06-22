@@ -1,7 +1,5 @@
+import logging
 from rest_framework import generics
-from rest_framework.filters import OrderingFilter
-# from rest_framework.pagination import PageNumberPagination
-
 from applications.github.models import (
     Organization,
     People,
@@ -15,11 +13,7 @@ from applications.github.serializers import (
     RepositoryStatsSerializer
 )
 
-
-# class StandardResultsSetPagination(PageNumberPagination):
-#     page_size = 10
-#     page_size_query_param = 'size'
-#     max_page_size = 1000
+logger = logging.getLogger('django')
 
 
 class OrganizationListAPIView(generics.ListCreateAPIView):
@@ -68,6 +62,7 @@ class UserRepositoryListAPIView(generics.ListAPIView):
 
     def get(self, request, *args, **kwargs):
         self.users = kwargs.pop('users', None)
+        logging.info(self.users)
         return super(UserRepositoryListAPIView, self).get(request, *args, **kwargs)
 
 

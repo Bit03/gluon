@@ -24,23 +24,14 @@ class PeopleSerializer(serializers.ModelSerializer):
 class RepositorySerializer(serializers.ModelSerializer):
     full_name = serializers.CharField(read_only=True)
 
+    watch = serializers.IntegerField(default=0)
+    star = serializers.IntegerField(default=0)
+    fork = serializers.IntegerField(default=0)
+
     class Meta:
         model = Repository
         exclude = ('id', 'url',)
         read_only_fields = ('created_at',)
-
-    # def get_star(self, obj):
-    #     return obj.stats_df().star.diff().fillna(0).tolist()
-    #
-    # def get_fork(self, obj):
-    #     return obj.stats_df().fork.diff().fillna(0).tolist()
-    #
-    # def get_watch(self, obj):
-    #     return obj.stats_df().watch.diff().fillna(0).tolist()
-    #
-    # def get_date(self, obj):
-    #     _date = map(lambda x: x.strftime("%Y-%m-%d"), obj.stats_df().index.tolist())
-    #     return _date
 
 
 class RepositoryStatsSerializer(serializers.ModelSerializer):
