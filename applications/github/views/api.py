@@ -52,7 +52,23 @@ class PeopleDetailAPIView(generics.RetrieveUpdateAPIView):
 class RepositoryListAPIView(generics.ListCreateAPIView):
     queryset = Repository.objects.all()
     serializer_class = RepositorySerializer
-    ordering_fields = ('created_at',)
+    ordering_fields = ('-updated_at',)
+
+
+class UserRepositoryListAPIView(generics.ListAPIView):
+    queryset = Repository.objects.all()
+    serializer_class = RepositorySerializer
+    ordering_fields = ('-updated_at',)
+    users = None
+
+    def get_queryset(self):
+        qs = self.queryset
+        qs = qs.filter(author=self.users)
+        return qs
+
+    def get(self, request, *args, **kwargs):
+        self.users = kwargs.pop('users', None)
+        return super(UserRepositoryListAPIView, self).get(request, *args, **kwargs)
 
 
 class RepositoryDetailAPIView(generics.RetrieveAPIView):
