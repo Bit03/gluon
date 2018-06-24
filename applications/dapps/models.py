@@ -23,7 +23,7 @@ class DApp(SoftDeletableModel):
                                   include_alpha=False, db_index=True, editable=False)
     name = models.CharField(max_length=64, )
     platform = models.CharField(max_length=64, )
-    symbol = models.CharField(max_length=64, null=True, blank=True)
+    symbol = models.CharField(max_length=255, null=True, blank=True)
     description = models.TextField(blank=True, default='', )
     description_cn = models.TextField(blank=True, default='')
     country_of_origin = models.CharField(max_length=64, default='', blank=True)
