@@ -1,11 +1,12 @@
 import csv
 import logging
+from dateutil import parser
 from applications.dapps.models import DApp, Site, Social
 
 logger = logging.getLogger('django')
 
 
-def process(dapp:DApp, row:dict):
+def process(dapp: DApp, row: dict):
     """
 
     :type dapp: object
@@ -45,17 +46,32 @@ def process(dapp:DApp, row:dict):
     social.telegram = row['Telegram']
     social.reddit = row['Reddit']
     social.instagram = row['Instagram']
+    social.kakao = row['Kakao']
+    social.medium = row['Medium']
+
+    social.linkedin = row['LinkedIn']
+    # social.bitcointalk = row['Bitcointalk']
+    social.youtube = row['Youtube']
     social.save()
+
 
 def run():
     with open("scripts/dapps.csv", newline='') as csvfile:
         reader = csv.DictReader(csvfile)
         for row in reader:
-            # print (row)
+            # print(row)
 
             try:
                 dapp = DApp.objects.get(name=row['DAPP'])
+                dapp.founder = row['Founder']
+                dapp.country_of_origin = row['Country of origin']
+                # print (row['Submitted'], row['Last Update'])
+                if row['Submitted']:
+                    dapp.submitted = parser.parse(row.get('Submitted'))
+                if row['Last Update']:
+                    dapp.last_update = parser.parse(row.get('Last Update'))
                 process(dapp=dapp, row=row)
+                dapp.save()
             except DApp.DoesNotExist:
                 dapp = DApp()
                 dapp.name = row['DAPP']
