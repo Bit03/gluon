@@ -5,6 +5,7 @@ from applications.github.models import (
     RepositoryStats
 )
 
+
 #
 # class OrganizationSerializer(serializers.ModelSerializer):
 #     class Meta:
@@ -14,18 +15,14 @@ from applications.github.models import (
 
 
 class PeopleSerializer(serializers.ModelSerializer):
-
-    watch = serializers.IntegerField(default=0)
-    star = serializers.IntegerField(default=0)
-    fork = serializers.IntegerField(default=0)
+    watch = serializers.IntegerField(default=0, source='get_watch', read_only=True)
+    star = serializers.IntegerField(default=0, source='get_star', read_only=True)
+    fork = serializers.IntegerField(default=0, source='get_fork', read_only=True)
 
     class Meta:
         model = People
         exclude = ("id",)
         read_only_fields = ('created_at',)
-
-    def get_watch(self, obj):
-        return 1
 
 
 class RepositorySerializer(serializers.ModelSerializer):
