@@ -71,7 +71,7 @@ class RepositoryDetailAPIView(generics.RetrieveAPIView):
     lookup_field = 'identified_code'
 
 
-class RepoStatsListAPIView(generics.ListCreateAPIView):
+class RepoStatsListAPIView(generics.CreateAPIView):
     model = RepositoryStats
     queryset = RepositoryStats.objects.all()
     serializer_class = RepositoryStatsSerializer

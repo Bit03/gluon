@@ -35,7 +35,7 @@ class RepositoryAdmin(admin.ModelAdmin):
                     "watch", "star", "fork",
                     "created_at", "updated_at")
     ordering = ("-updated_at",)
-    search_fields = ("name", )
+    search_fields = ("author", "name", )
 
 
 admin.site.register(Organization, OrganizationAdmin)
