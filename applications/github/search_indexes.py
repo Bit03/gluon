@@ -43,6 +43,10 @@ class OrganizationIndex(indexes.Indexable, indexes.SearchIndex):
         return _watch
 
 
+# class PeopleIndex(indexes.Indexable, indexes.SearchIndex):
+#     text = indexes.CharField(document=True, use_template=True)
+
+
 class ReposIndex(indexes.Indexable, indexes.SearchIndex):
     text = indexes.CharField(document=True, use_template=True)
     author = indexes.CharField(model_attr='author')

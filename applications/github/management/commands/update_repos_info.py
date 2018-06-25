@@ -12,7 +12,6 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         for row in Repository.objects.all():
             logger.info(row.full_name)
-
             _url = "https://api.github.com/repos/{full_name}".format(
                 full_name=row.full_name
             )

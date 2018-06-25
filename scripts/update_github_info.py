@@ -18,7 +18,6 @@ def run():
             continue
 
         row.name = user.name
-        # row.bio = user.bio
         row.avatar = user.avatar_url
         row.url = user.url
         row.html_url = user.html_url
