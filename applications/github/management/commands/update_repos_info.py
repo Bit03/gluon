@@ -28,6 +28,9 @@ class Command(BaseCommand):
                 row.created_at = data['created_at']
                 row.updated_at = data['updated_at']
                 row.pushed_at = data['pushed_at']
+                row.stargazers_count = data['stargazers_count']
+                row.watchers_count = data['watchers_count']
+                row.forks_count = data['forks_count']
                 row.save()
             else:
                 logger.error(res.status_code)
