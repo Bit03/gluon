@@ -1,5 +1,7 @@
 import logging
 from rest_framework import generics
+from rest_framework.generics import get_object_or_404
+
 from applications.github.models import (
     People,
     Repository,
@@ -59,16 +61,37 @@ class UserRepositoryListAPIView(generics.ListAPIView):
         return qs
 
     def get(self, request, *args, **kwargs):
-        self.users = kwargs.pop('users', None)
+        self.users = kwargs.pop('user', None)
         logging.info(self.users)
         return super(UserRepositoryListAPIView, self).get(request, *args, **kwargs)
 
 
-class RepositoryDetailAPIView(generics.RetrieveAPIView):
+class RepositoryCheckAPIView(generics.RetrieveAPIView):
     model = Repository
     queryset = Repository.objects.all()
     serializer_class = RepositorySerializer
     lookup_field = 'identified_code'
+
+
+class RepositoryDetailAPIView(generics.RetrieveUpdateAPIView):
+    queryset = Repository.objects.all()
+    serializer_class = RepositorySerializer
+
+    def get_object(self):
+        queryset = self.filter_queryset(self.get_queryset())
+
+        # self.kwargs.pop('user', None)
+        # self.kwargs.pop('repo', None)
+
+        filter_kwargs = {
+            "author": self.kwargs['user'],
+            "name": self.kwargs['repo']
+        }
+        obj = get_object_or_404(queryset, **filter_kwargs)
+
+        self.check_object_permissions(self.request, obj)
+
+        return obj
 
 
 class RepoStatsListAPIView(generics.CreateAPIView):
