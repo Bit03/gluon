@@ -5,12 +5,14 @@ from rest_framework.generics import get_object_or_404
 from applications.github.models import (
     People,
     Repository,
-    RepositoryStats
+    RepositoryStats,
+    Commit,
 )
 from applications.github.serializers import (
     PeopleSerializer,
     RepositorySerializer,
-    RepositoryStatsSerializer
+    RepositoryStatsSerializer,
+    RepositoryCommitSerializer,
 )
 
 logger = logging.getLogger('django')
@@ -80,9 +82,6 @@ class RepositoryDetailAPIView(generics.RetrieveUpdateAPIView):
     def get_object(self):
         queryset = self.filter_queryset(self.get_queryset())
 
-        # self.kwargs.pop('user', None)
-        # self.kwargs.pop('repo', None)
-
         filter_kwargs = {
             "author": self.kwargs['user'],
             "name": self.kwargs['repo']
@@ -98,3 +97,9 @@ class RepoStatsListAPIView(generics.CreateAPIView):
     model = RepositoryStats
     queryset = RepositoryStats.objects.all()
     serializer_class = RepositoryStatsSerializer
+
+
+class ReposCommitAPIView(generics.ListCreateAPIView):
+    queryset = Commit
+    serializer_class = RepositoryCommitSerializer
+
