@@ -89,19 +89,19 @@ class People(CachingMixin, models.Model):
         ordering = ("-created_at",)
 
     def get_watch(self):
-        _watchers_count = Repository.objects.filter(author=self.login)\
+        _watchers_count = Repository.objects.filter(author=self.login) \
             .aggregate(watch_sum=Sum('watchers_count'))
         # print (_watchers_count)
         return _watchers_count['watch_sum']
         # return 10
 
     def get_star(self):
-        _stargazers_count = Repository.objects.filter(author=self.login)\
+        _stargazers_count = Repository.objects.filter(author=self.login) \
             .aggregate(star_sum=Sum('stargazers_count'))
         return _stargazers_count['star_sum']
 
     def get_fork(self):
-        _forks_count = Repository.objects.filter(author=self.login)\
+        _forks_count = Repository.objects.filter(author=self.login) \
             .aggregate(fork_sum=Sum('forks_count'))
         return _forks_count['fork_sum']
 
@@ -217,7 +217,13 @@ class Commit(models.Model):
     repos = models.ForeignKey(Repository, related_name='commit')
     hash = models.CharField(max_length=128)
     branch = models.CharField(max_length=255, default='master')
-    commit_datetime = models.DateField(db_index=True, default=timezone.now)
+    commit_datetime = models.DateTimeField(db_index=True, default=timezone.now)
+
+    class Meta:
+        verbose_name = _("commit")
+        verbose_name_plural = _("commits")
+        ordering = ["-commit_datetime", ]
+        unique_together = ('repos', 'hash')
 
     def __str__(self):
         return "{s} - {hash}".format(self.repos, self.hash)

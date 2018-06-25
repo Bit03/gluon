@@ -171,6 +171,7 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'applications.utils.pagination.StandardResultsSetPagination',
     'PAGE_SIZE': 30,
     'DATETIME_FORMAT': '%Y-%m-%d %H:%M:%S',
+    'DATE_INPUT_FORMATS': ['%Y-%m-%d %H:%M:%S"'],
 }
 
 # django haystack
