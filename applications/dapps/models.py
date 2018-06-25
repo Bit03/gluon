@@ -130,7 +130,7 @@ class GitHub(models.Model):
 
     @property
     def author(self):
-        if "https://github.com" in self.url:
+        if "github.com" in self.url:
             o = urlparse(self.url)
             path_group = o.path.split("/")
             author = path_group[1]
