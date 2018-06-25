@@ -18,7 +18,7 @@ class Command(BaseCommand):
                 "project": "muon",
                 "spider": "repos",
                 "repos_id": row.id,
-                "url": row.url,
+                "url": row.html_url,
             }
 
             res = requests.post(spider_url, data=data, auth=('spider', 'spider1@#'))

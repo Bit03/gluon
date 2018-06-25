@@ -94,12 +94,24 @@ class RepositoryDetailAPIView(generics.RetrieveUpdateAPIView):
 
 
 class RepoStatsListAPIView(generics.CreateAPIView):
-    model = RepositoryStats
     queryset = RepositoryStats.objects.all()
     serializer_class = RepositoryStatsSerializer
 
 
-class ReposCommitAPIView(generics.ListCreateAPIView):
-    queryset = Commit
+class ReposCommitCreateAPIView(generics.CreateAPIView):
+    queryset = Commit.objects.all()
     serializer_class = RepositoryCommitSerializer
+
+
+class ReposCommitListAPIView(generics.ListAPIView):
+    queryset = Commit.objects.all()
+    serializer_class = RepositoryCommitSerializer
+
+    def get_queryset(self):
+        repo = Repository.objects.get(
+            author=self.kwargs['user'],
+            name=self.kwargs['repo'],
+        )
+        qs = self.queryset
+        return qs.filter(repos=repo)
 

@@ -58,5 +58,5 @@ class RepositoryCommitSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Commit
-        fields = ("repos_id", "hash", "branch",)
+        fields = ("repos_id", "hash", "branch", "commit_datetime",)
 
