@@ -216,6 +216,7 @@ class RepositoryStats(CachingMixin, models.Model):
 class Commit(models.Model):
     repos = models.ForeignKey(Repository, related_name='commit')
     hash = models.CharField(max_length=128)
+    branch = models.CharField(max_length=255, default='master')
     commit_datetime = models.DateField(db_index=True, default=timezone.now)
 
     def __str__(self):
