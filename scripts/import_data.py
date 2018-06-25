@@ -68,7 +68,7 @@ def process(dapp: DApp, row: dict):
         github = dapp.github
     except ObjectDoesNotExist:
         github = GitHub()
-        github.url = row['Github']
+        github.url = row['GitHub']
         github.save()
 
 
