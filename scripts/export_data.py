@@ -5,7 +5,7 @@ def run():
     repos = Organization.objects.all()
 
     for row in repos:
-        print(row.name, row.author)
+        # print(row.name, row.author)
 
         p = People()
         p.name = row.name

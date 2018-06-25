@@ -63,7 +63,7 @@ class People(CachingMixin, models.Model):
     )
 
     name = models.CharField(blank=True, null=True, max_length=128, )
-    login = models.CharField(blank=True, max_length=128)
+    login = models.CharField(blank=True, max_length=128, unique=True)
     company = models.CharField(blank=True, max_length=128)
     bio = models.CharField(max_length=255, blank=True, null=True)
     location = models.CharField(max_length=255, blank=True, null=True)
