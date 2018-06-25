@@ -1,24 +1,31 @@
 from rest_framework import serializers
 from applications.github.models import (
-    Organization,
     People,
     Repository,
     RepositoryStats
 )
 
-
-class OrganizationSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Organization
-        exclude = ("created_at", "id")
-        read_only_fields = ("slug",)
+#
+# class OrganizationSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Organization
+#         exclude = ("created_at", "id")
+#         read_only_fields = ("slug",)
 
 
 class PeopleSerializer(serializers.ModelSerializer):
+
+    watch = serializers.IntegerField(default=0)
+    star = serializers.IntegerField(default=0)
+    fork = serializers.IntegerField(default=0)
+
     class Meta:
         model = People
         exclude = ("id",)
         read_only_fields = ('created_at',)
+
+    def get_watch(self, obj):
+        return 1
 
 
 class RepositorySerializer(serializers.ModelSerializer):

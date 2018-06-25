@@ -8,7 +8,6 @@ from django_extensions.db import fields
 from django.utils.translation import ugettext_lazy as _
 from django.utils.functional import cached_property
 from django_pandas.managers import DataFrameManager
-# from model_utils
 from model_utils import Choices
 from taggit.managers import TaggableManager
 from caching.base import CachingManager, CachingMixin
@@ -87,6 +86,9 @@ class People(CachingMixin, models.Model):
         verbose_name_plural = _('user')
         ordering = ("-created_at",)
 
+    # def get_start(self):
+    #     Repository.objects.filter(author=self.login)
+
 
 class Repository(CachingMixin, models.Model):
     author = models.CharField(max_length=128, default='')
@@ -97,6 +99,10 @@ class Repository(CachingMixin, models.Model):
     html_url = models.URLField(max_length=255, null=True, blank=True)
     homepage = models.URLField(max_length=255, null=True, blank=True)
     language = models.CharField(max_length=255, null=True, blank=True)
+
+    watchers_count = models.IntegerField(default=0)
+    stargazers_count = models.IntegerField(default=0)
+    forks_count = models.IntegerField(default=0)
 
     identified_code = models.CharField(null=True, blank=True, max_length=32, unique=True)
 

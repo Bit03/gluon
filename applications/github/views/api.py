@@ -1,13 +1,11 @@
 import logging
 from rest_framework import generics
 from applications.github.models import (
-    Organization,
     People,
     Repository,
     RepositoryStats
 )
 from applications.github.serializers import (
-    OrganizationSerializer,
     PeopleSerializer,
     RepositorySerializer,
     RepositoryStatsSerializer
@@ -16,18 +14,18 @@ from applications.github.serializers import (
 logger = logging.getLogger('django')
 
 
-class OrganizationListAPIView(generics.ListCreateAPIView):
-    model = Organization
-    serializer_class = OrganizationSerializer
-    queryset = Organization.objects.all()
-    # pagination_class = StandardResultsSetPagination
-    ordering_fields = ('created_at',)
-
-
-class OrganizationDetailAPIView(generics.RetrieveUpdateAPIView):
-    serializer_class = OrganizationSerializer
-    queryset = Organization.objects.all()
-    lookup_field = 'name'
+# class OrganizationListAPIView(generics.ListCreateAPIView):
+#     model = Organization
+#     serializer_class = OrganizationSerializer
+#     queryset = Organization.objects.all()
+#     # pagination_class = StandardResultsSetPagination
+#     ordering_fields = ('created_at',)
+#
+#
+# class OrganizationDetailAPIView(generics.RetrieveUpdateAPIView):
+#     serializer_class = OrganizationSerializer
+#     queryset = Organization.objects.all()
+#     lookup_field = 'name'
 
 
 class PeopleListAPIView(generics.ListCreateAPIView):
