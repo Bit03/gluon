@@ -2,7 +2,7 @@ import csv
 import logging
 from dateutil import parser
 from django.core.exceptions import ObjectDoesNotExist
-from applications.dapps.models import DApp, Site, Social, EmailAddress
+from applications.dapps.models import DApp, Site, Social, EmailAddress, GitHub
 
 logger = logging.getLogger('django')
 
@@ -64,6 +64,12 @@ def process(dapp: DApp, row: dict):
     email.email = row['Email']
     email.save()
 
+    try:
+        github = dapp.github
+    except ObjectDoesNotExist:
+        github = GitHub()
+        github.url = row['Github']
+        github.save()
 
 
 def run():
