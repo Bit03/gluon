@@ -31,11 +31,11 @@ class PeopleAdmin(admin.ModelAdmin):
 
 
 class RepositoryAdmin(admin.ModelAdmin):
-    list_display = ("name", "desc", "url",
-                    "watch", "star", "fork",
+    list_display = ("name", "desc", "html_url",
+                    "watch", "star", "fork", "language",
                     "created_at", "updated_at")
     ordering = ("-updated_at",)
-    search_fields = ("author", "name", )
+    search_fields = ("author", "name", "language", )
 
 
 admin.site.register(Organization, OrganizationAdmin)
