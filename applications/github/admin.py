@@ -38,6 +38,6 @@ class RepositoryAdmin(admin.ModelAdmin):
     search_fields = ("author", "name", "language", )
 
 
-admin.site.register(Organization, OrganizationAdmin)
+# admin.site.register(Organization, OrganizationAdmin)
 admin.site.register(People, PeopleAdmin)
 admin.site.register(Repository, RepositoryAdmin)
