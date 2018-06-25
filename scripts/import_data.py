@@ -1,7 +1,8 @@
 import csv
 import logging
 from dateutil import parser
-from applications.dapps.models import DApp, Site, Social
+from django.core.exceptions import ObjectDoesNotExist
+from applications.dapps.models import DApp, Site, Social, EmailAddress
 
 logger = logging.getLogger('django')
 
@@ -53,6 +54,16 @@ def process(dapp: DApp, row: dict):
     # social.bitcointalk = row['Bitcointalk']
     social.youtube = row['Youtube']
     social.save()
+
+    try:
+        email = dapp.email
+    except ObjectDoesNotExist:
+        email = EmailAddress()
+        email.dapp = dapp
+
+    email.email = row['Email']
+    email.save()
+
 
 
 def run():
