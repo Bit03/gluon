@@ -2,7 +2,8 @@ from rest_framework import serializers
 from applications.github.models import (
     People,
     Repository,
-    RepositoryStats
+    RepositoryStats,
+    Commit,
 )
 
 
@@ -50,3 +51,12 @@ class RepositoryStatsSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         return super().create(validated_data)
+
+
+class RepositoryCommitSerializer(serializers.ModelSerializer):
+    repos_id = serializers.IntegerField(write_only=True)
+
+    class Meta:
+        model = Commit
+        fields = ("repos_id", "hash", "branch",)
+
