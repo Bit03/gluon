@@ -140,6 +140,7 @@ class ReposCommitListAPIView(generics.ListAPIView):
     serializer_class = RepositoryCommitStateSerializer
 
     pagination_class = None
+    renderer_classes = (ChartRenderer, )
 
     @property
     def start(self):
