@@ -32,9 +32,10 @@ class Command(BaseCommand):
                 row.watchers_count = data['watchers_count']
                 row.forks_count = data['forks_count']
                 row.save()
-            else:
+            elif res.status_code == 404:
                 row.state = False
                 row.save()
+            else:
                 logger.error(res.status_code)
                 logger.error(res.content)
 
