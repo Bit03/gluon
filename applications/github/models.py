@@ -230,4 +230,8 @@ class Commit(models.Model):
         unique_together = ('repos', 'hash')
 
     def __str__(self):
-        return "{s} - {hash}".format(self.repos, self.hash)
+        return "{repo} - {branch} - {hash}".format(
+            repo=self.repos,
+            branch=self.branch,
+            hash=self.hash
+        )

@@ -63,3 +63,8 @@ class RepositoryCommitSerializer(serializers.ModelSerializer):
             "repos_id", "hash", "branch", "commit_datetime",
         )
 
+
+class RepositoryCommitStateSerializer(serializers.Serializer):
+    date = serializers.DateField()
+    commit_count = serializers.IntegerField()
+

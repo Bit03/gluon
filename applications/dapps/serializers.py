@@ -10,7 +10,7 @@ class SiteSerializers(serializers.ModelSerializer):
 
     class Meta:
         model = Site
-        exclude = ['id', 'logo']
+        exclude = ['id', 'logo', 'dapp']
 
 
 class SocialSerializers(serializers.ModelSerializer):

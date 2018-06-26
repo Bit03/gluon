@@ -1,4 +1,7 @@
 import logging
+
+from django.db.models import Count
+from django.db.models.functions import TruncDate
 from rest_framework import generics
 from rest_framework.generics import get_object_or_404
 
@@ -13,6 +16,7 @@ from applications.github.serializers import (
     RepositorySerializer,
     RepositoryStatsSerializer,
     RepositoryCommitSerializer,
+    RepositoryCommitStateSerializer,
 )
 
 logger = logging.getLogger('django')
@@ -105,7 +109,7 @@ class ReposCommitCreateAPIView(generics.CreateAPIView):
 
 class ReposCommitListAPIView(generics.ListAPIView):
     queryset = Commit.objects.all()
-    serializer_class = RepositoryCommitSerializer
+    serializer_class = RepositoryCommitStateSerializer
 
     def get_queryset(self):
         repo = Repository.objects.get(
@@ -113,5 +117,8 @@ class ReposCommitListAPIView(generics.ListAPIView):
             name=self.kwargs['repo'],
         )
         qs = self.queryset
-        return qs.filter(repos=repo)
+        return qs.filter(repos=repo).annotate(date=TruncDate('commit_datetime'))\
+            .values('date')\
+            .annotate(commit_count=Count('id'))\
+            .values('date', 'commit_count').order_by('-date')
 
