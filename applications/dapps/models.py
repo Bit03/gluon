@@ -153,7 +153,7 @@ class GitHub(models.Model):
     def get_fork(self):
         _forks_count = Repository.objects.filter(author=self.login) \
             .aggregate(fork_sum=Sum('forks_count'))
-        return _forks_count['fork_sum'] if _forks_count['forks_count'] else 0
+        return _forks_count['forks_count'] if _forks_count['forks_count'] else 0
 
     def get_repos_count(self):
         repos_count = Repository.objects.filter(author=self.login).count()
