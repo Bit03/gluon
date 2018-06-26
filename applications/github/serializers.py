@@ -7,14 +7,6 @@ from applications.github.models import (
 )
 
 
-#
-# class OrganizationSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = Organization
-#         exclude = ("created_at", "id")
-#         read_only_fields = ("slug",)
-
-
 class PeopleSerializer(serializers.ModelSerializer):
     watch = serializers.IntegerField(default=0, source='get_watch', read_only=True)
     star = serializers.IntegerField(default=0, source='get_star', read_only=True)
@@ -66,11 +58,10 @@ class RepositoryCommitSerializer(serializers.ModelSerializer):
 
 class RepositoryCommitStateSerializer(serializers.Serializer):
     date = serializers.DateField()
-    commit_count = serializers.IntegerField()
+    commit_count = serializers.IntegerField(default=0)
 
     def update(self, instance, validated_data):
         pass
 
     def create(self, validated_data):
         pass
-

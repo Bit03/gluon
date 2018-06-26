@@ -1,10 +1,10 @@
 import logging
-from dateutil import parser
 from datetime import datetime, timedelta
 from django.db.models import Count
 from django.db.models.functions import TruncDate
 from rest_framework import generics
 from rest_framework.generics import get_object_or_404
+from applications.utils.renderers import ChartRenderer
 
 from applications.github.models import (
     People,
@@ -78,6 +78,8 @@ class UserRepositoryCommitListAPIView(generics.ListAPIView):
     serializer_class = RepositoryCommitStateSerializer
     pagination_class = None
 
+    renderer_classes = (ChartRenderer, )
+
     @property
     def start(self):
         _before = self.request.GET.get('before', 30)
@@ -96,9 +98,6 @@ class UserRepositoryCommitListAPIView(generics.ListAPIView):
             .values('date')\
             .annotate(commit_count=Count('id'))\
             .values('date', 'commit_count').order_by('-date')
-
-    # def get(self, request, *args, **kwargs):
-    #     return super(UserRepositoryCommitListAPIView, self).get(request, *args, **kwargs)
 
 
 class RepositoryCheckAPIView(generics.RetrieveAPIView):
