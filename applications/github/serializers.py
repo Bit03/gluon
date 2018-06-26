@@ -1,3 +1,4 @@
+import time
 from rest_framework import serializers
 from applications.github.models import (
     People,
@@ -57,8 +58,12 @@ class RepositoryCommitSerializer(serializers.ModelSerializer):
 
 
 class RepositoryCommitStateSerializer(serializers.Serializer):
-    date = serializers.DateField()
+    timestamp = serializers.SerializerMethodField()
     commit_count = serializers.IntegerField(default=0)
+
+    def get_timestamp(self, obj):
+        _date = obj['date']
+        return time.mktime(_date.timetuple())
 
     def update(self, instance, validated_data):
         pass
