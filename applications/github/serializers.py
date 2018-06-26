@@ -19,6 +19,7 @@ class PeopleSerializer(serializers.ModelSerializer):
     watch = serializers.IntegerField(default=0, source='get_watch', read_only=True)
     star = serializers.IntegerField(default=0, source='get_star', read_only=True)
     fork = serializers.IntegerField(default=0, source='get_fork', read_only=True)
+    repos_count = serializers.IntegerField(default=0, source='get_repos_count', read_only=True)
 
     class Meta:
         model = People

@@ -28,5 +28,4 @@ class Command(BaseCommand):
                 logger.info(res.json())
             else:
                 logger.error(res.text)
-                # print(res.text)
             time.sleep(3)

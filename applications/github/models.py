@@ -105,6 +105,10 @@ class People(CachingMixin, models.Model):
             .aggregate(fork_sum=Sum('forks_count'))
         return _forks_count['fork_sum']
 
+    def get_repos_count(self):
+        repos_count = Repository.objects.filter(author=self.login).count()
+        return repos_count
+
 
 class Repository(CachingMixin, models.Model):
     author = models.CharField(max_length=128, default='')
