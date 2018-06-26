@@ -1,5 +1,6 @@
 import logging
-
+from dateutil import parser
+from datetime import datetime, timedelta
 from django.db.models import Count
 from django.db.models.functions import TruncDate
 from rest_framework import generics
@@ -75,16 +76,29 @@ class UserRepositoryListAPIView(generics.ListAPIView):
 class UserRepositoryCommitListAPIView(generics.ListAPIView):
     queryset = Commit.objects.all()
     serializer_class = RepositoryCommitStateSerializer
+    pagination_class = None
+
+    @property
+    def start(self):
+        _before = self.request.GET.get('before', 30)
+        if not isinstance(_before, int):
+            _before = int(_before)
+        _start = datetime.now() - timedelta(days=_before)
+        return _start
 
     def get_queryset(self):
         repos = Repository.objects.filter(
             author=self.kwargs['user'],
         ).values_list('pk', flat=True)
         qs = self.queryset
-        return qs.filter(repos_id__in=repos).annotate(date=TruncDate('commit_datetime'))\
+        return qs.filter(repos_id__in=repos).filter(commit_datetime__range=(self.start, datetime.now()))\
+            .annotate(date=TruncDate('commit_datetime'))\
             .values('date')\
             .annotate(commit_count=Count('id'))\
             .values('date', 'commit_count').order_by('-date')
+
+    # def get(self, request, *args, **kwargs):
+    #     return super(UserRepositoryCommitListAPIView, self).get(request, *args, **kwargs)
 
 
 class RepositoryCheckAPIView(generics.RetrieveAPIView):
@@ -126,13 +140,24 @@ class ReposCommitListAPIView(generics.ListAPIView):
     queryset = Commit.objects.all()
     serializer_class = RepositoryCommitStateSerializer
 
+    pagination_class = None
+
+    @property
+    def start(self):
+        _before = self.request.GET.get('before', 30)
+        if not isinstance(_before, int):
+            _before = int(_before)
+        _start = datetime.now() - timedelta(days=_before)
+        return _start
+
     def get_queryset(self):
         repo = Repository.objects.get(
             author=self.kwargs['user'],
             name=self.kwargs['repo'],
         )
         qs = self.queryset
-        return qs.filter(repos=repo).annotate(date=TruncDate('commit_datetime'))\
+        return qs.filter(repos=repo).filter(commit_datetime__range=(self.start, datetime.now()))\
+            .annotate(date=TruncDate('commit_datetime'))\
             .values('date')\
             .annotate(commit_count=Count('id'))\
             .values('date', 'commit_count').order_by('-date')

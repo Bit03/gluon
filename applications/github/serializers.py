@@ -68,3 +68,9 @@ class RepositoryCommitStateSerializer(serializers.Serializer):
     date = serializers.DateField()
     commit_count = serializers.IntegerField()
 
+    def update(self, instance, validated_data):
+        pass
+
+    def create(self, validated_data):
+        pass
+
