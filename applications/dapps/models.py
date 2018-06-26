@@ -5,12 +5,15 @@ from urllib.parse import urlparse
 
 from django.core import urlresolvers
 from django.db import models
+from django.db.models import Sum
 from django.utils import timezone
 from django_extensions.db import fields
 from model_utils.models import SoftDeletableModel
 from model_utils.fields import StatusField
 from model_utils import Choices
 from taggit.managers import TaggableManager
+
+from applications.github.models import Repository
 
 
 class DApp(SoftDeletableModel):
@@ -137,13 +140,24 @@ class GitHub(models.Model):
             return author
         return None
 
-    @property
-    def author_url(self):
-        if "https://github.com" in self.url:
-            o = urlparse(self.url)
-            return "{scheme}://{host}/{author}".format(scheme=o.scheme,
-                                                       host=o.netloc, author=self.author)
-        return None
+    def get_watch(self):
+        _watchers_count = Repository.objects.filter(author=self.login) \
+            .aggregate(watch_sum=Sum('watchers_count'))
+        return _watchers_count['watch_sum'] if _watchers_count['watch_sum'] else 0
+
+    def get_star(self):
+        _stargazers_count = Repository.objects.filter(author=self.login) \
+            .aggregate(star_sum=Sum('stargazers_count'))
+        return _stargazers_count['star_sum'] if _stargazers_count['star_sum'] else 0
+
+    def get_fork(self):
+        _forks_count = Repository.objects.filter(author=self.login) \
+            .aggregate(fork_sum=Sum('forks_count'))
+        return _forks_count['fork_sum'] if _forks_count['forks_count'] else 0
+
+    def get_repos_count(self):
+        repos_count = Repository.objects.filter(author=self.login).count()
+        return repos_count
 
 
 class Social(models.Model):

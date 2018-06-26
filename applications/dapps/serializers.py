@@ -20,6 +20,11 @@ class SocialSerializers(serializers.ModelSerializer):
 
 
 class GithubSerializers(serializers.ModelSerializer):
+    watch = serializers.IntegerField(source='get_watch', default=0, read_only=True)
+    star = serializers.IntegerField(source='get_star', default=0, read_only=True)
+    fork = serializers.IntegerField(source='get_fork', default=0, read_only=True)
+    repos_count = serializers.IntegerField(source='get_repos_count', default=0, read_only=True)
+
     class Meta:
         model = GitHub
         exclude = ["id", "dapp", "url"]

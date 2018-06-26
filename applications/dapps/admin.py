@@ -73,7 +73,7 @@ class DAppSocialAdmin(admin.ModelAdmin):
 
 
 class DAppGihubAdmin(admin.ModelAdmin):
-    list_display = ("dapp", 'url', 'author_url', 'updated_at')
+    list_display = ("dapp", 'login', 'url', 'html_url', 'updated_at')
     ordering = ("-updated_at", )
 
 
