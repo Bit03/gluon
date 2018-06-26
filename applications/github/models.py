@@ -155,7 +155,7 @@ class Repository(CachingMixin, models.Model):
 
     @cached_property
     def last_stats(self):
-        return self.stats.last()
+        return self.stats.latest()
 
     @property
     def watch(self):
