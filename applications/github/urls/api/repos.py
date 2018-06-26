@@ -5,14 +5,14 @@ from applications.github.views.api import (
     UserRepositoryCommitListAPIView,
     RepositoryCheckAPIView,
     RepositoryDetailAPIView,
-    RepoStatsListAPIView,
+    RepoStatsCreateAPIView,
     ReposCommitCreateAPIView,
     ReposCommitListAPIView,
 )
 
 urlpatterns = [
     url(r'^$', RepositoryListAPIView.as_view(), name='list'),
-    url(r'^stats/?$', RepoStatsListAPIView.as_view(), name='stats'),
+    url(r'^stats/?$', RepoStatsCreateAPIView.as_view(), name='stats'),
     url(r'^commit/?$', ReposCommitCreateAPIView.as_view(), name='commit'),
     url(r'^check/(?P<identified_code>\w+)/?$', RepositoryCheckAPIView.as_view(), name='check'),
 

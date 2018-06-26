@@ -125,7 +125,7 @@ class RepositoryDetailAPIView(generics.RetrieveUpdateAPIView):
         return obj
 
 
-class RepoStatsListAPIView(generics.CreateAPIView):
+class RepoStatsCreateAPIView(generics.CreateAPIView):
     queryset = RepositoryStats.objects.all()
     serializer_class = RepositoryStatsSerializer
 
