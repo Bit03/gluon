@@ -10,7 +10,7 @@ logger = logging.getLogger('django')
 class Command(BaseCommand):
 
     def handle(self, *args, **options):
-        for row in Repository.objects.filter(html_url__isnull=True):
+        for row in Repository.objects.filter(html_url__isnull=True, state=True):
             logger.info(row.full_name)
             _url = "https://api.github.com/repos/{full_name}".format(
                 full_name=row.full_name
@@ -33,6 +33,8 @@ class Command(BaseCommand):
                 row.forks_count = data['forks_count']
                 row.save()
             else:
+                row.state = False
+                row.save()
                 logger.error(res.status_code)
                 logger.error(res.content)
 
