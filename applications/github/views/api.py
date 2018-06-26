@@ -72,6 +72,21 @@ class UserRepositoryListAPIView(generics.ListAPIView):
         return super(UserRepositoryListAPIView, self).get(request, *args, **kwargs)
 
 
+class UserRepositoryCommitListAPIView(generics.ListAPIView):
+    queryset = Commit.objects.all()
+    serializer_class = RepositoryCommitStateSerializer
+
+    def get_queryset(self):
+        repos = Repository.objects.filter(
+            author=self.kwargs['user'],
+        ).values_list('pk', flat=True)
+        qs = self.queryset
+        return qs.filter(repos_id__in=repos).annotate(date=TruncDate('commit_datetime'))\
+            .values('date')\
+            .annotate(commit_count=Count('id'))\
+            .values('date', 'commit_count').order_by('-date')
+
+
 class RepositoryCheckAPIView(generics.RetrieveAPIView):
     model = Repository
     queryset = Repository.objects.all()

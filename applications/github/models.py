@@ -126,6 +126,8 @@ class Repository(CachingMixin, models.Model):
 
     identified_code = models.CharField(null=True, blank=True, max_length=32, unique=True)
 
+    state = models.BooleanField(default=True)
+
     created_at = models.DateTimeField(default=timezone.now, editable=False, db_index=True)
     updated_at = models.DateTimeField(default=timezone.now, editable=False, db_index=True)
     pushed_at = models.DateTimeField(default=timezone.now, editable=False, db_index=True)
