@@ -34,6 +34,7 @@ class RepositoryAdmin(admin.ModelAdmin):
     list_display = ("name", "desc", "html_url",
                     "watch", "star", "fork", "language",
                     "created_at", "updated_at")
+    list_filter = ('state', )
     ordering = ("-updated_at",)
     search_fields = ("author", "name", "language", )
 
