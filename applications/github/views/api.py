@@ -16,25 +16,12 @@ from applications.github.serializers import (
     PeopleSerializer,
     RepositorySerializer,
     RepositoryStatsSerializer,
+    RepositoryStateChartSerializer,
     RepositoryCommitSerializer,
     RepositoryCommitStateSerializer,
 )
 
 logger = logging.getLogger('django')
-
-
-# class OrganizationListAPIView(generics.ListCreateAPIView):
-#     model = Organization
-#     serializer_class = OrganizationSerializer
-#     queryset = Organization.objects.all()
-#     # pagination_class = StandardResultsSetPagination
-#     ordering_fields = ('created_at',)
-#
-#
-# class OrganizationDetailAPIView(generics.RetrieveUpdateAPIView):
-#     serializer_class = OrganizationSerializer
-#     queryset = Organization.objects.all()
-#     lookup_field = 'name'
 
 
 class PeopleListAPIView(generics.ListCreateAPIView):
@@ -128,6 +115,19 @@ class RepositoryDetailAPIView(generics.RetrieveUpdateAPIView):
 class RepoStatsCreateAPIView(generics.CreateAPIView):
     queryset = RepositoryStats.objects.all()
     serializer_class = RepositoryStatsSerializer
+
+
+class RepoStatsListAPIView(generics.ListAPIView):
+    queryset = RepositoryStats.objects.all()
+    serializer_class = RepositoryStateChartSerializer
+
+    def get_queryset(self):
+        qs = self.queryset
+        repo = Repository.objects.get(
+            author=self.kwargs['user'],
+            name=self.kwargs['repo'],
+        )
+        return qs.filter(repos=repo)
 
 
 class ReposCommitCreateAPIView(generics.CreateAPIView):

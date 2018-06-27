@@ -70,3 +70,20 @@ class RepositoryCommitStateSerializer(serializers.Serializer):
 
     def create(self, validated_data):
         pass
+
+
+class RepositoryStateChartSerializer(serializers.Serializer):
+    timestamp = serializers.SerializerMethodField()
+    watch = serializers.IntegerField(default=0)
+    star = serializers.IntegerField(default=0)
+    fork = serializers.IntegerField(default=0)
+
+    def get_timestamp(self, obj):
+        _date = obj.date
+        return time.mktime(_date.timetuple())
+
+    def update(self, instance, validated_data):
+        pass
+
+    def create(self, validated_data):
+        pass
