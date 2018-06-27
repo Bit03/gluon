@@ -22,7 +22,6 @@ class StatChartRenderer(BaseRenderer):
     render_style = 'text'
 
     def render(self, data, accepted_media_type=None, renderer_context=None):
-        print (data)
         ret = list(map(lambda x: [
             x['timestamp'], x['watch'], x['star'], x['fork'],
         ], data))

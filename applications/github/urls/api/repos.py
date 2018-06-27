@@ -3,6 +3,7 @@ from applications.github.views.api import (
     RepositoryListAPIView,
     UserRepositoryListAPIView,
     UserRepositoryCommitListAPIView,
+    UserRepositoryStateListAPIView,
     RepositoryCheckAPIView,
     RepositoryDetailAPIView,
     RepoStatsCreateAPIView,
@@ -19,6 +20,7 @@ urlpatterns = [
 
     url(r'^(?P<user>[\-|\w]+)/?$', UserRepositoryListAPIView.as_view(), name='users'),
     url(r'^(?P<user>[\-|\w]+)/commit/?$', UserRepositoryCommitListAPIView.as_view(), name='users_commit'),
+    url(r'^(?P<user>[\-|\w]+)/state/?$', UserRepositoryStateListAPIView.as_view(), name='users_state'),
 
     url(r'^(?P<user>[\-|\w]+)/(?P<repo>[\-|\.|\w]+)/?$', RepositoryDetailAPIView.as_view(), name='detail'),
     url(r'^(?P<user>[\-|\w]+)/(?P<repo>[\-|\.|\w]+)/state/?$',
