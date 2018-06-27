@@ -76,7 +76,7 @@ class RepositoryStateChartSerializer(serializers.Serializer):
     fork = serializers.IntegerField(default=0)
 
     def get_timestamp(self, obj):
-        _date = obj['date']
+        _date = obj.date
         return time.mktime(_date.timetuple())
 
     def update(self, instance, validated_data):

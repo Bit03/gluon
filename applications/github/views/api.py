@@ -1,10 +1,14 @@
 import logging
+import pandas as pd
 from datetime import datetime, timedelta
 from django.db.models import Count
 from django.db.models.functions import TruncDate
 from rest_framework import generics
 from rest_framework.generics import get_object_or_404
-from applications.utils.renderers import ChartRenderer
+from applications.utils.renderers import (
+    CommitChartRenderer,
+    StatChartRenderer
+)
 
 from applications.github.models import (
     People,
@@ -65,7 +69,7 @@ class UserRepositoryCommitListAPIView(generics.ListAPIView):
     serializer_class = RepositoryCommitStateSerializer
     pagination_class = None
 
-    renderer_classes = (ChartRenderer,)
+    renderer_classes = (CommitChartRenderer,)
 
     @property
     def start(self):
@@ -121,16 +125,19 @@ class RepoStatsListAPIView(generics.ListAPIView):
     queryset = RepositoryStats.objects.all()
     serializer_class = RepositoryStateChartSerializer
     pagination_class = None
+    renderer_classes = (StatChartRenderer, )
 
     def process_dataframe(self, df):
+        ret = pd.DataFrame(
+            {
+                "date": df.sort_index().index.tolist(),
+                "watch": df.sort_index().watch.diff().fillna(0).tolist(),
+                "star": df.sort_index().star.diff().fillna(0).tolist(),
+                "fork": df.sort_index().fork.diff().fillna(0).tolist(),
+            },
 
-        ret = list(
-            map(lambda x: {
-                'date': x,
-            }, df.index.tolist())
         )
-        logger.info(ret)
-        return ret
+        return ret.itertuples(index=True)
 
     def get_queryset(self):
         qs = self.queryset
@@ -153,7 +160,7 @@ class ReposCommitListAPIView(generics.ListAPIView):
     serializer_class = RepositoryCommitStateSerializer
 
     pagination_class = None
-    renderer_classes = (ChartRenderer,)
+    renderer_classes = (CommitChartRenderer,)
 
     @property
     def start(self):
