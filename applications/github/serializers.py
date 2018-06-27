@@ -39,9 +39,6 @@ class RepositoryStatsSerializer(serializers.ModelSerializer):
     class Meta:
         model = RepositoryStats
         fields = ("repos_id", "watch", "star", "fork", "date")
-        # read_only_fields = ('date',)
-        # pandas_index = ['date']
-        # pandas_unstacked_header = ['repos_id', ]
 
     def create(self, validated_data):
         return super().create(validated_data)
