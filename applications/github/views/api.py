@@ -65,7 +65,7 @@ class UserRepositoryCommitListAPIView(generics.ListAPIView):
     serializer_class = RepositoryCommitStateSerializer
     pagination_class = None
 
-    renderer_classes = (ChartRenderer, )
+    renderer_classes = (ChartRenderer,)
 
     @property
     def start(self):
@@ -80,10 +80,10 @@ class UserRepositoryCommitListAPIView(generics.ListAPIView):
             author=self.kwargs['user'],
         ).values_list('pk', flat=True)
         qs = self.queryset
-        return qs.filter(repos_id__in=repos).filter(commit_datetime__range=(self.start, datetime.now()))\
-            .annotate(date=TruncDate('commit_datetime'))\
-            .values('date')\
-            .annotate(commit_count=Count('id'))\
+        return qs.filter(repos_id__in=repos).filter(commit_datetime__range=(self.start, datetime.now())) \
+            .annotate(date=TruncDate('commit_datetime')) \
+            .values('date') \
+            .annotate(commit_count=Count('id')) \
             .values('date', 'commit_count').order_by('-date')
 
 
@@ -120,6 +120,17 @@ class RepoStatsCreateAPIView(generics.CreateAPIView):
 class RepoStatsListAPIView(generics.ListAPIView):
     queryset = RepositoryStats.objects.all()
     serializer_class = RepositoryStateChartSerializer
+    pagination_class = None
+
+    def process_dataframe(self, df):
+
+        ret = list(
+            map(lambda x: {
+                'date': x,
+            }, df.index.tolist())
+        )
+        logger.info(ret)
+        return ret
 
     def get_queryset(self):
         qs = self.queryset
@@ -127,7 +138,9 @@ class RepoStatsListAPIView(generics.ListAPIView):
             author=self.kwargs['user'],
             name=self.kwargs['repo'],
         )
-        return qs.filter(repos=repo)
+        df = qs.filter(repos=repo).order_by("date").to_dataframe(index='date')
+
+        return self.process_dataframe(df=df)
 
 
 class ReposCommitCreateAPIView(generics.CreateAPIView):
@@ -140,7 +153,7 @@ class ReposCommitListAPIView(generics.ListAPIView):
     serializer_class = RepositoryCommitStateSerializer
 
     pagination_class = None
-    renderer_classes = (ChartRenderer, )
+    renderer_classes = (ChartRenderer,)
 
     @property
     def start(self):
@@ -156,9 +169,8 @@ class ReposCommitListAPIView(generics.ListAPIView):
             name=self.kwargs['repo'],
         )
         qs = self.queryset
-        return qs.filter(repos=repo).filter(commit_datetime__range=(self.start, datetime.now()))\
-            .annotate(date=TruncDate('commit_datetime'))\
-            .values('date')\
-            .annotate(commit_count=Count('id'))\
+        return qs.filter(repos=repo).filter(commit_datetime__range=(self.start, datetime.now())) \
+            .annotate(date=TruncDate('commit_datetime')) \
+            .values('date') \
+            .annotate(commit_count=Count('id')) \
             .values('date', 'commit_count').order_by('-date')
-

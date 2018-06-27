@@ -190,7 +190,7 @@ class Repository(CachingMixin, models.Model):
     def stats_df(self, days=31):
         return self.stats \
             .filter(date__gte=datetime.now() - timedelta(days)) \
-            .order_by('date') \
+            .order_by('-date') \
             .to_dataframe(index='date')
 
     def save(self, *args, **kwargs):
