@@ -12,19 +12,6 @@ ALLOWED_HOSTS = [
     "*",
 ]
 
-# django-node
-# ------------------------------------------------------------------------------------
-# https://django-nose.readthedocs.io/en/latest/index.html
-# INSTALLED_APPS += ['django_nose', ]
-# Use nose to run all tests
-# TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
-
-# Tell nose to measure coverage on the 'foo' and 'bar' apps
-# NOSE_ARGS = [
-#     '--with-coverage',
-#     '--cover-package=dapps,github',
-# ]
-
 # django-debug-toolbar
 # ------------------------------------------------------------------------------
 # https://django-debug-toolbar.readthedocs.io/en/latest/installation.html#prerequisites

@@ -7,7 +7,7 @@ ALLOWED_HOSTS = [
     "*",
 ]
 
-# django-node
+# django-nose
 # ------------------------------------------------------------------------------------
 # https://django-nose.readthedocs.io/en/latest/index.html
 INSTALLED_APPS += ['django_nose', ]
