@@ -15,7 +15,8 @@ urlpatterns += [
     url(r'^github/', include('applications.github.urls.api', namespace='github')),
 
     # auth api
-    url(r'^rest-auth/', include('rest_auth.urls')),
+    url(r'^auth/', include('rest_auth.urls')),
+    url(r'^auth/registration/', include('rest_auth.registration.urls')),
     url(r'^auth/verify/?$', verify_jwt_token, name='verify'),
     url(r'^auth/refresh/?$', refresh_jwt_token, name='refresh'),
 ]

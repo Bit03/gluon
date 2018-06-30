@@ -58,6 +58,7 @@ REST_FRAMEWORK_APPS = [
     'rest_framework.authtoken',
     'rest_framework_swagger',
     'rest_auth',
+    'rest_auth.registration',
 ]
 THIRD_PARTY_APPS = [
     'django_extensions',
