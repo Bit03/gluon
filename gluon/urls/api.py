@@ -16,7 +16,7 @@ urlpatterns += [
 
     # auth api
     url(r'^auth/', include('rest_auth.urls')),
-    url(r'^auth/registration/', include('rest_auth.registration.urls')),
+    # url(r'^auth/registration/', include('rest_auth.registration.urls')),
     url(r'^auth/verify/?$', verify_jwt_token, name='verify'),
     url(r'^auth/refresh/?$', refresh_jwt_token, name='refresh'),
 ]
