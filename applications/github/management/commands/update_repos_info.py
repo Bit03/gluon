@@ -1,3 +1,5 @@
+from time import sleep
+
 from applications.github.models import Repository
 from django.core.management import BaseCommand
 import requests
@@ -38,6 +40,7 @@ class Command(BaseCommand):
             else:
                 logger.error(res.status_code)
                 logger.error(res.content)
+            sleep(2)
 
 
 
