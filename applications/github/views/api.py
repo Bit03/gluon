@@ -51,17 +51,15 @@ class UserRepositoryListAPIView(generics.ListAPIView):
     queryset = Repository.objects.all()
     serializer_class = RepositorySerializer
     ordering_fields = ('-updated_at',)
-    users = None
+    # users = None
 
     def get_queryset(self):
         qs = self.queryset
-        qs = qs.filter(author=self.users)
+        qs = qs.filter(author=self.kwargs.pop('user'))
         return qs
 
-    def get(self, request, *args, **kwargs):
-        self.users = kwargs.pop('user', None)
-        logging.info(self.users)
-        return super(UserRepositoryListAPIView, self).get(request, *args, **kwargs)
+    # def get(self, request, *args, **kwargs):
+    #     return super(UserRepositoryListAPIView, self).get(request, *args, **kwargs)
 
 
 class UserRepositoryCommitListAPIView(generics.ListAPIView):

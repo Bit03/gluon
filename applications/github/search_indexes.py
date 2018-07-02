@@ -1,3 +1,5 @@
+# import datetime
+from datetime import datetime, timedelta
 from haystack import indexes
 from haystack.query import SearchQuerySet
 from applications.github.models import (
@@ -55,6 +57,8 @@ class PeopleIndex(indexes.Indexable, indexes.SearchIndex):
     location = indexes.CharField(model_attr='location', null=True)
     email = indexes.CharField(model_attr='email', null=True)
 
+    html_url = indexes.CharField(model_attr='html_url')
+
     def get_model(self):
         return People
 
@@ -79,6 +83,8 @@ class ReposIndex(indexes.Indexable, indexes.SearchIndex):
     latest_7_day_fork = indexes.IntegerField(default=0, stored=True)
     latest_7_day_watch = indexes.IntegerField(default=0, stored=True)
 
+    latest_7_day_commit = indexes.IntegerField(default=0, stored=True)
+
     def get_model(self):
         return Repository
 
@@ -96,3 +102,8 @@ class ReposIndex(indexes.Indexable, indexes.SearchIndex):
     def prepare_latest_7_day_watch(self, obj):
         watch_sum = obj.stats_df(8).watch.diff().fillna(0).sum()
         return int(watch_sum)
+
+    def prepare_latest_7_day_commit(self, obj):
+        _start = datetime.now() - timedelta(days=7)
+        _count = obj.commit.filter(commit_datetime__range=(_start, datetime.now())).count()
+        return _count
