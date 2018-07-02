@@ -48,9 +48,12 @@ from applications.github.models import (
 
 class PeopleIndex(indexes.Indexable, indexes.SearchIndex):
     text = indexes.CharField(document=True, use_template=True)
-    name = indexes.CharField(model_attr='name')
+    name = indexes.CharField(model_attr='name', null=True)
     login = indexes.CharField(model_attr='login')
-    company = indexes.CharField(model_attr='company')
+    company = indexes.CharField(model_attr='company', null=True)
+    bio = indexes.CharField(model_attr='bio', null=True)
+    location = indexes.CharField(model_attr='location', null=True)
+    email = indexes.CharField(model_attr='email', null=True)
 
     def get_model(self):
         return People
