@@ -1,6 +1,9 @@
 from haystack import indexes
 from haystack.query import SearchQuerySet
-from applications.github.models import Repository, Organization
+from applications.github.models import (
+    Repository,
+    People,
+)
 
 
 # class OrganizationIndex(indexes.Indexable, indexes.SearchIndex):
@@ -43,8 +46,17 @@ from applications.github.models import Repository, Organization
 #         return _watch
 
 
-# class PeopleIndex(indexes.Indexable, indexes.SearchIndex):
-#     text = indexes.CharField(document=True, use_template=True)
+class PeopleIndex(indexes.Indexable, indexes.SearchIndex):
+    text = indexes.CharField(document=True, use_template=True)
+    name = indexes.CharField(model_attr='name')
+    login = indexes.CharField(model_attr='login')
+    company = indexes.CharField(model_attr='company')
+
+    def get_model(self):
+        return People
+
+    def index_queryset(self, using=None):
+        return self.get_model().objects.all()
 
 
 class ReposIndex(indexes.Indexable, indexes.SearchIndex):
