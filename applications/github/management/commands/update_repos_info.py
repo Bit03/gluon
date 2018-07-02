@@ -10,7 +10,7 @@ logger = logging.getLogger('django')
 class Command(BaseCommand):
 
     def handle(self, *args, **options):
-        for row in Repository.objects.filter(html_url__isnull=True, state=True):
+        for row in Repository.objects.filter(state=True):
             logger.info(row.full_name)
             _url = "https://api.github.com/repos/{full_name}".format(
                 full_name=row.full_name
