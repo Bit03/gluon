@@ -36,6 +36,19 @@ class EmailAddressSerializers(serializers.ModelSerializer):
         exclude = ['id', 'dapp']
 
 
+class AdminDAppSerializers(serializers.ModelSerializer):
+    site = SiteSerializers()
+    social = SocialSerializers()
+    github = GithubSerializers()
+    email = EmailAddressSerializers()
+
+    admin_url = serializers.CharField(source='get_admin_url')
+
+    class Meta:
+        model = DApp
+        exclude = ("id", "updated_at", "created_at", "is_removed",)
+
+
 class DAppSerializers(serializers.ModelSerializer):
     site = SiteSerializers()
     social = SocialSerializers()

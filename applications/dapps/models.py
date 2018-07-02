@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 
 from urllib.parse import urlparse
 
+from django.contrib.contenttypes.models import ContentType
 from django.core import urlresolvers
 from django.db import models
 from django.db.models import Sum
@@ -62,6 +63,12 @@ class DApp(SoftDeletableModel):
 
     def get_absolute_url(self):
         return urlresolvers.reverse('dapps:detail', args=[self.slug, ])
+
+    def get_admin_url(self):
+        content_type = ContentType.objects.get_for_model(self.__class__)
+        return urlresolvers.reverse("admin:%s_%s_change" %
+                                    (content_type.app_label, content_type.model),
+                                    args=(self.pk,))
 
 
 class ContractAddress(models.Model):
