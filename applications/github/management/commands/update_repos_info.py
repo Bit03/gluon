@@ -40,7 +40,7 @@ class Command(BaseCommand):
             else:
                 logger.error(res.status_code)
                 logger.error(res.content)
-            sleep(2)
+            sleep(3)
 
 
 
