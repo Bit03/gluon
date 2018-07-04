@@ -1,4 +1,6 @@
 import logging
+from time import sleep
+
 from django.core.management import BaseCommand
 from applications.dapps.models import GitHub as dapp_github
 from github import Github, UnknownObjectException
@@ -18,10 +20,10 @@ class Command(BaseCommand):
                     row.state = False
                     row.save()
                     continue
-
                 row.login = user.login
                 row.avatar_url = user.avatar_url
                 row.url = user.url
                 row.html_url = user.html_url
                 row.email = user.email
                 row.save()
+                sleep(3)

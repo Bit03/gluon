@@ -4,7 +4,6 @@ import time
 from django.core.management import BaseCommand
 from applications.github.models import Repository
 
-
 logger = logging.getLogger('django')
 
 spider_url = "https://spider.dapprank.com/schedule.json"
@@ -14,8 +13,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         for row in Repository.objects.filter(html_url__isnull=False):
-            print(row.full_name, row.html_url, row.id)
-
+            logger.info("{} - {} - {}".format(row.full_name, row.html_url, row.id))
             data = {
                 "project": "muon",
                 "spider": "commit",
