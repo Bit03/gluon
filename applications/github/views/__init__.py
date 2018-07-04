@@ -61,7 +61,7 @@ class ReposDetailView(generic.DetailView):
                                pretty_print=True,
                                interpolate='cubic', style=DarkSolarizedStyle)
         line_chat.human_readable = True
-        line_chat.x_labels =  map(lambda x: x.strftime("%Y-%m-%d"), df.index.tolist())
+        line_chat.x_labels = map(lambda x: x.strftime("%Y-%m-%d"), df.index.tolist())
         star_se = df.star.diff().fillna(0)
         fork_se = df.fork.diff().fillna(0)
         watch_se = df.watch.diff().fillna(0)
