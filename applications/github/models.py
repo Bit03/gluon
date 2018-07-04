@@ -80,6 +80,8 @@ class People(CachingMixin, models.Model):
     created_at = models.DateTimeField(default=timezone.now, db_index=True, editable=False)
     updated_at = models.DateTimeField(default=timezone.now, db_index=True)
 
+    alive = models.BooleanField(default=True)
+
     def __str__(self):
         return self.login
 
