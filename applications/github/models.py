@@ -185,14 +185,12 @@ class Repository(CachingMixin, models.Model):
             _fork = 0
         return _fork
 
-    # @property
     def render_readme(self):
         return md.convert(self.readme)
 
     def stats_df(self, days=31):
         return self.stats \
             .filter(date__gte=datetime.now() - timedelta(days)) \
-            .order_by('-date') \
             .to_dataframe(index='date')
 
     def save(self, *args, **kwargs):

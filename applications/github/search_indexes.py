@@ -92,15 +92,15 @@ class ReposIndex(indexes.Indexable, indexes.SearchIndex):
         return self.get_model().objects.all()
 
     def prepare_latest_7_day_star(self, obj):
-        star_sum = obj.stats_df(8).star.diff().fillna(0).sum()
+        star_sum = obj.stats_df(8).sort_index().star.diff().fillna(0).sum()
         return int(star_sum)
 
     def prepare_latest_7_day_fork(self, obj):
-        fork_sum = obj.stats_df(8).fork.diff().fillna(0).sum()
+        fork_sum = obj.stats_df(8).sort_index().fork.diff().fillna(0).sum()
         return int(fork_sum)
 
     def prepare_latest_7_day_watch(self, obj):
-        watch_sum = obj.stats_df(8).watch.diff().fillna(0).sum()
+        watch_sum = obj.stats_df(8).sort_index().watch.diff().fillna(0).sum()
         return int(watch_sum)
 
     def prepare_latest_7_day_commit(self, obj):
