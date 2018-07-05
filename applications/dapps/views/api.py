@@ -10,7 +10,7 @@ class DAppListAPIView(generics.ListAPIView):
     search_fields = ('name', )
 
 
-class DAppDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
+class DAppDetailAPIView(generics.RetrieveUpdateAPIView):
     serializer_class = DAppSerializers
     queryset = DApp.objects.all()
     lookup_field = 'slug'
@@ -35,18 +35,6 @@ class DAppDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
             )
 
             return self.serializer_class
-
-    # def get_serializer(self, *args, **kwargs):
-    #     """
-    #     Return the serializer instance that should be used for validating and
-    #     deserializing input, and for serializing output.
-    #     """
-    #     if self.request.user.is_superuser:
-    #         serializer_class = AdminDAppSerializers
-    #     else:
-    #         serializer_class = self.get_serializer_class()
-    #     kwargs['context'] = self.get_serializer_context()
-    #     return serializer_class(*args, **kwargs)
 
 
 class DAppPlatformAPIView(generics.ListAPIView):
