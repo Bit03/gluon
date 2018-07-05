@@ -1,5 +1,6 @@
 # DAppRank
 
+[![Dapprank](https://cdn.dribbble.com/users/2123695/screenshots/4787505/dapprank.png)](https://dribbble.com/shots/4787505-DApp-Rank)
 
 [![GitHub license](https://img.shields.io/github/license/Bit03/gluon.svg)](https://github.com/Bit03/gluon/blob/master/LICENSE)
 [![GitHub forks](https://img.shields.io/github/forks/Bit03/gluon.svg)](https://github.com/Bit03/gluon/network)
@@ -11,7 +12,6 @@
 [![Twitter](https://img.shields.io/twitter/url/https/github.com/Bit03/gluon.svg?style=social)](https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2FBit03%2Fgluon)
 
 
-[![Dapprank](https://cdn.dribbble.com/users/2123695/screenshots/4787505/dapprank.png)](https://dribbble.com/shots/4787505-DApp-Rank)
 
 ## 准备工作
 
