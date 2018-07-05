@@ -132,7 +132,7 @@ class Repository(CachingMixin, models.Model):
 
     created_at = models.DateTimeField(default=timezone.now, editable=False, db_index=True)
     updated_at = models.DateTimeField(default=timezone.now, editable=False, db_index=True)
-    pushed_at = models.DateTimeField(default=timezone.now, editable=False, db_index=True)
+    pushed_at = models.DateTimeField(default=timezone.now, editable=False, db_index=True, null=True)
 
     objects = CachingManager()
 
