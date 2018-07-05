@@ -13,7 +13,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         org = People.objects.filter(type=People.TYPE.organization, alive=True)
-        for row in org[:10]:
+        for row in org:
             logger.info(row.login)
 
             try:
