@@ -7,9 +7,9 @@ from applications.github.models import (
 
 
 # Register your models here.
-class OrganizationAdmin(admin.ModelAdmin):
-    list_display = ("name", "web_site", "email", "bio", "location", "url", "created_at")
-    search_fields = ("name", )
+# class OrganizationAdmin(admin.ModelAdmin):
+#     list_display = ("name", "web_site", "email", "bio", "location", "url", "created_at")
+#     search_fields = ("name", )
 
 
 class PeopleAdmin(admin.ModelAdmin):
@@ -32,9 +32,9 @@ class PeopleAdmin(admin.ModelAdmin):
 
 class RepositoryAdmin(admin.ModelAdmin):
     list_display = ("name", "desc", "html_url",
-                    "watch", "star", "fork", "language",
+                    "watchers_count", "stargazers_count", "forks_count", "language",
                     "created_at", "updated_at")
-    list_filter = ('state', )
+    list_filter = ('state', "language")
     ordering = ("-updated_at",)
     search_fields = ("author", "name", "language", )
 

@@ -148,3 +148,5 @@ static
 webpack-stats.*.json
 
 
+whoosh_index
+
