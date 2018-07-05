@@ -20,7 +20,7 @@ class PeopleAdmin(admin.ModelAdmin):
     )
     list_display_links = ["login", ]
     search_fields = ["name", "login"]
-    list_filter = ['type']
+    list_filter = ['type', 'alive']
     ordering = ("-updated_at",)
 
     def get_avatar_tag(self, obj):
