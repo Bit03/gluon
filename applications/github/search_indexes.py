@@ -70,7 +70,7 @@ class ReposIndex(indexes.Indexable, indexes.SearchIndex):
     text = indexes.CharField(document=True, use_template=True)
     author = indexes.CharField(model_attr='author')
     name = indexes.CharField(model_attr='name')
-    desc = indexes.CharField(model_attr='desc')
+    desc = indexes.CharField(model_attr='desc', default='')
 
     created_at = indexes.DateTimeField(model_attr='created_at')
     updated_at = indexes.DateTimeField(model_attr='updated_at')
