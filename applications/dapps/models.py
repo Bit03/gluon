@@ -25,7 +25,8 @@ class DApp(SoftDeletableModel):
 
     slug = fields.RandomCharField(length=12, unique=True,
                                   include_alpha=False, db_index=True, editable=False)
-    name = models.CharField(max_length=64, )
+    name = models.CharField(max_length=64)
+    bio = models.CharField(max_length=140, null=True, blank=True)
     platform = models.CharField(max_length=64, )
     symbol = models.CharField(max_length=255, null=True, blank=True)
     description = models.TextField(blank=True, default='', )
