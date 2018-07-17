@@ -83,6 +83,8 @@ class ReposIndex(indexes.Indexable, indexes.SearchIndex):
     latest_7_day_fork = indexes.IntegerField(default=0, stored=True)
     latest_7_day_watch = indexes.IntegerField(default=0, stored=True)
 
+    latest_7_day_commit = indexes.IntegerField(default=0, stored=True)
+    latest_30_day_commit = indexes.IntegerField(default=0, stored=True)
     latest_90_day_commit = indexes.IntegerField(default=0, stored=True)
 
     def get_model(self):
@@ -102,6 +104,16 @@ class ReposIndex(indexes.Indexable, indexes.SearchIndex):
     def prepare_latest_7_day_watch(self, obj):
         watch_sum = obj.stats_df(8).sort_index().watch.diff().fillna(0).sum()
         return int(watch_sum)
+
+    def prepare_latest_7_day_commit(self, obj):
+        _start = datetime.now() - timedelta(days=7)
+        _count = obj.commit.filter(commit_datetime__range=(_start, datetime.now())).count()
+        return _count
+
+    def prepare_latest_30_day_commit(self, obj):
+        _start = datetime.now() - timedelta(days=30)
+        _count = obj.commit.filter(commit_datetime__range=(_start, datetime.now())).count()
+        return _count
 
     def prepare_latest_90_day_commit(self, obj):
         _start = datetime.now() - timedelta(days=90)
