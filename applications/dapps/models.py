@@ -18,7 +18,6 @@ from applications.github.models import Repository
 
 
 class DApp(SoftDeletableModel):
-    # Platform = Choices("")
     ICO_STATUS_CHOICES = Choices("Planned", "Active", "Complate")
     STATUS = Choices("demo", "live", "concept", "wip")
     LICENSE_CHOICES = Choices("MIT", "GPLv3", "Apache License 2.0", "proprietary", "GPL")
