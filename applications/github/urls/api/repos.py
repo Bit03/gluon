@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from applications.github.views.api import (
+from applications.github.views.api.repos import (
     RepositoryListAPIView,
     UserRepositoryListAPIView,
     UserRepositoryCommitListAPIView,

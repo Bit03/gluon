@@ -7,7 +7,7 @@ class DAppListAPIView(generics.ListAPIView):
     serializer_class = DAppSerializers
     queryset = DApp.objects.all()
     filter_fields = ('status', 'ico_status', 'platform')
-    search_fields = ('name', )
+    search_fields = ('name',)
 
 
 class DAppDetailAPIView(generics.RetrieveUpdateAPIView):
@@ -29,9 +29,9 @@ class DAppDetailAPIView(generics.RetrieveUpdateAPIView):
             return AdminDAppSerializers
         else:
             assert self.serializer_class is not None, (
-                "'%s' should either include a `serializer_class` attribute, "
-                "or override the `get_serializer_class()` method."
-                % self.__class__.__name__
+                    "'%s' should either include a `serializer_class` attribute, "
+                    "or override the `get_serializer_class()` method."
+                    % self.__class__.__name__
             )
 
             return self.serializer_class
@@ -40,3 +40,8 @@ class DAppDetailAPIView(generics.RetrieveUpdateAPIView):
 class DAppPlatformAPIView(generics.ListAPIView):
     serializer_class = DAppPlatformSerializers
     queryset = DApp.objects.exclude(platform="").values('platform').distinct()
+
+
+class DAppRankAPIView(generics.ListAPIView):
+
+    queryset = DApp.objects.all()
