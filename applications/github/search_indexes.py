@@ -1,5 +1,5 @@
 from datetime import datetime, timedelta
-from applications.github.models import Commit, Repository
+from applications.github.models import Commit
 
 from haystack import indexes
 
@@ -21,9 +21,8 @@ class PeopleIndex(indexes.Indexable, indexes.SearchIndex):
     html_url = indexes.CharField(model_attr='html_url')
 
     latest_7_day_commit = indexes.IntegerField(default=0, stored=True)
-
-    # latest_30_day_commit = indexes.IntegerField(default=0, stored=True)
-    # latest_90_day_commit = indexes.IntegerField(default=0, stored=True)
+    latest_30_day_commit = indexes.IntegerField(default=0, stored=True)
+    latest_90_day_commit = indexes.IntegerField(default=0, stored=True)
 
     def get_model(self):
         return People
@@ -33,6 +32,22 @@ class PeopleIndex(indexes.Indexable, indexes.SearchIndex):
 
     def prepare_latest_7_day_commit(self, obj):
         _start = datetime.utcnow() - timedelta(days=7)
+        repos = Repository.objects.filter(author=obj.login).values_list('pk', flat=True)
+        commits = Commit.objects.filter(repos_id__in=repos).filter(
+            commit_datetime__range=(_start, datetime.now())
+        ).count()
+        return commits
+
+    def prepare_latest_30_day_commit(self, obj):
+        _start = datetime.utcnow() - timedelta(days=30)
+        repos = Repository.objects.filter(author=obj.login).values_list('pk', flat=True)
+        commits = Commit.objects.filter(repos_id__in=repos).filter(
+            commit_datetime__range=(_start, datetime.now())
+        ).count()
+        return commits
+
+    def prepare_latest_90_day_commit(self, obj):
+        _start = datetime.utcnow() - timedelta(days=90)
         repos = Repository.objects.filter(author=obj.login).values_list('pk', flat=True)
         commits = Commit.objects.filter(repos_id__in=repos).filter(
             commit_datetime__range=(_start, datetime.now())
