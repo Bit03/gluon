@@ -1,51 +1,12 @@
 # import datetime
 from datetime import datetime, timedelta
+
 from haystack import indexes
-from haystack.query import SearchQuerySet
+
 from applications.github.models import (
     Repository,
     People,
 )
-
-
-# class OrganizationIndex(indexes.Indexable, indexes.SearchIndex):
-#     text = indexes.CharField(document=True, use_template=False)
-#     name = indexes.CharField(model_attr='name')
-#     author = indexes.CharField(model_attr='author')
-#     bio = indexes.CharField(model_attr='bio', null=True)
-#     location = indexes.CharField(model_attr='location', null=True)
-#     web_site = indexes.CharField(model_attr='web_site', null=True)
-#     avatar = indexes.CharField(model_attr='avatar', null=True)
-#     star = indexes.IntegerField(default=0)
-#     fork = indexes.IntegerField(default=0)
-#     watch = indexes.IntegerField(default=0)
-#
-#     def get_model(self):
-#         return Organization
-#
-#     def index_queryset(self, using=None):
-#         return self.get_model().objects.all()
-#
-#     def prepare_star(self, obj):
-#         _star = 0
-#         repos = SearchQuerySet().models(Repository).filter(author=obj.author)
-#         for row in repos:
-#             _star += row.star
-#         return _star
-#
-#     def prepare_fork(self, obj):
-#         _fork = 0
-#         repos = SearchQuerySet().models(Repository).filter(author=obj.author)
-#         for row in repos:
-#             _fork += row.fork
-#         return _fork
-#
-#     def prepare_watch(self, obj):
-#         _watch = 0
-#         repos = SearchQuerySet().models(Repository).filter(author=obj.author)
-#         for row in repos:
-#             _watch += row.watch
-#         return _watch
 
 
 class PeopleIndex(indexes.Indexable, indexes.SearchIndex):
