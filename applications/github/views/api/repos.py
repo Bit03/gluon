@@ -3,6 +3,7 @@ import pandas as pd
 from datetime import datetime, timedelta
 from django.db.models import Count, Sum
 from django.db.models.functions import TruncDate
+from haystack.query import SearchQuerySet
 from rest_framework import generics
 from rest_framework.generics import get_object_or_404
 from applications.utils.renderers import (
@@ -11,13 +12,11 @@ from applications.utils.renderers import (
 )
 
 from applications.github.models import (
-    People,
     Repository,
     RepositoryStats,
     Commit,
 )
 from applications.github.serializers import (
-    PeopleSerializer,
     RepositorySerializer,
     RepositoryStatsSerializer,
     RepositoryStateChartSerializer,
@@ -26,6 +25,7 @@ from applications.github.serializers import (
 )
 
 logger = logging.getLogger('django')
+
 
 class RepositoryListAPIView(generics.ListCreateAPIView):
     queryset = Repository.objects.all()
@@ -37,15 +37,11 @@ class UserRepositoryListAPIView(generics.ListAPIView):
     queryset = Repository.objects.all()
     serializer_class = RepositorySerializer
     ordering_fields = ('-updated_at',)
-    # users = None
 
     def get_queryset(self):
         qs = self.queryset
         qs = qs.filter(author=self.kwargs.pop('user'))
         return qs
-
-    # def get(self, request, *args, **kwargs):
-    #     return super(UserRepositoryListAPIView, self).get(request, *args, **kwargs)
 
 
 class UserRepositoryCommitListAPIView(generics.ListAPIView):
@@ -108,13 +104,14 @@ class UserRepositoryStateListAPIView(generics.ListAPIView):
         ).values_list('pk', flat=True)
         qs = qs.filter(repos__in=repo) \
             .filter(date__range=(self.start, datetime.now())) \
-            .values('date')\
-            .annotate(star_sum=Sum('star'), watch_sum=Sum('watch'), fork_sum=Sum('fork'))\
-            .values('watch_sum', 'star_sum', 'fork_sum', 'date')\
+            .values('date') \
+            .annotate(star_sum=Sum('star'), watch_sum=Sum('watch'), fork_sum=Sum('fork')) \
+            .values('watch_sum', 'star_sum', 'fork_sum', 'date') \
             .order_by("date")
         logger.info(qs.query)
         df = qs.to_dataframe(index='date')
         return self.process_dataframe(df=df)
+
 
 class RepositoryCheckAPIView(generics.RetrieveAPIView):
     model = Repository
