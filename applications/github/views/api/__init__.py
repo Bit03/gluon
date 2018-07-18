@@ -30,6 +30,13 @@ class PeopleRankAPIView(generics.ListAPIView):
     serializer_class = PeopleRankSerializer
 
 
+    def get_queryset(self):
+        _user = self.kwargs.pop('login', None)
+        qs = self.queryset
+        qs.filter(login=_user)
+        return qs
+
+
 
 
 # class RepositoryListAPIView(generics.ListCreateAPIView):
