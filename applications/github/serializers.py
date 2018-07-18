@@ -24,9 +24,9 @@ class PeopleRankSerializer(serializers.Serializer):
     login = serializers.CharField()
     avatar = serializers.URLField()
 
-    watch = serializers.IntegerField(default=0, source='get_watch', read_only=True)
-    star = serializers.IntegerField(default=0, source='get_star', read_only=True)
-    fork = serializers.IntegerField(default=0, source='get_fork', read_only=True)
+    watch = serializers.IntegerField(default=0, read_only=True)
+    star = serializers.IntegerField(default=0, read_only=True)
+    fork = serializers.IntegerField(default=0, read_only=True)
 
     latest_7_day_commit = serializers.IntegerField(default=0)
     latest_30_day_commit = serializers.IntegerField(default=0)

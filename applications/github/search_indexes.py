@@ -22,7 +22,7 @@ class PeopleIndex(indexes.Indexable, indexes.SearchIndex):
 
     html_url = indexes.CharField(model_attr='html_url')
 
-    watch = indexes.IntegerField(default=0, model_attr='get_watch',  stored=True)
+    watch = indexes.IntegerField(default=0, stored=True)
     star = indexes.IntegerField(default=0, model_attr='get_star', stored=True)
     fork = indexes.IntegerField(default=0, model_attr='get_fork', stored=True)
 
@@ -35,6 +35,15 @@ class PeopleIndex(indexes.Indexable, indexes.SearchIndex):
 
     def index_queryset(self, using=None):
         return self.get_model().objects.all()
+
+    def prepare_watch(self, obj):
+        return obj.get_watch()
+
+    def prepare_star(self, obj):
+        return obj.get_star()
+
+    def prepare_fork(self, obj):
+        return obj.get_fork()
 
     def prepare_latest_7_day_commit(self, obj):
         _start = datetime.utcnow() - timedelta(days=7)
