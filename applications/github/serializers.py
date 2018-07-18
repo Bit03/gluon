@@ -22,6 +22,7 @@ class PeopleSerializer(serializers.ModelSerializer):
 
 class PeopleRankSerializer(serializers.Serializer):
     login = serializers.CharField()
+    avatar = serializers.URLField()
     latest_7_day_commit = serializers.IntegerField(default=0)
     latest_30_day_commit = serializers.IntegerField(default=0)
     latest_90_day_commit = serializers.IntegerField(default=0)
