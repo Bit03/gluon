@@ -20,6 +20,19 @@ class PeopleSerializer(serializers.ModelSerializer):
         read_only_fields = ('created_at',)
 
 
+class PeopleRankSerializer(serializers.Serializer):
+    login = serializers.CharField()
+    latest_7_day_commit = serializers.IntegerField(default=0)
+    latest_30_day_commit = serializers.IntegerField(default=0)
+    latest_90_day_commit = serializers.IntegerField(default=0)
+
+    def update(self, instance, validated_data):
+        pass
+
+    def create(self, validated_data):
+        pass
+
+
 class RepositorySerializer(serializers.ModelSerializer):
     full_name = serializers.CharField(read_only=True)
 
