@@ -27,7 +27,7 @@ class PeopleDetailAPIView(generics.RetrieveUpdateAPIView):
 
 
 class PeopleRankAPIView(generics.ListAPIView):
-    queryset = SearchQuerySet().models(People).all().order_by("-latest_90_day_commit")
+    queryset = SearchQuerySet().models(People).all()
     serializer_class = PeopleRankSerializer
     filter_backends = [
         filters.OrderingFilter,
