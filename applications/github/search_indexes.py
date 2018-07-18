@@ -22,9 +22,9 @@ class PeopleIndex(indexes.Indexable, indexes.SearchIndex):
 
     html_url = indexes.CharField(model_attr='html_url')
 
-    watch = indexes.IntegerField(default=0, stored=True)
-    start = indexes.IntegerField(default=0, stored=True)
-    fork = indexes.IntegerField(default=0, stored=True)
+    watch = indexes.IntegerField(default=0, model_attr='get_watch',  stored=True)
+    star = indexes.IntegerField(default=0, model_attr='get_star', stored=True)
+    fork = indexes.IntegerField(default=0, model_attr='get_fork', stored=True)
 
     latest_7_day_commit = indexes.IntegerField(default=0, stored=True)
     latest_30_day_commit = indexes.IntegerField(default=0, stored=True)
