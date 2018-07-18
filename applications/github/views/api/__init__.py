@@ -14,13 +14,13 @@ logger = logging.getLogger('django')
 
 class PeopleListAPIView(generics.ListCreateAPIView):
     model = People
-    queryset = People.objects.all()
+    queryset = People.objects.filter(alive=True)
     serializer_class = PeopleSerializer
     ordering_fields = ('created_at',)
 
 
 class PeopleDetailAPIView(generics.RetrieveUpdateAPIView):
-    queryset = People.objects.all()
+    queryset = People.objects.filter(alive=True)
     serializer_class = PeopleSerializer
     lookup_field = 'login'
 

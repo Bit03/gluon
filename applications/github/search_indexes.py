@@ -17,6 +17,7 @@ class PeopleIndex(indexes.Indexable, indexes.SearchIndex):
     bio = indexes.CharField(model_attr='bio', null=True)
     location = indexes.CharField(model_attr='location', null=True)
     email = indexes.CharField(model_attr='email', null=True)
+    alive = indexes.BooleanField(default=True)
 
     html_url = indexes.CharField(model_attr='html_url')
 
