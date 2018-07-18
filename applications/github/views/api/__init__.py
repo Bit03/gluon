@@ -1,7 +1,6 @@
 import logging
-from rest_framework import generics
+from rest_framework import generics, filters
 from haystack.query import SearchQuerySet
-from rest_framework.filters import OrderingFilter
 
 from applications.github.models import (
     People,
@@ -31,6 +30,11 @@ class PeopleRankAPIView(generics.ListAPIView):
     queryset = SearchQuerySet().models(People).all().order_by("-latest_90_day_commit")
     serializer_class = PeopleRankSerializer
     filter_backends = [
-        OrderingFilter,
+        filters.OrderingFilter,
+    ]
+    ordering_fields = [
+        "latest_7_day_commit",
+        "latest_30_day_commit",
+        "latest_90_day_commit",
     ]
 
