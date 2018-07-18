@@ -21,6 +21,7 @@ class PeopleSerializer(serializers.ModelSerializer):
 
 
 class PeopleRankSerializer(serializers.Serializer):
+    name = serializers.CharField()
     login = serializers.CharField()
     avatar = serializers.URLField()
 
