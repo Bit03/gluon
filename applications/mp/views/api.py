@@ -19,7 +19,12 @@ class PeopleRankAPIView(generics.ListAPIView):
 
 
 class PeopleSearchAPIView(generics.ListAPIView):
-    pass
+    queryset = SearchQuerySet().models(People)
+    serializer_class = PeopleRankDetailSerializer
+
+    def get_queryset(self):
+        qs = self.queryset
+        return qs.auto_query(self.request.GET.get('q', None))
 
 
 class PeopleDetailAPIView(generics.RetrieveAPIView):
