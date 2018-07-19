@@ -37,7 +37,7 @@ class PeopleRankDetailSerializer(serializers.Serializer):
     latest_90_day_commit = serializers.IntegerField(default=0)
 
     # ranking_latest_7_day = serializers.IntegerField(default=0)
-    ranking_latest_7_day = serializers.SerializerMethodField(method_name='get_ranking_latest_7_day', default=0)
+    ranking_latest_7_day = serializers.SerializerMethodField(default=0)
     ranking_latest_30_day = serializers.IntegerField(default=0)
     ranking_latest_90_day = serializers.IntegerField(default=0)
 
