@@ -20,7 +20,7 @@ class PeopleRankAPIView(generics.ListAPIView):
 
 class PeopleSearchAPIView(generics.ListAPIView):
     queryset = SearchQuerySet().models(People)
-    serializer_class = PeopleRankDetailSerializer
+    serializer_class = PeopleRankSerializer
 
     def get_queryset(self):
         qs = self.queryset
