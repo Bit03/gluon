@@ -36,7 +36,7 @@ class PeopleDetailAPIView(generics.RetrieveAPIView):
 
         lookup_url_kwarg = self.lookup_url_kwarg or self.lookup_field
         filter_kwargs = {self.lookup_field: self.kwargs[lookup_url_kwarg]}
-        qs = self.get_queryset().filter(filter_kwargs)
+        qs = self.get_queryset().filter(**filter_kwargs)
 
         return qs[0]
 
