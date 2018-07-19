@@ -1,4 +1,6 @@
 from rest_framework import serializers
+from haystack.query import SearchQuerySet
+from applications.github.models import People
 
 
 class PeopleRankSerializer(serializers.Serializer):
@@ -34,9 +36,15 @@ class PeopleRankDetailSerializer(serializers.Serializer):
     latest_30_day_commit = serializers.IntegerField(default=0)
     latest_90_day_commit = serializers.IntegerField(default=0)
 
-    ranking_latest_7_day = serializers.IntegerField(default=0)
+    # ranking_latest_7_day = serializers.IntegerField(default=0)
+    ranking_latest_7_day = serializers.SerializerMethodField(method_name='get_ranking_latest_7_day', default=0)
     ranking_latest_30_day = serializers.IntegerField(default=0)
     ranking_latest_90_day = serializers.IntegerField(default=0)
+
+    def ranking_latest_7_day(self, obj):
+        sqs = SearchQuerySet().models(People).all().order_by('-latest_7_day_commit').values_list('pk', flat=True)
+        index = list(sqs).index("{}".format(obj.pk)) + 1
+        return index
 
     def update(self, instance, validated_data):
         pass

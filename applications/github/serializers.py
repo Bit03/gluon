@@ -77,7 +77,6 @@ class RepositoryCommitSerializer(serializers.ModelSerializer):
     def validate(self, attrs):
         repos_id = attrs.get('repos_id')
         hash = attrs.get('hash')
-
         try:
             Commit.objects.get(repos_id=repos_id, hash=hash)
             msg = _('repos commit exist')
