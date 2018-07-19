@@ -14,6 +14,8 @@ urlpatterns += [
     url(r'^dapps/', include('applications.dapps.urls.api', namespace='dapps')),
     url(r'^github/', include('applications.github.urls.api', namespace='github')),
 
+    url(r'^mp/', include('applications.mp.urls.api', namespace='mp')),
+
     # auth api
     url(r'^auth/', include('rest_auth.urls')),
     # url(r'^auth/registration/', include('rest_auth.registration.urls')),

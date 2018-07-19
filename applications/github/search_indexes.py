@@ -30,6 +30,8 @@ class PeopleIndex(indexes.Indexable, indexes.SearchIndex):
     latest_30_day_commit = indexes.IntegerField(default=0, stored=True)
     latest_90_day_commit = indexes.IntegerField(default=0, stored=True)
 
+    auto_login = indexes.EdgeNgramField(model_attr='login')
+
     def get_model(self):
         return People
 
