@@ -39,7 +39,7 @@ class PeopleRankDetailSerializer(serializers.Serializer):
     # ranking_latest_7_day = serializers.IntegerField(default=0)
     ranking_latest_7_day = serializers.SerializerMethodField(default=0)
     ranking_latest_30_day = serializers.SerializerMethodField(default=0)
-    ranking_latest_90_day = serializers.IntegerField(default=0)
+    ranking_latest_90_day = serializers.SerializerMethodField(default=0)
 
     def get_ranking_latest_7_day(self, obj):
         sqs = SearchQuerySet().models(People).all().order_by('-latest_7_day_commit').values_list('pk', flat=True)
