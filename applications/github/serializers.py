@@ -1,5 +1,6 @@
 import time
-from rest_framework import serializers
+from django.utils.translation import ugettext_lazy as _
+from rest_framework import serializers, exceptions
 from applications.github.models import (
     People,
     Repository,
@@ -72,6 +73,18 @@ class RepositoryCommitSerializer(serializers.ModelSerializer):
         fields = (
             "repos_id", "hash", "branch", "commit_datetime",
         )
+
+    def validate(self, attrs):
+        repos_id = attrs.get('repos_id')
+        hash = attrs.get('hash')
+
+        try:
+            Commit.objects.get(repos_id=repos_id, hash=hash)
+            msg = _('repos commit exist')
+            raise exceptions.ValidationError(msg)
+        except Commit.DoesNotExist:
+            pass
+        return attrs
 
 
 class RepositoryCommitStateSerializer(serializers.Serializer):
