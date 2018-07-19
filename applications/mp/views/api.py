@@ -24,7 +24,7 @@ class PeopleSearchAPIView(generics.ListAPIView):
 
     def get_queryset(self):
         qs = self.queryset
-        return qs.auto_query(self.request.GET.get('q', None))
+        return qs.filter(auto_login=self.request.GET.get('q', None))
 
 
 class PeopleDetailAPIView(generics.RetrieveAPIView):
@@ -32,11 +32,11 @@ class PeopleDetailAPIView(generics.RetrieveAPIView):
     serializer_class = PeopleRankDetailSerializer
     lookup_field = 'login'
 
-    # def get_object(self):
-    #
-    #     lookup_url_kwarg = self.lookup_url_kwarg or self.lookup_field
-    #     filter_kwargs = {self.lookup_field: self.kwargs[lookup_url_kwarg]}
-    #     qs = self.get_queryset().filter(filter_kwargs)
-    #
-    #     return qs[0]
+    def get_object(self):
+
+        lookup_url_kwarg = self.lookup_url_kwarg or self.lookup_field
+        filter_kwargs = {self.lookup_field: self.kwargs[lookup_url_kwarg]}
+        qs = self.get_queryset().filter(filter_kwargs)
+
+        return qs[0]
 
