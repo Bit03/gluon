@@ -1,8 +1,14 @@
+from datetime import datetime, timedelta
+
+from django.db.models import Count
+from django.db.models.functions import TruncDate
 from haystack.query import SearchQuerySet
 from rest_framework import generics, filters
 
-from applications.github.models import People
+from applications.github.models import People, Commit, Repository
+from applications.github.serializers import RepositoryCommitStateSerializer
 from applications.mp.serializers import PeopleRankSerializer, PeopleRankDetailSerializer
+from applications.utils.renderers import CommitChartRenderer
 
 
 class PeopleRankAPIView(generics.ListAPIView):
@@ -38,3 +44,29 @@ class PeopleDetailAPIView(generics.RetrieveAPIView):
         qs = self.get_queryset().filter(**filter_kwargs)
         return qs[0]
 
+
+class ReposCommitAPIView(generics.ListAPIView):
+    queryset = Commit.objects.all()
+    serializer_class = RepositoryCommitStateSerializer
+    pagination_class = None
+
+    renderer_classes = (CommitChartRenderer,)
+
+    @property
+    def start(self):
+        _before = self.request.GET.get('before', 30)
+        if not isinstance(_before, int):
+            _before = int(_before)
+        _start = datetime.now() - timedelta(days=_before)
+        return _start
+
+    def get_queryset(self):
+        repos = Repository.objects.filter(
+            author=self.kwargs['user'],
+        ).values_list('pk', flat=True)
+        qs = self.queryset
+        return qs.filter(repos_id__in=repos).filter(commit_datetime__range=(self.start, datetime.now())) \
+            .annotate(date=TruncDate('commit_datetime')) \
+            .values('date') \
+            .annotate(commit_count=Count('id')) \
+            .values('date', 'commit_count').order_by('-date')
