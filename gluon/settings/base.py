@@ -180,20 +180,20 @@ REST_FRAMEWORK = {
 # --------------------------------------------------------------------------
 # http://haystacksearch.org/
 HAYSTACK_CONNECTIONS = {
-    # 'default': {
-    #     'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
-    #     'PATH': str(ROOT_DIR.path('whoosh_index')),
-    #     'STORAGE': 'file',
-    #     # 'POST_LIMIT': 128 * 1024 * 1024,
-    #     'INCLUDE_SPELLING': True,
-    #     'BATCH_SIZE': 100,
-    # },
     'default': {
-        'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
-        'URL': 'http://10.0.1.71:9200/',
-        'INDEX_NAME': 'repos',
+        'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
+        'PATH': str(ROOT_DIR.path('whoosh_index')),
+        'STORAGE': 'file',
+        # 'POST_LIMIT': 128 * 1024 * 1024,
+        'INCLUDE_SPELLING': True,
         'BATCH_SIZE': 100,
     },
+    # 'default': {
+    #     'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
+    #     'URL': 'http://10.0.1.71:9200/',
+    #     'INDEX_NAME': 'repos',
+    #     'BATCH_SIZE': 100,
+    # },
 }
 HAYSTACK_SEARCH_RESULTS_PER_PAGE = 30
 
