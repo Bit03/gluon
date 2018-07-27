@@ -188,12 +188,6 @@ HAYSTACK_CONNECTIONS = {
         'INCLUDE_SPELLING': True,
         'BATCH_SIZE': 100,
     },
-    # 'default': {
-    #     'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
-    #     'URL': 'http://10.0.1.71:9200/',
-    #     'INDEX_NAME': 'repos',
-    #     'BATCH_SIZE': 100,
-    # },
 }
 HAYSTACK_SEARCH_RESULTS_PER_PAGE = 30
 
