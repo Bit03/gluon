@@ -21,6 +21,7 @@ class PeopleIndex(indexes.Indexable, indexes.SearchIndex):
     alive = indexes.BooleanField(default=True)
 
     html_url = indexes.CharField(model_attr='html_url')
+    white_paper = indexes.CharField(model_attr='white_paper')
 
     watch = indexes.IntegerField(default=0, stored=True)
     star = indexes.IntegerField(default=0, model_attr='get_star', stored=True)

@@ -28,6 +28,8 @@ class PeopleRankDetailSerializer(serializers.Serializer):
     login = serializers.CharField()
     avatar = serializers.URLField()
 
+    white_paper = serializers.URLField(read_only=True)
+
     watch = serializers.IntegerField(default=0, read_only=True)
     star = serializers.IntegerField(default=0, read_only=True)
     fork = serializers.IntegerField(default=0, read_only=True)

@@ -33,14 +33,6 @@ class PeopleSearchAPIView(generics.ListAPIView):
         return qs.filter(auto_login=self.request.GET.get('q', None))
 
 
-# class PeopleAutoCompleteAPIView(generics.ListAPIView):
-#     queryset = SearchQuerySet().models(People)
-#
-#     def get_queryset(self):
-#         qs = self.queryset
-#         return qs.autocomplete(auto_login=self.request.GET.get('q', None))
-
-
 class PeopleDetailAPIView(generics.RetrieveAPIView):
     queryset = SearchQuerySet().models(People).all()
     serializer_class = PeopleRankDetailSerializer

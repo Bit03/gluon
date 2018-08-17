@@ -15,6 +15,7 @@ from taggit.managers import TaggableManager
 from caching.base import CachingManager, CachingMixin
 
 from applications.utils.render_md import md
+from applications.dapps.models import DApp
 
 
 class Organization(CachingMixin, models.Model):
@@ -110,6 +111,14 @@ class People(CachingMixin, models.Model):
     def get_repos_count(self):
         repos_count = Repository.objects.filter(author=self.login).count()
         return repos_count
+
+    @property
+    def white_paper(self):
+        try:
+            dapp = DApp.objects.get(github__login=self.login)
+            return dapp.site.whitepaper
+        except DApp.DoesNotExist:
+            return ""
 
 
 class Repository(CachingMixin, models.Model):

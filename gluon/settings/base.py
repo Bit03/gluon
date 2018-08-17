@@ -219,4 +219,5 @@ DISALLOWED_USER_AGENTS = [
     re.compile(r'mj12bot', re.IGNORECASE),
     re.compile(r'yandexbot', re.IGNORECASE),
     re.compile(r'ahrefsbot', re.IGNORECASE),
+    re.compile(r'phantomjs', re.IGNORECASE),
 ]
