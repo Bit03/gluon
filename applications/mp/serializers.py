@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from haystack.query import SearchQuerySet
 from applications.github.models import People
+from applications.dapps.models import DApp
 
 
 class PeopleRankSerializer(serializers.Serializer):
@@ -28,7 +29,7 @@ class PeopleRankDetailSerializer(serializers.Serializer):
     login = serializers.CharField()
     avatar = serializers.URLField()
 
-    white_paper = serializers.URLField(read_only=True)
+    white_paper = serializers.SerializerMethodField(method_name='get_white_paper', read_only=True)
 
     watch = serializers.IntegerField(default=0, read_only=True)
     star = serializers.IntegerField(default=0, read_only=True)
@@ -56,6 +57,13 @@ class PeopleRankDetailSerializer(serializers.Serializer):
         sqs = SearchQuerySet().models(People).all().order_by('-latest_90_day_commit').values_list('pk', flat=True)
         index = list(sqs).index("{}".format(obj.pk)) + 1
         return index
+
+    def get_white_paper(self, obj):
+        try:
+            _dapp = DApp.objects.get(github__login=obj.login)
+            return _dapp.site.whitepaper
+        except DApp.DoesNotExist:
+            return ''
 
     def update(self, instance, validated_data):
         pass
